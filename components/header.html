@@ -1,0 +1,45 @@
+<!-- Shared Header Component -->
+<a href="#about" class="skip-to-content">Skip to main content</a>
+
+<header class="header" id="header" role="banner">
+    <div class="container header-content">
+        <a href="index.html" class="logo">
+            <img src="assets/images/favicon.jpeg" alt="Hilth Foundation Logo" class="logo-img">
+            <span class="logo-text">Hilth Foundation</span>
+        </a>
+
+        <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+            <a href="index.html" class="logo mobile-nav-logo">
+                <img src="assets/images/favicon.jpeg" alt="Hilth Foundation Logo" class="logo-img">
+                <span class="logo-text">Hilth Foundation</span>
+            </a>
+
+            <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">
+                <i data-lucide="x"></i>
+            </button>
+
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="programs.html" class="nav-link" data-page="programs">Programs</a></li>
+                <li><a href="index.html#impact" class="nav-link">Our Impact</a></li>
+                <li><a href="team.html" class="nav-link" data-page="team">Our Team</a></li>
+            </ul>
+
+            <!-- Donate button inside mobile nav for easy access -->
+            <button class="nav-donate-btn" onclick="openDonationModal()" aria-label="Donate to Hilth Foundation">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6c-1.7-1.6-4.5-1.6-6.1 0l-.7.7-.7-.7c-1.7-1.6-4.5-1.6-6.1 0-1.8 1.7-1.8 4.5 0 6.2l7.5 7.2 7.5-7.2c1.8-1.7 1.8-4.5 0-6.2z"></path></svg>
+                <span>Donate</span>
+            </button>
+        </nav>
+
+        <button class="btn btn-donate-header" onclick="openDonationModal()" aria-label="Donate to Hilth Foundation">
+            <i data-lucide="heart"></i>
+            <span class="btn-text">Donate</span>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-controls="nav" aria-expanded="false">
+            <span class="menu-icon"><span></span><span></span></span>
+        </button>
+    </div>
+</header>

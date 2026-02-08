@@ -1,0 +1,14 @@
+# robots.txt for Hilth Foundation
+# https://hilthfoundation.org/
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://hilthfoundation.org/sitemap.xml
+
+# Crawl-delay (optional, be polite to crawlers)
+Crawl-delay: 1
+
+# Disallow admin or private areas (if any)
+

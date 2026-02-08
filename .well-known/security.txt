@@ -1,0 +1,15 @@
+# Our security address
+Contact: mailto:hilthfoundation@gmail.com
+Contact: tel:+233543790817
+
+# Our security policy
+Preferred-Languages: en
+
+# Expiration date (1 year from now)
+Expires: 2027-01-19T00:00:00.000Z
+
+# Acknowledgments
+Acknowledgments: https://hilthfoundation.org/
+
+# Canonical URL
+Canonical: https://hilthfoundation.org/.well-known/security.txt

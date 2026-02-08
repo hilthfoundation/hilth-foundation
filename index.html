@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Hilth Foundation - Restoring the true purpose of education. Helping students develop thinking skills, self-awareness, and life direction through structured programs.">
+    <meta name="keywords" content="Hilth Foundation, nonprofit, education, health, Ghana, charity, donate">
+    <meta name="author" content="Hilth Foundation">
+
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpeg">
+    <link rel="apple-touch-icon" href="assets/images/favicon.jpeg">
+    <meta name="theme-color" content="#5144DC">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="be9-RPNJNndOO1z7WhPgjcZowpNN1Yj13FVhkmDcAEU" />
+    <!-- Content Security Policy - Allows external resources the site needs -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self'; 
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://js.paystack.co https://checkout.paystack.com https://*.paystack.co https://*.paystack.com; 
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://paystack.com https://checkout.paystack.com https://*.paystack.co https://*.paystack.com; 
+        font-src 'self' https://fonts.gstatic.com; 
+        img-src 'self' data: https: blob:; 
+        connect-src 'self' https://api.paystack.co https://unpkg.com https://*.paystack.co https://*.paystack.com https://script.google.com; 
+        frame-src https://checkout.paystack.com https://paystack.com https://*.paystack.co https://*.paystack.com;
+    ">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hilthfoundation.org/">
+    <meta property="og:title" content="Hilth Foundation | Education Beyond Exams">
+    <meta property="og:description"
+        content="Restoring the true purpose of education. Helping students develop thinking skills, self-awareness, and life direction through structured programs in Ghana.">
+    <meta property="og:image" content="https://hilthfoundation.org/assets/images/logo.jpeg">
+    <meta property="og:site_name" content="Hilth Foundation">
+    <meta property="og:locale" content="en_GH">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hilthfoundation.org/">
+    <meta name="twitter:title" content="Hilth Foundation | Education Beyond Exams">
+    <meta name="twitter:description"
+        content="Restoring the true purpose of education. Helping students in Ghana develop thinking skills and life direction.">
+    <meta name="twitter:image" content="https://hilthfoundation.org/assets/images/logo.jpeg">
+    <meta name="twitter:site" content="@hilthfoundation">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hilthfoundation.org/">
+
+    <title>Hilth Foundation | Education Beyond Exams</title>
+
+    <!-- Preconnect to external resources for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://js.paystack.co">
+
+    <!-- DNS Prefetch for additional optimization -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+
+    <!-- Google Fonts - Professional Foundation Typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles - Unified CSS -->
+    <link rel="stylesheet" href="css/styles.css?v=2.0">
+
+    <!-- Preload hero image for LCP optimization -->
+    <link rel="preload" as="image" href="assets/images/hero-ai-1.png">
+
+    <!-- Lucide Icons - defer loading -->
+    <script src="https://unpkg.com/lucide@0.562.0" defer></script>
+
+    <!-- Paystack - defer loading -->
+    <script src="https://js.paystack.co/v1/inline.js" defer></script>
+
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Hilth Foundation",
+          "url": "https://hilthfoundation.org",
+          "logo": "https://hilthfoundation.org/assets/images/logo.jpeg",
+          "sameAs": [
+            "https://linkedin.com/company/hilth-foundation-ghana",
+            "https://instagram.com/hilthfoundation",
+            "https://x.com/hilthfoundation",
+            "https://facebook.com/hilthfoundation",
+            "https://youtube.com/@hilthfoundation",
+            "https://tiktok.com/@hilthfoundation"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+233-54-379-0817",
+            "contactType": "customer service",
+            "areaServed": "GH"
+          },
+          "description": "Restoring the true purpose of education. Helping students develop thinking skills, self-awareness, and life direction through structured programs."
+        },
+        {
+          "@type": "WebSite",
+          "name": "Hilth Foundation",
+          "alternateName": "Hilth Foundation Ghana",
+          "url": "https://hilthfoundation.org"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Main JS - Unified JavaScript -->
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+    <!-- Skip to Content - Accessibility -->
+    <a href="#about" class="skip-to-content">Skip to main content</a>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo-wrapper">
+                <img src="assets/images/favicon.jpeg" alt="H" class="preloader-logo">
+                <div class="preloader-ring"></div>
+            </div>
+            <p class="preloader-text">Hilth Foundation</p>
+        </div>
+    </div>
+
+    <!-- Header / Navigation (shared component) -->
+    <div id="header-container"></div>
+
+    <!-- Hero Section with Dynamic Slider -->
+    <section class="hero" id="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <img src="assets/images/hero-ai-1.png"
+                    alt="Ghanaian students engaged in active learning in a modern classroom" class="hero-slide-img"
+                    style="object-position: center 20%;">
+            </div>
+            <div class="hero-slide">
+                <img src="assets/images/hero-ai-2.png" alt="Outdoor mentorship session with students in Ghana"
+                    class="hero-slide-img" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="assets/images/students-group.png" alt="Group of students collaborating and learning together"
+                    class="hero-slide-img" loading="lazy">
+            </div>
+            <div class="hero-slide">
+                <img src="assets/images/student-writing.png" alt="Student engaged in reflective writing and learning"
+                    class="hero-slide-img" loading="lazy">
+            </div>
+        </div>
+        <div class="hero-gradient"></div>
+        <div class="hero-content container">
+            <h1 class="hero-title">
+                <span class="hero-line hero-line-1">NURTURING</span>
+                <span class="hero-line hero-line-2">MINDS, TRANSFORMING</span>
+                <span class="hero-line hero-line-3">FUTURES</span>
+            </h1>
+            <p class="hero-subtitle hero-line hero-line-4">Join us in creating lasting change through education across
+                Ghana.</p>
+            <div class="hero-cta hero-line hero-line-5">
+                <button class="btn btn-hero-outline" onclick="openDonationModal()">
+                    Donate Now
+                </button>
+                <a href="#impact" class="btn btn-hero-ghost">
+                    <span class="play-icon">
+                        <i data-lucide="bar-chart-2"></i>
+                    </span>
+                    <span class="btn-text">SEE OUR IMPACT</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-slider-dots">
+            <span class="slider-dot active" data-slide="0"></span>
+            <span class="slider-dot" data-slide="1"></span>
+            <span class="slider-dot" data-slide="2"></span>
+            <span class="slider-dot" data-slide="3"></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="split-layout">
+                <div class="split-content about-1">
+                    <div class="section-header"
+                        style="text-align: center !important; margin-bottom: 0.5rem; margin-top: 2rem;">
+                        <h2 class="section-title gradient-title" style="text-align: center !important;">Who We Are</h2>
+                    </div>
+                    <p class="about-text about-2" style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                        We are a nonprofit organization dedicated to supporting education as a foundation for
+                        development
+                        across Africa. We help young people understand that education goes beyond schooling, exams, and
+                        certificates by connecting learning with real life, purpose, and sustainable growth.
+                    </p>
+
+                </div>
+                <div class="split-image-wrapper about-2">
+                    <img src="assets/images/about-1.jpeg" alt="About Hilth Foundation" class="split-image primary"
+                        loading="lazy">
+                    <img src="assets/images/about-2.jpeg" alt="About Hilth Foundation alternate" class="split-image alt"
+                        loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Programs Section -->
+    <section class="programs" id="programs">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-title">Our Programs</h2>
+                <p class="section-subtitle">Structured initiatives designed to empower and guide.</p>
+            </div>
+
+            <div class="programs-grid">
+                <!-- Program 1 -->
+                <div class="interactive-program-card animate-on-scroll">
+                    <div style="z-index: 2;">
+                        <div class="card-icon-wrapper">
+                            <i data-lucide="school" style="width: 24px; height: 24px; color: var(--text-muted);"></i>
+                        </div>
+                        <h3>HILTH School Impact Program</h3>
+                        <p>A school-outreach initiative engaging students through interactive sessions designed to go
+                            beyond lectures.</p>
+                        <a href="programs.html#hsip" class="card-cta">
+                            Learn More <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 2 -->
+                <div class="interactive-program-card animate-on-scroll" style="animation-delay: 0.1s;">
+                    <div style="z-index: 2;">
+                        <div class="card-icon-wrapper">
+                            <i data-lucide="users" style="width: 24px; height: 24px; color: var(--text-muted);"></i>
+                        </div>
+                        <h3>HILTH Mentorship Program</h3>
+                        <p>Structured mentorship supporting students in purpose, career, self-development, and skills.
+                        </p>
+                        <a href="programs.html#mentorship" class="card-cta">
+                            Learn More <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="interactive-program-card animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div style="z-index: 2;">
+                        <div class="card-icon-wrapper">
+                            <i data-lucide="book-open" style="width: 24px; height: 24px; color: var(--text-muted);"></i>
+                        </div>
+                        <h3>90 Days of Transformation</h3>
+                        <p>A guided self-discovery notebook helping students clarify purpose and find direction.</p>
+                        <a href="programs.html#90days" class="card-cta">
+                            Learn More <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Program 4 -->
+                <div class="interactive-program-card animate-on-scroll" style="animation-delay: 0.3s;">
+                    <div style="z-index: 2;">
+                        <div class="card-icon-wrapper">
+                            <i data-lucide="mic" style="width: 24px; height: 24px; color: var(--text-muted);"></i>
+                        </div>
+                        <h3>Hilth Insights</h3>
+                        <p>Monthly sessions and podcasts guiding young people to think critically and discover purpose.
+                        </p>
+                        <a href="programs.html#insights" class="card-cta">
+                            Learn More <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Impact Section -->
+    <section class="impact" id="impact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-title">Our Impact</h2>
+                <p class="section-subtitle">Brief highlights of our outcomes and reach.</p>
+            </div>
+
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon impact-icon-teal">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="impact-stat-wrapper">
+                        <span class="impact-number" data-target="3000">0</span>
+                        <span class="impact-suffix">+</span>
+                    </div>
+                    <p class="impact-label">Lives Touched</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon impact-icon-purple">
+                        <i data-lucide="school"></i>
+                    </div>
+                    <div class="impact-stat-wrapper">
+                        <span class="impact-number" data-target="8">0</span>
+                        <span class="impact-suffix">+</span>
+                    </div>
+                    <p class="impact-label">Schools Visited</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon impact-icon-gold">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <div class="impact-stat-wrapper">
+                        <span class="impact-number" data-target="2000">0</span>
+                        <span class="impact-suffix">+</span>
+                    </div>
+                    <p class="impact-label">Students Reached</p>
+                </div>
+
+                <div class="impact-card">
+                    <div class="impact-icon impact-icon-teal">
+                        <i data-lucide="calendar-check"></i>
+                    </div>
+                    <div class="impact-stat-wrapper">
+                        <span class="impact-number" data-target="20">0</span>
+                        <span class="impact-suffix">+</span>
+                    </div>
+                    <p class="impact-label">Programs Delivered</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="margin-top: 4rem;">
+            <div class="carousel" id="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Story 1 -->
+                    <div class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/impact-story-1.png" alt="Community Outreach" loading="lazy">
+                        </div>
+                        <div class="story-content">
+                            <div class="quote-icon"><i data-lucide="quote"></i></div>
+                            <p class="story-text">"Education is more than classrooms, it's about the moments where we
+                                sit with a student and help them find their own path. Nurturing a child's mind today
+                                transforms their entire future."</p>
+                            <div class="story-author">
+                                <span class="author-name">Mentorship Session</span>
+                                <span class="author-title">Personalized Learning</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 2 -->
+                    <div class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/impact-story-2.png" alt="Education Outreach" loading="lazy">
+                        </div>
+                        <div class="story-content">
+                            <div class="quote-icon"><i data-lucide="quote"></i></div>
+                            <p class="story-text">"Workshops are usually boring, but this was different. We solved real
+                                problems and I realized my ideas actually have value."</p>
+                            <div class="story-author">
+                                <span class="author-name">Sarah Mensah</span>
+                                <span class="author-title">Workshop Attendee</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 3 -->
+                    <div class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/impact-story-3.png" alt="Youth Empowerment" loading="lazy">
+                        </div>
+                        <div class="story-content">
+                            <div class="quote-icon"><i data-lucide="quote"></i></div>
+                            <p class="story-text">"I used to be afraid of public speaking. Through the 90 Days program,
+                                I found my voice and the confidence to share it."</p>
+                            <div class="story-author">
+                                <span class="author-name">Emmanuel O.</span>
+                                <span class="author-title">90 Days Graduate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 4 -->
+                    <div class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/impact-story-4.png" alt="Community Service" loading="lazy">
+                        </div>
+                        <div class="story-content">
+                            <div class="quote-icon"><i data-lucide="quote"></i></div>
+                            <p class="story-text">"Our reading circles aren't just about literacy, they are spaces for
+                                students to think independently and discover their own interests. Through books, we help
+                                them explore new perspectives and begin to define their own life direction."</p>
+                            <div class="story-author">
+                                <span class="author-name">Reading Session</span>
+                                <span class="author-title">Independence through Reading</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 5 -->
+                    <div class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/impact-story-5.png" alt="Mentor and student discussion"
+                                loading="lazy">
+                        </div>
+                        <div class="story-content">
+                            <div class="quote-icon"><i data-lucide="quote"></i></div>
+                            <p class="story-text">"My mentor helped me map out a plan for university and beyond. The
+                                guidance felt practical and real."</p>
+                            <div class="story-author">
+                                <span class="author-name">Daniel S.</span>
+                                <span class="author-title">Mentorship Beneficiary</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story 6 -->
+                    <div class="story-card">
+                        <div class="story-image">
+                            <img src="assets/images/impact-story-6.jpeg" alt="Community Impact" loading="lazy">
+                        </div>
+                        <div class="story-content">
+                            <p class="story-text">"Sharing a warm meal with children in our community reminds them that
+                                they are seen and loved. It is a simple act that carries a message of hope."</p>
+                            <div class="story-author">
+                                <span class="author-name">Street Outreach</span>
+                                <span class="author-title">Community Support</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" id="prevBtn" aria-label="Previous slide">
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <button class="carousel-btn next" id="nextBtn" aria-label="Next slide">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-title">Our Team</h2>
+                <p class="section-subtitle">The talented people driving our mission</p>
+            </div>
+            <div class="team-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card">
+                    <img src="assets/images/chris-founder.jpeg" alt="Chris Oppong" class="team-card-image">
+                    <div class="team-card-content">
+                        <h4>Chris Oppong</h4>
+                        <p class="team-role">Founder & Director</p>
+                    </div>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="team-card">
+                    <img src="assets/images/Gati Joseph - Hilth Team.jpeg" alt="Gati Joseph" class="team-card-image">
+                    <div class="team-card-content">
+                        <h4>Gati Joseph</h4>
+                        <p class="team-role">Cofounder</p>
+                    </div>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="team-card">
+                    <img src="assets/images/Theophilus Team .jpeg" alt="Theophilus Quainoo" class="team-card-image">
+                    <div class="team-card-content">
+                        <h4>Theophilus Quainoo</h4>
+                        <p class="team-role">Mentorship Coordinator</p>
+                    </div>
+                </div>
+                <!-- Team Member 4 -->
+                <div class="team-card">
+                    <img src="assets/images/Asamoah - Hilth Team .jpeg" alt="Ransford Asamoah" class="team-card-image">
+                    <div class="team-card-content">
+                        <h4>Ransford Asamoah</h4>
+                        <p class="team-role">Events & Programs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="team.html" class="btn btn-primary">Meet the Full Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Trusted Partners Section (carousel with grayscale logos) -->
+    <section class="trusted-partners" id="trusted-partners">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2.5rem;">
+                <h2 class="section-title gradient-title">Our Trusted Partners</h2>
+            </div>
+
+            <div class="trusted-grid" aria-label="Partner logos">
+                <div class="trusted-item">
+                    <img src="assets/images/partner-glinax.jpeg" alt="Glinax Logo" loading="lazy">
+                    <p class="trusted-name">Glinax</p>
+                </div>
+                <div class="trusted-item">
+                    <img src="assets/images/partner-cerk.jpeg" alt="CERK Logo" loading="lazy">
+                    <p class="trusted-name">CERK</p>
+                </div>
+                <div class="trusted-item">
+                    <img src="assets/images/partner-corion.jpeg" alt="Corion Logo" loading="lazy">
+                    <p class="trusted-name">Corion</p>
+                </div>
+                <div class="trusted-item">
+                    <img src="assets/images/partner-sonacrest.jpeg" alt="Sonacrest Logo" loading="lazy">
+                    <p class="trusted-name">Sonacrest</p>
+                </div>
+            </div>
+
+            <p class="trusted-subtext">Collaborating with industry leaders to drive meaningful impact.</p>
+
+            <div class="trusted-cta">
+                <a href="mailto:hilthfoundation@gmail.com?subject=Partnership%20Inquiry" class="btn btn-primary"
+                    id="becomePartnerBtn" aria-label="Email Hilth Foundation to become a partner">Become a Partner</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Highlights Section -->
+    <section class="videos section-padding" id="media" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-header" style="display: flex; flex-direction: column; align-items: center;">
+                <span class="section-label">Media</span>
+                <h2 class="section-title gradient-title">Video Highlights</h2>
+                <p class="section-subtitle"
+                    style="text-align: center; max-width: 700px; margin: 0 auto; display: block; font-size: 1.1rem; color: var(--text-muted); line-height: 1.8;">
+                    "Education is the key to success, but why does the door still feel locked
+                    for many graduates?"</p>
+            </div>
+
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video muted playsinline loop class="scroll-video">
+                            <source src="assets/videos/Samuella Opoku Agyemang - Is Education the Key to Success.mp4"
+                                type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay-icon">
+                            <i data-lucide="play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <h4>Samuella Opoku Agyemang</h4>
+                        <p>Discussing the paradox of education: why does the door to success still feel locked for so
+                            many?</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video muted playsinline loop class="scroll-video">
+                            <source src="assets/videos/Emmanuel Agyenim Braimah- Is Education the Key to Success.mp4"
+                                type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-overlay-icon">
+                            <i data-lucide="play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="video-caption">
+                        <h4>Emmanuel Agyenim Braimah</h4>
+                        <p>Is education really the key to success? Sharing his perspective on the reality facing many
+                            graduates today.</p>
+                    </div>
+                </div>
+
+                <!-- Video 3 (Missing File) - Commented Out -->
+                <!-- 
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata" loading="lazy">
+                            <source src="assets/videos/visits-college.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-caption">
+                        <h4>School Visits</h4>
+                        <p>Engaging with students on campus.</p>
+                    </div>
+                </div> 
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared footer container (injected by components/footer.html) -->
+    <div id="footer-container"></div>
+
+    <!-- Donation Modal -->
+    <div class="modal-overlay" id="donationModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">
+                <i data-lucide="x"></i>
+            </button>
+
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i data-lucide="heart"></i>
+                </div>
+                <h3 class="modal-title">Make a Donation</h3>
+                <p class="modal-subtitle">Your generosity helps us empower more futures.</p>
+            </div>
+
+            <form class="donation-form" id="donationForm">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount (GHS)</label>
+                    <input type="number" id="amount" name="amount" required min="1" placeholder="Enter amount">
+                    <div class="amount-suggestions">
+                        <button type="button" class="amount-btn" data-amount="50">GHS 50</button>
+                        <button type="button" class="amount-btn" data-amount="100">GHS 100</button>
+                        <button type="button" class="amount-btn" data-amount="200">GHS 200</button>
+                        <button type="button" class="amount-btn" data-amount="500">GHS 500</button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-full">
+                    <i data-lucide="credit-card"></i>
+                    Proceed to Payment
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Thank You Modal -->
+    <div class="modal-overlay" id="thankYouModal">
+        <div class="modal thank-you-modal">
+            <div class="thank-you-icon">
+                <i data-lucide="check-circle"></i>
+            </div>
+            <h3 class="modal-title">Thank You!</h3>
+            <p class="modal-subtitle">Your donation has been received successfully. Together, we're making a difference!
+            </p>
+            <p class="reference-text" id="referenceText"></p>
+            <button class="btn btn-primary" onclick="closeThankYouModal()">Close</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

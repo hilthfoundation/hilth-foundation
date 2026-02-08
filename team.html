@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Our Team - Hilth Foundation.">
+    <meta name="keywords" content="Hilth Foundation, team, staff, Ghana">
+    <meta name="author" content="Hilth Foundation">
+
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpeg">
+    <link rel="apple-touch-icon" href="assets/images/favicon.jpeg">
+    <meta name="theme-color" content="#5144DC">
+
+    <title>Our Team | Hilth Foundation</title>
+
+    <!-- Google Fonts & Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=2.0">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@0.562.0" defer></script>
+    <script src="js/main.js" defer></script>
+    <style>
+        .page-hero {
+            background: transparent;
+            color: inherit;
+            padding: 50px 0 30px;
+            text-align: left;
+        }
+
+        .page-hero .hero-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--secondary);
+            border-radius: 20px;
+        }
+
+        .page-hero .hero-title {
+            color: var(--primary);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-weight: 800;
+            margin: 0 0 0.25rem 0;
+            line-height: 1.1;
+            position: relative;
+            display: inline-block;
+        }
+
+        .page-hero .hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            border-radius: 2px;
+        }
+
+        .page-hero .hero-subtitle {
+            color: rgba(0, 0, 0, 0.65);
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body class="page-team">
+    <!-- Header (shared component) -->
+    <div id="header-container"></div>
+
+    <!-- Hero removed as requested -->
+
+    <!-- Main Content -->
+    <section class="section-padding" style="padding-top: 140px;">
+        <div class="container">
+            <div class="team-intro">
+                <div class="team-intro-icon-quote">
+                    <div class="team-intro-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <p class="team-intro-quote">"Every impact story at Hilth Foundation is powered by a team working
+                        together with purpose."</p>
+                </div>
+            </div>
+            <div class="team-grid mosaic-grid">
+                <!-- Team Member 1 -->
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="assets/images/chris-founder.jpeg" alt="Chris Oppong" loading="lazy">
+                    </div>
+                    <div class="team-content">
+                        <h4>Chris Oppong</h4>
+                        <p class="role">Founder & Director</p>
+                        <p class="member-bio">Chris leads Hilth to equip young people with real world skills.</p>
+                    </div>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="assets/images/Gati Joseph - Hilth Team.jpeg" alt="Gati Joseph" loading="lazy">
+                    </div>
+                    <div class="team-content">
+                        <h4>Gati Joseph</h4>
+                        <p class="role">Cofounder</p>
+                        <p class="member-bio">Gati builds community partnerships and program strategy to expand our
+                            reach.</p>
+                    </div>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="assets/images/Theophilus Team .jpeg" alt="Theophilus Quainoo" loading="lazy">
+                    </div>
+                    <div class="team-content">
+                        <h4>Theophilus Quainoo</h4>
+                        <p class="role">Mentorship Coordinator</p>
+                        <p class="member-bio">Theophilus designs mentorship sessions and shares career insights.</p>
+                    </div>
+                </div>
+                <!-- Team Member 4 -->
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="assets/images/Asamoah - Hilth Team .jpeg" alt="Ransford Asamoah" loading="lazy">
+                    </div>
+                    <div class="team-content">
+                        <h4>Ransford Asamoah</h4>
+                        <p class="role">Programs Coordinator</p>
+                        <p class="member-bio">Ransford coordinates events and keeps programs running smoothly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared footer container (injected by components/footer.html) -->
+    <div id="footer-container"></div>
+
+</body>
+
+</html>
