@@ -883,10 +883,8 @@ function initPreloader() {
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
 
-    // Hide preloader after DOM is ready (much faster than waiting for 'load')
-    setTimeout(() => {
-        preloader.classList.add('hidden');
-    }, 300);
+    // Hide preloader immediately after DOM is ready (much faster than waiting for 'load')
+    preloader.classList.add('hidden');
 
     // Fallback: ensure preloader is hidden after all resources load
     window.addEventListener('load', () => {
