@@ -6654,8 +6654,8 @@ b {
         line-height: 1.4;
         text-align: left;
         display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
+        -webkit-line-clamp: 6;
+        line-clamp: 6;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
@@ -6763,8 +6763,8 @@ b {
     color: rgba(255, 255, 255, 0.85);
     font-weight: 500;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    -webkit-line-clamp: 6;
+    line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -7862,7 +7862,7 @@ button:focus,
     }
 
     .team-card-image {
-        aspect-ratio: 4/5;
+        aspect-ratio: 1/1;
     }
 
     .team-card-content {
