@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
    Uses IntersectionObserver to add 'in-view' class with a staggered delay
    ================================ */
 function initPartnerAnimations() {
-    const cards = Array.from(document.querySelectorAll('.partner-card'));
+    const cards = Array.from(document.querySelectorAll('.trusted-item'));
     if (cards.length === 0) return;
 
     const onIntersect = (entries, observer) => {
