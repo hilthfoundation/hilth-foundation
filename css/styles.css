@@ -8996,3 +8996,16 @@ button:focus,
         display: none !important;
     }
 }
+
+/* ================================
+   Team Page Specific Adjustments
+   ================================ */
+.team-intro-section {
+    padding-top: 140px;
+}
+
+@media (max-width: 768px) {
+    .team-intro-section {
+        padding-top: 130px !important;
+    }
+}
