@@ -6621,10 +6621,7 @@ b {
     }
 
     /* Card Background Colors for fading */
-    .mosaic-grid .team-card:nth-child(4n+1) { background: var(--primary); }
-    .mosaic-grid .team-card:nth-child(4n+2) { background: #E0F2F1; }
-    .mosaic-grid .team-card:nth-child(4n+3) { background: var(--accent-gold); }
-    .mosaic-grid .team-card:nth-child(4n+4) { background: #1C1A28; }
+    .mosaic-grid .team-card { background: var(--primary); }
 
     /* Override alternating layout on mobile */
     .mosaic-grid .team-card:nth-child(even) {
@@ -6831,83 +6828,22 @@ b {
 
 
 /* ================================
-   Card #1 — Purple (var(--primary))
+   All Cards — Purple (var(--primary))
    White text on dark purple: WCAG AA ✓
    ================================ */
-.mosaic-grid .team-card:nth-child(4n+1) {
+.mosaic-grid .team-card {
     background: var(--primary);
 }
-.mosaic-grid .team-card:nth-child(4n+1) h4 {
+.mosaic-grid .team-card h4 {
     color: #ffffff;
 }
-.mosaic-grid .team-card:nth-child(4n+1) .role {
+.mosaic-grid .team-card .role {
     color: rgba(255, 255, 255, 0.7);
     border-left: 3px solid rgba(255,255,255,0.4);
     padding-left: 0.6rem;
 }
-.mosaic-grid .team-card:nth-child(4n+1) .member-bio {
+.mosaic-grid .team-card .member-bio {
     color: rgba(255, 255, 255, 0.82);
-}
-
-/* ================================
-   Card #2 — Light Teal (#E0F2F1)
-   Dark text on light teal: WCAG AA ✓
-   ================================ */
-.mosaic-grid .team-card:nth-child(4n+2) {
-    background: #E0F2F1;
-}
-.mosaic-grid .team-card:nth-child(4n+2) h4 {
-    color: #0d3b38;
-    text-shadow: none;
-}
-.mosaic-grid .team-card:nth-child(4n+2) .role {
-    color: #1a6b66;
-    border-left: 3px solid #18C7B7;
-    padding-left: 0.6rem;
-}
-.mosaic-grid .team-card:nth-child(4n+2) .member-bio {
-    color: #1f4f4f;
-    display: block;
-    visibility: visible;
-}
-
-/* ================================
-   Card #3 — Gold (var(--accent-gold))
-   Dark text on warm gold: WCAG AA ✓
-   ================================ */
-.mosaic-grid .team-card:nth-child(4n+3) {
-    background: var(--accent-gold);
-}
-.mosaic-grid .team-card:nth-child(4n+3) h4 {
-    color: #1a1000;
-    text-shadow: none;
-}
-.mosaic-grid .team-card:nth-child(4n+3) .role {
-    color: #4a3000;
-    border-left: 3px solid rgba(0,0,0,0.3);
-    padding-left: 0.6rem;
-}
-.mosaic-grid .team-card:nth-child(4n+3) .member-bio {
-    color: #3a2800;
-}
-
-/* ================================
-   Card #4 — Navy (#1C1A28)
-   White text on near-black: WCAG AAA ✓
-   ================================ */
-.mosaic-grid .team-card:nth-child(4n+4) {
-    background: #1C1A28;
-}
-.mosaic-grid .team-card:nth-child(4n+4) h4 {
-    color: #ffffff;
-}
-.mosaic-grid .team-card:nth-child(4n+4) .role {
-    color: rgba(255, 255, 255, 0.65);
-    border-left: 3px solid var(--accent-teal);
-    padding-left: 0.6rem;
-}
-.mosaic-grid .team-card:nth-child(4n+4) .member-bio {
-    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Remove default accents */
