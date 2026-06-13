@@ -89,3 +89,67 @@
         </div>
     </div>
 </footer>
+
+<!-- Donation Modal -->
+<div class="modal-overlay" id="donationModal">
+    <div class="modal">
+        <button class="modal-close" id="modalClose" aria-label="Close modal">
+            <i data-lucide="x"></i>
+        </button>
+
+        <div class="modal-header">
+            <div class="modal-icon">
+                <i data-lucide="heart"></i>
+            </div>
+            <h3 class="modal-title">Make a Donation</h3>
+            <p class="modal-subtitle">Your generosity helps us empower more futures.</p>
+        </div>
+
+        <form class="donation-form" id="donationForm">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount (GHS)</label>
+                <input type="number" id="amount" name="amount" required min="1" placeholder="Enter amount">
+                <div class="amount-suggestions">
+                    <button type="button" class="amount-btn" data-amount="50">GHS 50</button>
+                    <button type="button" class="amount-btn" data-amount="100">GHS 100</button>
+                    <button type="button" class="amount-btn" data-amount="200">GHS 200</button>
+                    <button type="button" class="amount-btn" data-amount="500">GHS 500</button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-full">
+                <i data-lucide="credit-card"></i>
+                Proceed to Payment
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Thank You Modal -->
+<div class="modal-overlay" id="thankYouModal">
+    <div class="modal thank-you-modal">
+        <div class="thank-you-icon">
+            <i data-lucide="check-circle"></i>
+        </div>
+        <h3 class="modal-title">Thank You!</h3>
+        <p class="modal-subtitle">Your donation has been received successfully. Together, we're making a difference!
+        </p>
+        <p class="reference-text" id="referenceText"></p>
+        <button class="btn btn-primary" onclick="closeThankYouModal()">Close</button>
+    </div>
+</div>
