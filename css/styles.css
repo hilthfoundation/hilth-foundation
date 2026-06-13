@@ -791,6 +791,17 @@ b {
     }
 }
 
+/* Team page full background gradient */
+.page-team {
+    background: linear-gradient(160deg, var(--primary) 0%, #4B3A78 40%, var(--accent-teal) 100%);
+    min-height: 100vh;
+}
+
+/* Make the team intro section transparent so the page gradient shows through */
+.page-team .team-intro-section {
+    background: transparent;
+}
+
 /* Page-specific header overrides for solid color headers on select pages */
 .page-programs .header,
 .page-team .header {
@@ -800,6 +811,7 @@ b {
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     backdrop-filter: none !important;
 }
+
 
 .page-programs .header .logo-text,
 .page-team .header .logo-text {
@@ -4180,17 +4192,18 @@ b {
 .preloader {
     position: fixed;
     inset: 0;
-    background: var(--bg-white);
+    background: linear-gradient(135deg, var(--primary) 0%, #4B3A78 50%, var(--accent-teal) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 .preloader.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
 .preloader-content {
@@ -4209,44 +4222,35 @@ b {
 }
 
 .preloader-logo {
-    width: 64px;
-    height: 64px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     position: relative;
     z-index: 2;
-    box-shadow: 0 4px 20px rgba(81, 67, 222, 0.15);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
 }
 
 .preloader-ring {
     position: absolute;
     inset: 0;
-    border: 2px solid rgba(81, 67, 222, 0.1);
-    border-top-color: var(--primary);
+    border: 3px solid rgba(255,255,255,0.2);
+    border-top-color: #ffffff;
     border-radius: 50%;
-    animation: spin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-.preloader-ring::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border: 2px solid transparent;
-    border-top-color: var(--accent-teal);
-    border-radius: 50%;
-    animation: spin 2s cubic-bezier(0.4, 0, 0.2, 1) infinite reverse;
+    animation: spin 0.9s linear infinite;
 }
 
 .preloader-text {
     font-family: var(--font-heading);
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    letter-spacing: 0.2em;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     opacity: 0;
-    transform: translateY(10px);
-    animation: preloaderFadeIn 0.8s ease 0.4s forwards;
+    transform: translateY(8px);
+    animation: preloaderFadeIn 0.5s ease 0.2s forwards;
 }
+
 
 @keyframes spin {
     to {
@@ -6597,74 +6601,95 @@ b {
     grid-template-areas: "content image";
 }
 
-/* Mobile: Keep side-by-side layout but improve text visibility */
+/* Mobile: Stack layout for better visibility */
 @media (max-width: 767px) {
+    .mosaic-grid {
+        gap: 24px;
+        padding: 0 var(--space-md);
+    }
+
     .mosaic-grid .team-card {
         height: auto;
-        min-height: 180px;
-        grid-template-columns: 40% 60%;
-        grid-template-areas: "image content";
+        min-height: auto;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "image"
+            "content";
+        border-radius: var(--radius-xl) !important;
+        margin-bottom: 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
-    /* Keep alternating layout on mobile */
+    /* Card Background Colors for fading */
+    .mosaic-grid .team-card:nth-child(4n+1) { background: var(--primary); }
+    .mosaic-grid .team-card:nth-child(4n+2) { background: #E0F2F1; }
+    .mosaic-grid .team-card:nth-child(4n+3) { background: var(--accent-gold); }
+    .mosaic-grid .team-card:nth-child(4n+4) { background: #1C1A28; }
+
+    /* Override alternating layout on mobile */
     .mosaic-grid .team-card:nth-child(even) {
-        grid-template-columns: 60% 40%;
-        grid-template-areas: "content image";
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "image"
+            "content";
     }
 
-    /* Image sizing for mobile side-by-side */
+    /* Image sizing for mobile */
     .mosaic-grid .team-img {
         width: 100%;
-        min-height: 100%;
-        height: 100%;
+        height: 320px;
+        min-height: 320px;
         display: flex;
-        align-self: stretch;
         overflow: hidden;
     }
 
-    /* Content area takes remaining space with LEFT-ALIGNED text */
+    /* Seamless Gradient Blend - Fades fully to transparent */
+    .mosaic-grid .team-img img,
+    .mosaic-grid .team-card:nth-child(even) .team-img img {
+        -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 95%);
+        mask-image: linear-gradient(to bottom, black 75%, transparent 95%);
+    }
+
+    /* Content area styling */
     .mosaic-grid .team-content {
         width: 100%;
-        padding: var(--space-sm) var(--space-md);
+        padding: 0 var(--space-lg) var(--space-xl);
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
-        text-align: left;
+        align-items: center;
+        text-align: center;
+        background: transparent !important;
     }
 
-    /* Compact typography for mobile - smaller and fully visible */
+    /* Typography for mobile */
     .mosaic-grid .team-card h4 {
-        font-size: 0.95rem;
+        font-size: 1.4rem;
         line-height: 1.2;
-        margin-bottom: 2px;
-        text-align: left;
+        margin-bottom: 4px;
+        text-align: center;
     }
 
     .mosaic-grid .team-card .role {
-        font-size: 0.7rem;
+        font-size: 0.95rem;
         line-height: 1.25;
-        text-align: left;
+        text-align: center;
         display: block;
-        margin-bottom: 4px;
+        margin-bottom: 12px;
     }
 
     .mosaic-grid .team-card .member-bio {
-        font-size: 0.65rem;
-        line-height: 1.4;
-        text-align: left;
-        display: -webkit-box;
-        -webkit-line-clamp: 6;
-        line-clamp: 6;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-align: center;
+        display: block;
     }
 }
 
 /* Desktop Sizing overrides */
 @media (min-width: 900px) {
     .mosaic-grid .team-card {
-        height: 450px;
+        height: 550px;
     }
 }
 
@@ -6696,6 +6721,19 @@ b {
     flex: 1 1 auto;
 }
 
+/* Desktop only: horizontal fade between image and display card */
+@media (min-width: 900px) {
+    .mosaic-grid .team-img img {
+        -webkit-mask-image: linear-gradient(to right, black 75%, transparent 98%);
+        mask-image: linear-gradient(to right, black 75%, transparent 98%);
+    }
+
+    .mosaic-grid .team-card:nth-child(even) .team-img img {
+        -webkit-mask-image: linear-gradient(to left, black 75%, transparent 98%);
+        mask-image: linear-gradient(to left, black 75%, transparent 98%);
+    }
+}
+
 .mosaic-grid .team-card:hover .team-img img {
     transform: scale(1.05);
 }
@@ -6712,6 +6750,7 @@ b {
     z-index: 2;
     text-align: left;
     grid-area: content;
+    background: transparent !important;
 }
 
 @media (min-width: 900px) {
@@ -6726,113 +6765,149 @@ b {
     }
 }
 
-/* Typography matching the bold reference style */
-/* Typography matching the bold reference style */
+/* ================================
+   Team Card Typography — Mobile base
+   ================================ */
 .mosaic-grid .team-card h4 {
-    color: white;
-    font-size: 1.4rem;
-    /* Mobile optimized */
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: var(--space-sm);
-}
-
-@media (min-width: 900px) {
-    .mosaic-grid .team-card h4 {
-        font-size: 2.5rem;
-        /* Desktop Large */
-        margin-bottom: var(--space-md);
-    }
-
-    .mosaic-grid .team-content {
-        padding: var(--space-2xl);
-        /* Restore desktop padding */
-    }
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    margin: 0 0 0.5rem;
 }
 
 .mosaic-grid .team-card .role {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.1rem;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    text-transform: none;
-    /* Keep it natural like "Youth-in-Work" */
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0 0 0.85rem;
+    display: block;
 }
 
 .mosaic-grid .team-card .member-bio {
-    color: rgba(255, 255, 255, 0.85);
-    font-weight: 500;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.82);
     display: -webkit-box;
-    -webkit-line-clamp: 6;
-    line-clamp: 6;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* Specific Color Designs */
-.mosaic-grid .team-card:nth-child(4n+1) .team-content {
+/* ================================
+   Team Card Typography — Desktop
+   ================================ */
+@media (min-width: 900px) {
+    .mosaic-grid .team-card h4 {
+        font-size: 2.6rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.6rem;
+    }
+
+    .mosaic-grid .team-card .role {
+        font-size: 1.05rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.25rem;
+    }
+
+    .mosaic-grid .team-card .member-bio {
+        font-size: 1.1rem;
+        line-height: 1.75;
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
+    }
+
+    .mosaic-grid .team-content {
+        padding: 3.5rem 4rem;
+    }
+}
+
+
+/* ================================
+   Card #1 — Purple (var(--primary))
+   White text on dark purple: WCAG AA ✓
+   ================================ */
+.mosaic-grid .team-card:nth-child(4n+1) {
     background: var(--primary);
-    /* Image | Purple Text */
+}
+.mosaic-grid .team-card:nth-child(4n+1) h4 {
+    color: #ffffff;
+}
+.mosaic-grid .team-card:nth-child(4n+1) .role {
+    color: rgba(255, 255, 255, 0.7);
+    border-left: 3px solid rgba(255,255,255,0.4);
+    padding-left: 0.6rem;
+}
+.mosaic-grid .team-card:nth-child(4n+1) .member-bio {
+    color: rgba(255, 255, 255, 0.82);
 }
 
-.mosaic-grid .team-card:nth-child(4n+2) .team-content {
+/* ================================
+   Card #2 — Light Teal (#E0F2F1)
+   Dark text on light teal: WCAG AA ✓
+   ================================ */
+.mosaic-grid .team-card:nth-child(4n+2) {
     background: #E0F2F1;
-    /* Light Teal Background like reference */
 }
-
-/* For light background (teal) - improved contrast */
 .mosaic-grid .team-card:nth-child(4n+2) h4 {
-    color: #1a1a1a;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+    color: #0d3b38;
+    text-shadow: none;
 }
-
 .mosaic-grid .team-card:nth-child(4n+2) .role {
-    color: #2d5d5d;
-    font-weight: 600;
+    color: #1a6b66;
+    border-left: 3px solid #18C7B7;
+    padding-left: 0.6rem;
 }
-
 .mosaic-grid .team-card:nth-child(4n+2) .member-bio {
     color: #1f4f4f;
-    font-weight: 500;
     display: block;
     visibility: visible;
 }
 
-
-.mosaic-grid .team-card:nth-child(4n+3) .team-content {
+/* ================================
+   Card #3 — Gold (var(--accent-gold))
+   Dark text on warm gold: WCAG AA ✓
+   ================================ */
+.mosaic-grid .team-card:nth-child(4n+3) {
     background: var(--accent-gold);
-    /* Image | Yellow Text */
 }
-
-/* For gold background - improved contrast */
 .mosaic-grid .team-card:nth-child(4n+3) h4 {
-    color: #1a1a1a;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+    color: #1a1000;
+    text-shadow: none;
 }
-
 .mosaic-grid .team-card:nth-child(4n+3) .role {
-    color: #5D4300;
-    font-weight: 600;
+    color: #4a3000;
+    border-left: 3px solid rgba(0,0,0,0.3);
+    padding-left: 0.6rem;
 }
-
 .mosaic-grid .team-card:nth-child(4n+3) .member-bio {
-    color: #4a3600;
-    font-weight: 500;
+    color: #3a2800;
 }
 
-/* Darker contrast for yellow */
-
-
-.mosaic-grid .team-card:nth-child(4n+4) .team-content {
+/* ================================
+   Card #4 — Navy (#1C1A28)
+   White text on near-black: WCAG AAA ✓
+   ================================ */
+.mosaic-grid .team-card:nth-child(4n+4) {
     background: #1C1A28;
-    /* Navy Background */
 }
-
-/* Navy uses default white text */
-.mosaic-grid .team-card:nth-child(4n+4) h4,
-.mosaic-grid .team-card:nth-child(4n+4) .role,
+.mosaic-grid .team-card:nth-child(4n+4) h4 {
+    color: #ffffff;
+}
+.mosaic-grid .team-card:nth-child(4n+4) .role {
+    color: rgba(255, 255, 255, 0.65);
+    border-left: 3px solid var(--accent-teal);
+    padding-left: 0.6rem;
+}
 .mosaic-grid .team-card:nth-child(4n+4) .member-bio {
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Remove default accents */
@@ -9001,11 +9076,97 @@ button:focus,
    Team Page Specific Adjustments
    ================================ */
 .team-intro-section {
-    padding-top: 140px;
+    padding-top: 0;
 }
 
 @media (max-width: 768px) {
     .team-intro-section {
-        padding-top: 130px !important;
+        padding-top: 0 !important;
     }
 }
+
+/* ================================
+   Team Page Hero Header
+   ================================ */
+.team-page-hero {
+    position: relative;
+    padding: 140px 0 80px;
+    overflow: hidden;
+    text-align: center;
+    /* No background - uses page body gradient */
+}
+
+.team-page-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(24,199,183,0.15) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.team-page-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.team-hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.45rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    margin-bottom: 1.5rem;
+}
+
+.team-hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    margin: 0 0 1.25rem;
+    letter-spacing: -0.02em;
+}
+
+.team-hero-highlight {
+    position: relative;
+    color: transparent;
+    background: linear-gradient(90deg, #ffd700 0%, #ffb347 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.team-hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.team-hero-divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, var(--accent-teal));
+    border-radius: 999px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+@media (max-width: 767px) {
+    .team-page-hero {
+        padding: 120px 0 60px;
+    }
+
+    .team-hero-badge {
+        font-size: 0.75rem;
+    }
+}

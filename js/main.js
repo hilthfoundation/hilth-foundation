@@ -877,19 +877,34 @@ window.toggleMentorshipForm = toggleMentorshipForm;
 
 /* ================================
    Preloader
-
    ================================ */
 function initPreloader() {
     const preloader = document.getElementById('preloader');
     if (!preloader) return;
 
-    // Hide preloader immediately after DOM is ready (much faster than waiting for 'load')
-    preloader.classList.add('hidden');
-
-    // Fallback: ensure preloader is hidden after all resources load
-    window.addEventListener('load', () => {
+    const hidePreloader = () => {
         preloader.classList.add('hidden');
-    });
+        // Remove from DOM entirely after fade completes
+        setTimeout(() => {
+            if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+        }, 300);
+    };
+
+    // Hard cap: never show longer than 1.5s regardless of network speed
+    const maxTimer = setTimeout(hidePreloader, 1500);
+
+    // Hide as soon as the page is interactive
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            clearTimeout(maxTimer);
+            // Short delay so user sees the branding for at least 400ms
+            setTimeout(hidePreloader, 400);
+        });
+    } else {
+        // DOM already ready — dismiss quickly
+        clearTimeout(maxTimer);
+        setTimeout(hidePreloader, 300);
+    }
 }
 
 /* ================================
