@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Hilth Foundation">
+    <meta name="theme-color" content="#5143DE">
+    <link rel="icon" type="image/jpeg" href="assets/images/favicon.jpeg">
+    <title>Contact Hilth Foundation | School Visits and Partnerships</title>
+    <meta name="description" content="Contact Hilth Foundation about a school visit, partnership or programme enquiry in Ghana. Send a short message to our team.">
+    <link rel="canonical" href="https://hilthfoundation.org/inquiry.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hilthfoundation.org/inquiry.html">
+    <meta property="og:title" content="Contact Hilth Foundation | School Visits and Partnerships">
+    <meta property="og:description" content="Contact Hilth Foundation about a school visit, partnership or programme enquiry in Ghana. Send a short message to our team.">
+    <meta property="og:image" content="https://hilthfoundation.org/assets/images/hilth-outreach-social.jpg">
+    <meta property="og:image:alt" content="Hilth Foundation volunteers and students together at a school outreach in Ghana">
+    <meta property="og:site_name" content="Hilth Foundation">
+    <meta property="og:locale" content="en_GH">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Hilth Foundation | School Visits and Partnerships">
+    <meta name="twitter:description" content="Contact Hilth Foundation about a school visit, partnership or programme enquiry in Ghana. Send a short message to our team.">
+    <meta name="twitter:image" content="https://hilthfoundation.org/assets/images/hilth-outreach-social.jpg">
+    <meta name="twitter:image:alt" content="Hilth Foundation volunteers and students together at a school outreach in Ghana">
+    <meta name="twitter:site" content="@hilthfoundation">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="css/styles.css?v=3.0" rel="stylesheet">
+    <link href="css/agency.css?v=37" rel="stylesheet">
+    <script defer src="https://unpkg.com/lucide@0.562.0"></script>
+    <script defer src="js/main.js?content=23"></script>
+    <script defer src="js/inquiry.js"></script>
+</head>
+<body class="agency-site page-inquiry">
+    <div id="header-container"></div>
+    <main id="main-content" tabindex="-1">
+        <section class="inquiry-intro" aria-labelledby="inquiry-title">
+            <div class="container">
+                <span class="agency-label">Speak with Hilth</span>
+                <h1 id="inquiry-title">Let's make learning <em>matter.</em></h1>
+                <p>Tell us what you have in mind. We welcome requests from schools, prospective partners and people interested in our programmes.</p>
+            </div>
+        </section>
+        <section class="inquiry-section" aria-label="Contact form">
+            <div class="container inquiry-layout">
+                <div class="inquiry-sidebar">
+                    <span class="agency-label">Start a conversation</span>
+                    <h2>How can we help?</h2>
+                    <p>Share a few details so the right person on our team can respond. Sending an enquiry does not confirm a school visit or programme place.</p>
+                    <div class="inquiry-quick-contact">
+                        <h3>Prefer to message us?</h3>
+                        <a href="https://wa.me/233543790817?text=Hello%20Hilth%2C%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener noreferrer">Chat on WhatsApp <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+                        <a href="mailto:admin@hilthfoundation.org">admin@hilthfoundation.org</a>
+                    </div>
+                </div>
+                <form class="inquiry-form" name="hilth-inquiry" method="POST" action="/inquiry-thanks.html" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="hilth-inquiry">
+                    <p hidden><label>Leave this field empty: <input name="bot-field"></label></p>
+                    <p class="inquiry-required-note">Fields marked * are required.</p>
+                    <div class="inquiry-field">
+                        <label for="inquiry-topic">I'm contacting you about <span aria-hidden="true">*</span></label>
+                        <select id="inquiry-topic" name="topic" required>
+                            <option value="" disabled selected>Select a topic</option>
+                            <option value="school">Inviting Hilth to a school</option>
+                            <option value="partner">Partnership or volunteering</option>
+                            <option value="programme">A programme enquiry</option>
+                            <option value="other">Something else</option>
+                        </select>
+                    </div>
+                    <div class="inquiry-field-row">
+                        <div class="inquiry-field">
+                            <label for="inquiry-name">Your name <span aria-hidden="true">*</span></label>
+                            <input id="inquiry-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="inquiry-email">Email address <span aria-hidden="true">*</span></label>
+                            <input id="inquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                        </div>
+                    </div>
+                    <div class="inquiry-field-row">
+                        <div class="inquiry-field">
+                            <label for="inquiry-organisation">School or organisation <span>(optional)</span></label>
+                            <input id="inquiry-organisation" name="organisation" type="text" autocomplete="organization" maxlength="180">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="inquiry-phone">Phone number <span>(optional)</span></label>
+                            <input id="inquiry-phone" name="phone" type="tel" autocomplete="tel" maxlength="32">
+                        </div>
+                    </div>
+                    <div class="inquiry-field">
+                        <label for="inquiry-message">Tell us a little more <span aria-hidden="true">*</span></label>
+                        <textarea id="inquiry-message" name="message" rows="6" maxlength="3000" placeholder="For a school visit, include the location and any preferred dates." required></textarea>
+                    </div>
+                    <p class="inquiry-privacy">We use these details to respond to your enquiry. See our <a href="privacy.html">privacy policy</a>.</p>
+                    <button class="agency-button ink inquiry-submit" type="submit">Send enquiry <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <div id="footer-container"></div>
+</body>
+</html>
