@@ -118,14 +118,14 @@ body.agency-home #impact.agency-impact { background: var(--primary); color: #fff
 body.agency-home #impact.agency-impact h2 { color: #fff; }
 .agency-impact .agency-section-head > p { color: #efecff; }
 .agency-impact .agency-label { color: #fff; }
-.agency-impact-numbers { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid #8d83e8; }
-.agency-impact-stat { border-left: 1px solid #8d83e8; padding: 10px 0 10px 34px; }
+.agency-impact-numbers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding-bottom: 32px; border-bottom: 1px solid #8d83e8; }
+.agency-impact-stat { min-width: 0; border-left: 1px solid #8d83e8; padding: 10px 0 10px 24px; }
 .agency-impact-stat:first-child { border-left: 0; padding-left: 0; }
-.agency-impact-stat strong { font: 600 clamp(74px,8vw,112px)/1 var(--font-heading); letter-spacing: -0.02em; color: var(--accent-teal); }
+.agency-impact-stat strong { display: flex; align-items: flex-end; min-height: 72px; font: 600 clamp(60px,6vw,78px)/1.05 var(--font-heading); letter-spacing: -0.02em; color: var(--accent-teal); }
 .agency-impact-stat strong small { font-size: .55em; }
-.agency-impact-stat strong.agency-impact-word { font-size: clamp(30px,4vw,56px); }
-.agency-impact-icon { display: block; width: 34px; height: 34px; margin-bottom: 10px; color: var(--accent-teal); }
-.agency-impact-stat p { margin: 8px 0 0; color: #fff; font-size: 13px; }
+.agency-impact-stat strong.agency-impact-word { font-size: clamp(32px,3.65vw,52px); overflow-wrap: anywhere; }
+.agency-impact-icon { display: block; width: 30px; height: 30px; margin-bottom: 12px; color: var(--accent-teal); }
+.agency-impact-stat p { margin: 12px 0 0; max-width: 26ch; color: #fff; font-size: 14px; line-height: 1.5; }
 .agency-impact-bottom { display: flex; gap: 30px; justify-content: space-between; align-items: flex-start; margin-top: 20px; }
 .agency-impact-bottom p { max-width: 62ch; color: #efecff; font-size: 11px; margin: 0; }
 .agency-impact-bottom .agency-link { white-space: nowrap; }
@@ -445,13 +445,16 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-program-row .agency-label { font-size: 9px; }
   .agency-status { display: table; margin: 8px 0 0; }
   body.agency-home #impact.agency-impact { padding: 50px 0; }
-  .agency-impact-numbers { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .agency-impact-numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; padding-bottom: 26px; }
   .agency-impact-stat { border-left: 0; padding: 0; }
   .agency-impact-stat:first-child { grid-column: 1/-1; border-bottom: 1px solid #8d83e8; padding-bottom: 22px; }
-  .agency-impact-stat strong { font-size: 72px; }
-  .agency-impact-stat:first-child strong { font-size: clamp(48px, 20vw, 76px); }
-  .agency-impact-icon { width: 30px; height: 30px; margin-bottom: 8px; }
-  .agency-impact-stat p { font-size: 12px; }
+  .agency-impact-stat:last-child { border-left: 0; padding-left: 0; }
+  .agency-impact-stat strong { justify-content: center; min-height: 54px; font-size: clamp(48px, 12vw, 62px); }
+  .agency-impact-stat strong.agency-impact-word { font-size: clamp(23px, 6.6vw, 34px); }
+  .agency-impact-stat:first-child strong.agency-impact-word { font-size: clamp(38px, 11.5vw, 52px); }
+  .agency-impact-icon { width: 28px; height: 28px; margin-bottom: 8px; }
+  .agency-impact-stat { text-align: center; }
+  .agency-impact-stat p { margin: 8px auto 0; max-width: 22ch; font-size: 12px; line-height: 1.5; text-align: center; }
   .agency-impact-bottom { display: block; }
   .agency-impact-bottom .agency-link { margin-top: 18px; }
   .agency-regions { flex-wrap: wrap; gap: 12px; font-size: 11px; }
