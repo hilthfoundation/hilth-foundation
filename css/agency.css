@@ -636,10 +636,13 @@ body.agency-site .mosaic-grid .team-img img {
 @media (max-width: 600px) {
  .directory-section { padding: 42px 0; }
  .programme-directory { grid-template-columns: 1fr; }
- .directory-card { padding: 28px 0; }
+ .directory-card { grid-template-columns: minmax(0,1fr); justify-items: center; gap: 18px; padding: 28px 0; text-align: center; }
+ .directory-symbol { display: flex; align-items: center; justify-content: center; gap: 12px; }
+ .directory-symbol .agency-symbol { margin: 0; }
+ .directory-copy { width: 100%; align-items: center; text-align: center; }
  body.agency-site .directory-copy h3 { font-size: 32px; }
- .directory-copy > p { font-size: 14px; }
- .directory-copy dl { grid-template-columns: 1fr; gap: 12px; }
+ .directory-copy > p { width: min(100%, 34ch); margin-inline: auto; font-size: 14px; }
+ .directory-copy dl { grid-template-columns: 1fr; justify-items: center; gap: 12px; text-align: center; }
  .detail-intro { padding: 106px 0 36px; }
  body.agency-site .detail-intro h1 { font-size: 48px; }
  .detail-intro > .container > p { font-size: 15px; }
