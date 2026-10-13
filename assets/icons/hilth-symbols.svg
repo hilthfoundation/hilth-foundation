@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="arrow" viewBox="0 0 48 48"><path d="M10 38 37 11M11 11h26v26" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+  <symbol id="school" viewBox="0 0 80 80"><path d="M8 16h25v48H8zM38 16h14v48H38zM58 12l15 4-12 48-15-4z" fill="currentColor"/><path d="M8 69h54" stroke="currentColor" stroke-width="4"/></symbol>
+  <symbol id="insights" viewBox="0 0 80 80"><path d="M10 31v18m12-29v40m12-49v58m12-43v28m12-38v48m12-33v18" fill="none" stroke="currentColor" stroke-width="6"/></symbol>
+  <symbol id="journey" viewBox="0 0 80 80"><path d="M61 17A30 30 0 1 0 69 40" fill="none" stroke="currentColor" stroke-width="9"/><path d="m39 16 28-8-8 28z" fill="currentColor"/><path d="M40 24v17l-12 12" fill="none" stroke="currentColor" stroke-width="5"/></symbol>
+  <symbol id="mentorship" viewBox="0 0 80 80"><path d="M43 24h7a18 18 0 1 1 0 36H39M37 56h-7a18 18 0 1 1 0-36h11M26 40h28" fill="none" stroke="currentColor" stroke-width="8"/></symbol>
+</svg>

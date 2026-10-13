@@ -1,0 +1,24 @@
+[
+  {
+    "published": true,
+    "name": "Hilth T-shirt",
+    "description": "The Foundation logo on the front. Our message on the back. Front and back design previews shown.",
+    "price": null,
+    "currency": "GHS",
+    "sizes": "Ask about sizes and colours",
+    "availability": "Available",
+    "images": ["assets/images/shop/hilth-shirt-front.webp", "assets/images/shop/hilth-shirt-back.webp"],
+    "video": ""
+  },
+  {
+    "published": true,
+    "name": "90 Days of Transformation notebook",
+    "description": "A guided notebook for reflection, self-discovery and putting what you learn into practice.",
+    "price": null,
+    "currency": "GHS",
+    "sizes": "",
+    "availability": "Available",
+    "images": ["assets/images/90-days-of-transformation.jpeg"],
+    "video": ""
+  }
+]

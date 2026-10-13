@@ -1,0 +1,120 @@
+<!-- Shared Footer Component -->
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="footer-newsletter">
+            <div>
+                <span class="agency-label">From our schools. To your inbox.</span>
+                <h2>Stay close to <span>the change.</span></h2>
+                <svg class="footer-art" viewBox="0 0 180 112" fill="none" aria-hidden="true">
+                    <path d="M90 88C68 73 42 69 17 78V24c26-8 51-2 73 14m0 50c22-15 48-19 73-10V24c-26-8-51-2-73 14m0 0v50" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M43 59c13-8 22 3 34-7 8-7 14-17 24-24 9-7 18-7 28-4" stroke="#06D7A0" stroke-width="4" stroke-linecap="round"/>
+                    <circle cx="43" cy="59" r="4" fill="#06D7A0"/><circle cx="101" cy="28" r="4" fill="#06D7A0"/><path d="m127 18 2-7m13 16 7-2" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <div>
+                <p class="newsletter-text">Updates on our programmes, school visits and the young people at the heart of Hilth.</p>
+                <form class="newsletter-form" onsubmit="return handleNewsletterSubmit(event)">
+                    <input type="email" name="email" autocomplete="email" aria-label="Email address for newsletter" placeholder="Your email address" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-btn">Subscribe <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/favicon.jpeg" alt="Hilth Foundation Logo" class="logo-img">
+                    <span class="logo-text"><span>Hilth</span><span>Foundation</span></span>
+                </a>
+
+                <p class="footer-tagline">Nurturing Minds, Transforming Futures</p>
+                <p class="footer-description">Helping young people think independently, discover their strengths
+                    and find direction through practical education. Rooted in Ghana, with a vision for Africa.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/hilthfoundation" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram" class="social-link">
+                        <i data-lucide="instagram"></i>
+                    </a>
+                    <a href="https://x.com/hilthfoundation" target="_blank" rel="noopener noreferrer"
+                        aria-label="X (Twitter)" class="social-link">
+                        <i data-lucide="x"></i>
+                    </a>
+                    <a href="https://linkedin.com/company/hilth-foundation-ghana" target="_blank"
+                        rel="noopener noreferrer" aria-label="LinkedIn" class="social-link">
+                        <i data-lucide="linkedin"></i>
+                    </a>
+                    <a href="https://facebook.com/hilthfoundation" target="_blank" rel="noopener noreferrer"
+                        aria-label="Facebook" class="social-link">
+                        <i data-lucide="facebook"></i>
+                    </a>
+                    <a href="https://tiktok.com/@hilthfoundation" target="_blank" rel="noopener noreferrer"
+                        aria-label="TikTok" class="social-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-tiktok">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com/@hilthfoundation" target="_blank" rel="noopener noreferrer"
+                        aria-label="YouTube" class="social-link">
+                        <i data-lucide="youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4 class="footer-heading">Explore Hilth</h4>
+                <ul class="footer-list">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programs.html">Programmes</a></li>
+                    <li><a href="work.html">Our Work</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="team.html">Our Leadership</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="index.html#partners">Partners</a></li>
+                    <li><a href="index.html#get-involved">Get involved</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4 class="footer-heading">Let’s talk</h4>
+                <ul class="footer-list">
+                    <li>
+                        <i data-lucide="map-pin"></i>
+                        Kumasi, Ghana
+                    </li>
+                    <li>
+                        <i data-lucide="phone"></i>
+                        <a href="tel:+233543790817">0543790817</a>
+                    </li>
+                    <li>
+                        <i data-lucide="mail"></i>
+                        <a href="mailto:admin@hilthfoundation.org">admin<wbr>@hilthfoundation.org</a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2021–<span id="currentYear">2026</span> Hilth Foundation. All rights reserved.</p>
+            <a href="privacy.html">Privacy policy</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Online checkout is not yet available. -->
+<div class="modal-overlay" id="donationModal" aria-hidden="true">
+    <div class="modal payment-notice" role="dialog" aria-modal="true" aria-labelledby="donation-title" aria-describedby="donation-description">
+        <button class="modal-close" id="modalClose" aria-label="Close donation information"><i data-lucide="x"></i></button>
+        <div class="modal-header">
+            <div class="modal-icon"><svg width="36" height="36" viewBox="0 0 80 80" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#mentorship"></use></svg></div>
+            <span class="agency-label">Supporting Hilth</span>
+            <h2 class="modal-title" id="donation-title">Online payments coming soon</h2>
+            <p class="modal-subtitle" id="donation-description">Online donations are coming soon. No online payments are being accepted at the moment.</p>
+        </div>
+        <p>Want to support our school visits and practical learning programmes? Contact the Hilth team to discuss your donation and confirm available payment arrangements.</p>
+        <a class="agency-button ink" href="https://wa.me/233543790817?text=Hello%20Hilth%2C%20I%20would%20like%20to%20support%20your%20work.%20Please%20confirm%20the%20available%20donation%20and%20payment%20options." target="_blank" rel="noopener noreferrer">Discuss a donation <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+        <p class="donation-email"><a href="mailto:admin@hilthfoundation.org?subject=Supporting%20Hilth%20Foundation">Or email Hilth</a></p>
+    </div>
+</div>

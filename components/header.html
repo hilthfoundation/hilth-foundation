@@ -1,0 +1,47 @@
+<!-- Shared Header Component -->
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+<header class="header" id="header" role="banner">
+    <div class="container header-content">
+        <a href="index.html" class="logo">
+            <img src="assets/images/favicon.jpeg" alt="Hilth Foundation Logo" class="logo-img">
+            <span class="logo-text"><span>Hilth</span><span>Foundation</span></span>
+        </a>
+
+        <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+            <div class="nav-mobile-head">
+                <a href="index.html" class="logo mobile-nav-logo" aria-label="Hilth Foundation home">
+                    <img src="assets/images/favicon.jpeg" alt="" class="logo-img">
+                    <span class="logo-text"><span>Hilth</span><span>Foundation</span></span>
+                </a>
+            </div>
+
+            <ul class="nav-list">
+                <li><a href="about.html" class="nav-link" data-page="about"><span>About</span><svg class="mobile-nav-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></li>
+                <li><a href="programs.html" class="nav-link" data-page="programs"><span>Programmes</span><svg class="mobile-nav-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></li>
+                <li><a href="work.html" class="nav-link" data-page="work"><span>Our Work</span><svg class="mobile-nav-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></li>
+                <li><a href="events.html" class="nav-link" data-page="events"><span>Events</span><svg class="mobile-nav-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></li>
+                <li><a href="team.html" class="nav-link" data-page="team"><span>Our Leadership</span><svg class="mobile-nav-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></li>
+                <li><a href="shop.html" class="nav-link" data-page="shop"><span>Shop</span><svg class="mobile-nav-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></li>
+            </ul>
+
+            <!-- Donate button inside mobile nav for easy access -->
+            <button class="nav-donate-btn" onclick="openDonationModal()" aria-label="Donate to Hilth Foundation">
+                <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg>
+                <span>Donate</span>
+            </button>
+        </nav>
+
+        <button class="btn btn-donate-header" onclick="openDonationModal()" aria-label="Donate to Hilth Foundation">
+            <span class="btn-text">Donate</span>
+            <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open navigation menu" aria-controls="nav" aria-expanded="false">
+            <svg class="menu-icon lucide lucide-equal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+                <path class="menu-line-top" d="M4 9h16"></path>
+                <path class="menu-line-bottom" d="M4 15h16"></path>
+            </svg>
+        </button>
+    </div>
+</header>
