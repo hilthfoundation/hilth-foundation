@@ -445,19 +445,20 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-program-row .agency-label { font-size: 9px; }
   .agency-status { display: table; margin: 8px 0 0; }
   body.agency-home #impact.agency-impact { padding: 50px 0; }
-  .agency-impact-numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; padding-bottom: 26px; }
-  .agency-impact-stat { border-left: 0; padding: 0; }
-  .agency-impact-stat:first-child { grid-column: 1/-1; border-bottom: 1px solid #8d83e8; padding-bottom: 22px; }
-  .agency-impact-stat:last-child { border-left: 0; padding-left: 0; }
-  .agency-impact-stat strong { justify-content: center; min-height: 54px; font-size: clamp(48px, 12vw, 62px); }
-  .agency-impact-stat strong.agency-impact-word { font-size: clamp(23px, 6.6vw, 34px); }
-  .agency-impact-stat:first-child strong.agency-impact-word { font-size: clamp(38px, 11.5vw, 52px); }
-  .agency-impact-icon { width: 28px; height: 28px; margin-bottom: 8px; }
-  .agency-impact-stat { text-align: center; }
-  .agency-impact-stat p { margin: 8px auto 0; max-width: 22ch; font-size: 12px; line-height: 1.5; text-align: center; }
-  .agency-impact-bottom { display: block; }
-  .agency-impact-bottom .agency-link { margin-top: 18px; }
-  .agency-regions { flex-wrap: wrap; gap: 12px; font-size: 11px; }
+  .agency-impact-numbers { grid-template-columns: minmax(0, 1fr); gap: 0; width: min(100%, 360px); margin-inline: auto; padding-bottom: 12px; }
+  .agency-impact-stat,
+  .agency-impact-stat:first-child,
+  .agency-impact-stat:last-child { grid-column: auto; border: 0; padding: 24px 0; text-align: center; }
+  .agency-impact-stat + .agency-impact-stat { border-top: 1px solid #8d83e8; }
+  .agency-impact-stat strong { justify-content: center; align-items: center; min-height: 0; font-size: clamp(48px, 13vw, 62px); }
+  .agency-impact-stat strong.agency-impact-word,
+  .agency-impact-stat:first-child strong.agency-impact-word { font-size: clamp(36px, 10vw, 48px); overflow-wrap: normal; }
+  .agency-impact-icon { width: 28px; height: 28px; margin: 0 auto 10px; }
+  .agency-impact-stat p { margin: 8px auto 0; max-width: 27ch; font-size: 14px; line-height: 1.5; text-align: center; }
+  .agency-impact-bottom { flex-direction: column; align-items: center; gap: 24px; margin-top: 24px; }
+  .agency-impact-bottom > div > p { max-width: 42ch; margin-inline: auto; font-size: 13px; }
+  .agency-impact-bottom > .agency-link { margin-top: 0; }
+  .agency-regions { width: min(100%, 360px); margin-inline: auto; font-size: 11px; }
   .agency-field-gallery { grid-template-columns: 1fr 1fr; gap: 20px 12px; }
   .agency-field-gallery figure:first-child { grid-column: 1/-1; }
   .agency-field-gallery figure:nth-child(2) { padding-top: 0; }
@@ -855,11 +856,11 @@ body.agency-site .footer-art { display: block; width: 104px; height: 65px; margi
   body.agency-site :is(.agency-hero-actions,.detail-actions,.foundation-record-actions,.homepage-updates) { justify-content: center; align-items: center; text-align: center; }
   body.agency-site .campaign-hero-heading .agency-label { border-left: 0; padding-left: 0; margin-inline: auto; }
   body.agency-site .agency-impact-icon { margin-inline: auto; }
-  body.agency-site .agency-impact-bottom { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  body.agency-site .agency-impact-bottom { display: flex; flex-direction: column; align-items: center; gap: 24px; }
   body.agency-site .agency-impact-bottom > div { width: 100%; }
-  body.agency-site .agency-regions { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px 8px; justify-items: center; }
+  body.agency-site .agency-regions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px 12px; justify-items: center; }
   body.agency-site .agency-regions .agency-link { grid-column: 1/-1; margin-top: 0; }
-  body.agency-site .agency-regions span { padding: 10px 0 0; border-left: 0; border-top: 1px solid #8d83e8; width: 100%; text-align: center; font-size: 10px; }
+  body.agency-site .agency-regions span { padding: 12px 0 0; border-left: 0; border-top: 1px solid #8d83e8; width: 100%; text-align: center; font-size: 11px; }
   body.agency-site .agency-partners { justify-content: center; text-align: center; gap: 20px 28px; }
   body.agency-site .agency-partners .agency-label { margin: 0; width: 100%; }
   body.agency-site .agency-partners .agency-link { flex-basis: auto; width: fit-content; margin: 0 auto; }
