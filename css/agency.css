@@ -445,14 +445,17 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-program-row .agency-label { font-size: 9px; }
   .agency-status { display: table; margin: 8px 0 0; }
   body.agency-home #impact.agency-impact { padding: 50px 0; }
-  .agency-impact-numbers { grid-template-columns: minmax(0, 1fr); gap: 0; width: min(100%, 360px); margin-inline: auto; padding-bottom: 12px; }
+  .agency-impact-numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; width: min(100%, 360px); margin-inline: auto; padding-bottom: 24px; }
   .agency-impact-stat,
   .agency-impact-stat:first-child,
   .agency-impact-stat:last-child { grid-column: auto; border: 0; padding: 24px 0; text-align: center; }
-  .agency-impact-stat + .agency-impact-stat { border-top: 1px solid #8d83e8; }
+  .agency-impact-stat:first-child { grid-column: 1 / -1; padding: 10px 0 28px; border-bottom: 1px solid #8d83e8; }
+  .agency-impact-stat:nth-child(n+2) { padding: 24px 0 6px; }
+  .agency-impact-stat:last-child { border-left: 1px solid #8d83e8; padding-left: 16px; }
   .agency-impact-stat strong { justify-content: center; align-items: center; min-height: 0; font-size: clamp(48px, 13vw, 62px); }
   .agency-impact-stat strong.agency-impact-word,
   .agency-impact-stat:first-child strong.agency-impact-word { font-size: clamp(36px, 10vw, 48px); overflow-wrap: normal; }
+  .agency-impact-stat:nth-child(2) strong.agency-impact-word { font-size: clamp(25px, 7.6vw, 32px); overflow-wrap: normal; }
   .agency-impact-icon { width: 28px; height: 28px; margin: 0 auto 10px; }
   .agency-impact-stat p { margin: 8px auto 0; max-width: 27ch; font-size: 14px; line-height: 1.5; text-align: center; }
   .agency-impact-bottom { flex-direction: column; align-items: center; gap: 24px; margin-top: 24px; }
@@ -776,7 +779,7 @@ body.agency-site .program-section-modern .layout-text .about-text { text-align: 
   body.agency-site .footer-tagline { max-width: none; margin: 12px auto 4px; font-size: 12px; line-height: 1.35; letter-spacing: .01em; text-wrap: balance; }
   body.agency-site .footer-description { max-width: 36ch; margin: 4px auto 12px !important; font-size: 12px !important; line-height: 1.5 !important; }
   body.agency-site .social-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
-  body.agency-site .social-link { width: 36px; height: 36px; display: grid; place-items: center; }
+  body.agency-site .social-link { width: 44px; height: 44px; display: grid; place-items: center; }
   body.agency-site .social-link svg { width: 20px; height: 20px; }
   body.agency-site .footer-heading { margin: 0 0 14px; font-size: 11px; letter-spacing: .12em; }
   body.agency-site .footer-list { gap: 11px; }
@@ -832,7 +835,7 @@ body.agency-site .footer-art { display: block; width: 104px; height: 65px; margi
     margin-inline: auto;
     white-space: nowrap;
   }
-  body.agency-site main :is(h1,h2,h3,h4,p,figcaption),
+  body.agency-site main :is(h1,h2,h3,h4,figcaption),
   body.agency-site .section-header,
   body.agency-site .section-header .section-title,
   body.agency-site .program-section-modern .layout-text .section-title,
@@ -877,6 +880,13 @@ body.agency-site .footer-art { display: block; width: 104px; height: 65px; margi
   body.agency-site .footer-links .footer-list li a { display: flex; justify-content: center; align-items: center; min-height: 44px; width: 100%; text-align: center; }
   body.agency-site .footer-grid { padding: 24px 0 18px; gap: 24px; }
   body.agency-site .foundation-tabs { justify-content: center; margin-inline: auto; }
+  /* Headlines and short introductions stay centred; reading passages follow a left edge. */
+  body.agency-site main :is(.detail-reading,.detail-columns,.agency-about-copy,.layout-text,.agency-program-feature-body,.reach-directory,.belief-path,.detail-safeguarding,.foundation-record,.agency-leader--founder) p {
+    text-align: left !important;
+  }
+  body.agency-site main :is(.detail-reading,.detail-columns,.agency-about-copy,.layout-text,.agency-program-feature-body,.reach-directory,.belief-path,.detail-safeguarding,.foundation-record) p {
+    margin-inline: 0 !important;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
@@ -971,15 +981,15 @@ body.agency-site .shop-hero-copy > .agency-label { color: white; }
 body.agency-site #donationModal .modal-close { position: static; flex-shrink: 0; }
 .shop-order-form { width: min(100%, 680px); margin: 32px auto; text-align: left; }
 .shop-order-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.shop-order-fields label { display: flex; flex-direction: column; gap: 8px; font-size: 13px; font-weight: 600; }
+.shop-order-fields label { display: flex; flex-direction: column; gap: 8px; font-size: 15px; font-weight: 600; }
 .shop-order-wide { grid-column: 1 / -1; }
 .shop-order-fields :is(input,select,textarea) { width: 100%; min-height: 48px; padding: 12px; background: white; color: var(--text-dark); border: 1px solid var(--border-color); border-radius: 2px; font: 400 16px/1.4 var(--font-body); }
 .shop-order-actions { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 24px 0 18px; }
 .shop-order-actions svg { width: 20px; height: 20px; }
-.shop-order-disclosure, .shop-order-status { text-align: center; font-size: 12px !important; color: var(--text-body); }
+.shop-order-disclosure, .shop-order-status { text-align: center; font-size: 14px !important; line-height: 1.6; color: var(--text-body); }
 .shop-order-steps { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--border-color); gap: 28px; padding-top: 32px; }
-.shop-order-steps p { font-size: 13px; margin-bottom: 0; }
-@media (max-width: 600px) { .shop-order-fields, .shop-order-steps { grid-template-columns: 1fr; } .shop-order-fields label { text-align: center; } .shop-order-wide { grid-column: auto; } .shop-order-actions { flex-direction: column; } }
+.shop-order-steps p { font-size: 15px; line-height: 1.6; margin-bottom: 0; }
+@media (max-width: 600px) { .shop-order-fields, .shop-order-steps { grid-template-columns: 1fr; } .shop-order-fields label { text-align: left; } .shop-order-wide { grid-column: auto; } .shop-order-actions { flex-direction: column; } }
 .payment-notice .donation-email { margin: 18px 0 0; font-size: 13px; }
 .payment-notice .donation-email a { color: var(--primary); text-decoration: underline; text-underline-offset: 4px; }
 .shop-product-media { aspect-ratio: 1; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; background: var(--bg-light); }
@@ -1106,4 +1116,41 @@ body.agency-site #donationModal .modal-close { position: static; flex-shrink: 0;
   .shop-hero-layout > * { min-width: 0; max-width: 100%; }
   body.agency-site .shop-hero h1 { font-size: clamp(48px, 16vw, 58px); }
   .shop-hero-image img { max-width: 100%; }
+}
+
+/* Mobile reading sizes and usable interaction targets. */
+@media (max-width: 600px) {
+  body.agency-site main .agency-label,
+  body.agency-site .agency-hero-copy .agency-label,
+  body.agency-site .agency-proof .agency-label,
+  body.agency-site .footer-newsletter .agency-label { font-size: 12px; }
+  body.agency-site .agency-proof p { font-size: 13px; line-height: 1.5; }
+  body.agency-site .agency-section-head > p,
+  body.agency-site .agency-people-copy > p,
+  body.agency-site .agency-program-feature p,
+  body.agency-site .agency-involved-option p { font-size: 15px; line-height: 1.6; }
+  body.agency-site .agency-program-row p,
+  body.agency-site .agency-about-copy p { font-size: 14px; line-height: 1.65; }
+  body.agency-site .agency-hero-actions .agency-button,
+  body.agency-site .agency-principles strong { font-size: 13px; }
+  body.agency-site .agency-field-gallery figcaption,
+  body.agency-site .detail-columns figcaption,
+  body.agency-site .directory-copy dt,
+  body.agency-site .programs-hero-stat .stat-label { font-size: 12px; }
+  body.agency-site .programme-status { font-size: 12px; }
+  body.agency-site .involved-secondary { font-size: 14px; }
+  body.agency-site main .agency-link,
+  body.agency-site .agency-involved-more-links .agency-link,
+  body.agency-site .agency-leader--founder .agency-link { font-size: 14px; }
+  body.agency-site .agency-leader p,
+  body.agency-site .agency-leader--founder .agency-leader-bio { font-size: 14px; line-height: 1.55; }
+  body.agency-site .agency-regions span { font-size: 13px; }
+  body.agency-site .footer-tagline,
+  body.agency-site .footer-description,
+  body.agency-site .newsletter-text { font-size: 14px !important; }
+  body.agency-site .footer-heading { font-size: 13px; }
+  body.agency-site .footer-list li,
+  body.agency-site .footer-list a { font-size: 14px; }
+  body.agency-site .footer-bottom p,
+  body.agency-site .footer-bottom a { font-size: 12px !important; }
 }
