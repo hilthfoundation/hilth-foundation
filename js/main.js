@@ -3,9 +3,6 @@
  * Includes: Donation Information, Carousel, Mobile Menu, Scroll Effects, Component Loader
  */
 
-// Existing newsletter and mentorship provider; events use data/content-source.json.
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxnaTGi9C8u50vV6fKJ2MINVl5TGQWamSb7WjTxSOTu_YvUkulP6p9q0jviDhBzsVg/exec';
-
 /**
  * Component Loader - Dynamically loads shared header and footer components
  */
@@ -726,6 +723,17 @@ function closeDonationModal() {
 window.openDonationModal = openDonationModal;
 window.closeDonationModal = closeDonationModal;
 
+async function submitNetlifyForm(form, overrides = {}) {
+    const data = new FormData(form);
+    Object.entries(overrides).forEach(([key, value]) => data.set(key, value));
+    const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+    });
+    if (!response.ok) throw new Error(`Form submission failed with status ${response.status}`);
+}
+
 function initShopOrders() {
     const form = document.getElementById('shopOrderForm');
     if (!form) return;
@@ -734,7 +742,7 @@ function initShopOrders() {
         const link = event.target.closest('[data-shop-product]');
         if (link) form.elements.product.value = link.dataset.shopProduct;
     });
-    form.addEventListener('submit', event => {
+    form.addEventListener('submit', async event => {
         event.preventDefault();
         if (!form.reportValidity()) return;
         const fields = new FormData(form);
@@ -757,10 +765,20 @@ function initShopOrders() {
         const url = email
             ? `mailto:admin@hilthfoundation.org?subject=${encodeURIComponent('Hilth shop order enquiry')}&body=${encodeURIComponent(message)}`
             : `https://wa.me/233543790817?text=${encodeURIComponent(message)}`;
-        // Open a draft only. Hilth receives it after the customer presses Send.
-        if (email) window.location.href = url;
-        else window.open(url, '_blank', 'noopener,noreferrer');
-        status.textContent = 'Your message is prepared. Press Send in your messaging app so Hilth receives it. If the app did not open, contact 0543790817 or admin@hilthfoundation.org.';
+        const buttons = [...form.querySelectorAll('button[type="submit"]')];
+        buttons.forEach(button => { button.disabled = true; });
+        status.textContent = 'Saving your enquiry...';
+        try {
+            await submitNetlifyForm(form, { channel: email ? 'email' : 'whatsapp' });
+            status.textContent = 'Your enquiry was recorded. A message draft is opening so you can continue the conversation with Hilth.';
+            if (email) window.location.href = url;
+            else window.open(url, '_blank', 'noopener,noreferrer');
+        } catch (error) {
+            console.error('Shop enquiry:', error);
+            status.textContent = 'We could not send your enquiry. Your details are still here. Check your connection and try again.';
+        } finally {
+            buttons.forEach(button => { button.disabled = false; });
+        }
     });
 }
 
@@ -968,76 +986,6 @@ async function fetchWithTimeout(url, options = {}, readResponse = response => re
     }
 }
 
-async function submitGoogleForm(data) {
-    await fetchWithTimeout(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' }
-    });
-    // This existing provider returns an opaque response. Delivery cannot be verified.
-}
-
-function setFormSubmissionStatus(form, message) {
-    let status = form.querySelector('[data-submission-status]');
-    if (!status) {
-        status = document.createElement('p');
-        status.className = 'form-submission-status';
-        status.setAttribute('data-submission-status', '');
-        status.setAttribute('role', 'status');
-        form.append(status);
-    }
-    status.textContent = message;
-}
-
-function handleNewsletterSubmit(event) {
-    event.preventDefault();
-
-    const form = event.target;
-    const emailInput = form.querySelector('.newsletter-input');
-    const email = emailInput.value.trim();
-
-    if (!email) {
-        showNotification('Please enter your email address.', 'error');
-        return false;
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        showNotification('Please enter a valid email address.', 'error');
-        return false;
-    }
-
-    const submitBtn = form.querySelector('.newsletter-btn');
-    const originalContent = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Sending... <i data-lucide="loader-2" class="spin" aria-hidden="true"></i>';
-    submitBtn.disabled = true;
-    setFormSubmissionStatus(form, 'Sending your request...');
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-
-    // Send to Google Sheets
-    submitGoogleForm({ action: 'subscribe', email: email })
-        .then(() => {
-            const message = 'Your request was sent, but we could not confirm your subscription. Your email is still here. Contact admin@hilthfoundation.org for help.';
-            setFormSubmissionStatus(form, message);
-            showNotification(message, 'info');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            const message = 'We could not confirm delivery. Your email is still here. Check your connection or contact admin@hilthfoundation.org before trying again.';
-            setFormSubmissionStatus(form, message);
-            showNotification(message, 'error');
-        })
-        .finally(() => {
-            submitBtn.innerHTML = originalContent;
-            submitBtn.disabled = false;
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        });
-
-    return false;
-}
-
 /* ================================
    Mentorship Form Handler
    ================================ */
@@ -1055,59 +1003,14 @@ function initMentorshipForm() {
         interests.forEach(input => input.addEventListener('change', updateInterests));
         mentorshipForm.addEventListener('reset', () => setTimeout(updateInterests, 0));
         mentorshipForm.addEventListener('submit', function (e) {
-            e.preventDefault();
             const selected = interests.filter(input => input.checked).length;
             if (selected < 1 || selected > 3) {
+                e.preventDefault();
                 interestError.textContent = 'Please choose between one and three life areas.';
                 interests[0].focus();
-                return;
+                return false;
             }
-
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerText;
-            submitBtn.innerText = 'Submitting...';
-            submitBtn.disabled = true;
-            setFormSubmissionStatus(this, 'Sending your interest...');
-
-            const formData = new FormData(this);
-            const data = {};
-            formData.forEach((value, key) => {
-                // Handle multiple checkboxes with same name
-                if (data[key]) {
-                    if (!Array.isArray(data[key])) {
-                        data[key] = [data[key]];
-                    }
-                    data[key].push(value);
-                } else {
-                    data[key] = value;
-                }
-            });
-
-            // Convert array values to string
-            for (let key in data) {
-                if (Array.isArray(data[key])) {
-                    data[key] = data[key].join(', ');
-                }
-            }
-
-            data.action = 'mentorship_application';
-
-            submitGoogleForm(data)
-                .then(() => {
-                    const message = 'Your interest was sent, but we could not confirm it was recorded. Your details are still here. Contact admin@hilthfoundation.org for help.';
-                    setFormSubmissionStatus(this, message);
-                    showNotification(message, 'info');
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    const message = 'We could not confirm delivery. Your details are still here. Check your connection or contact admin@hilthfoundation.org before trying again.';
-                    setFormSubmissionStatus(this, message);
-                    showNotification(message, 'error');
-                })
-                .finally(() => {
-                    submitBtn.innerText = originalText;
-                    submitBtn.disabled = false;
-                });
+            return true;
         });
     }
 }
@@ -1479,9 +1382,6 @@ function showNotification(message, type = 'info') {
         setTimeout(() => notification.remove(), 300);
     }, 4000);
 }
-
-// Make newsletter handler globally available
-window.handleNewsletterSubmit = handleNewsletterSubmit;
 
 /* Staff-managed shop catalogue. DOM nodes keep submitted content out of HTML. */
 function safeShopMedia(value) {

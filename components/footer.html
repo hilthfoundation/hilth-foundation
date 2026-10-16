@@ -13,7 +13,9 @@
             </div>
             <div>
                 <p class="newsletter-text">Updates on our programmes, school visits and the young people at the heart of Hilth.</p>
-                <form class="newsletter-form" onsubmit="return handleNewsletterSubmit(event)">
+                <form class="newsletter-form" name="hilth-newsletter" method="POST" action="/newsletter-thanks.html" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="hilth-newsletter">
+                    <p hidden><label>Leave this field empty: <input name="bot-field"></label></p>
                     <input type="email" name="email" autocomplete="email" aria-label="Email address for newsletter" placeholder="Your email address" class="newsletter-input" required>
                     <button type="submit" class="newsletter-btn">Subscribe <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></button>
                 </form>
@@ -72,6 +74,7 @@
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="index.html#partners">Partners</a></li>
                     <li><a href="index.html#get-involved">Get involved</a></li>
+                    <li><a href="volunteer.html">Volunteer</a></li>
                 </ul>
             </div>
 

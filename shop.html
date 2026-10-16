@@ -59,7 +59,9 @@
         <span class="agency-label">Order directly with Hilth</span>
         <h2 id="order-title">Make it yours.</h2>
         <p>Tell us what you would like. Send your request to our team, and we will confirm availability, the total including delivery, and how to pay.</p>
-        <form class="shop-order-form" id="shopOrderForm" aria-describedby="shop-order-disclosure">
+        <form class="shop-order-form" id="shopOrderForm" name="hilth-shop-enquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" aria-describedby="shop-order-disclosure">
+          <input type="hidden" name="form-name" value="hilth-shop-enquiry">
+          <p hidden><label>Leave this field empty: <input name="bot-field"></label></p>
           <div class="shop-order-fields">
             <label>Your name<input name="customer" autocomplete="name" maxlength="100" required></label>
             <label>Product<select name="product" required><option value="">Choose a product</option></select></label>

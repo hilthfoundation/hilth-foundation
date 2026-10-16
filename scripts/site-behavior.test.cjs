@@ -15,7 +15,7 @@ function element() {
 }
 function fixture(overrides = {}) {
     const document = { addEventListener() {}, createElement: element, querySelector: () => null, querySelectorAll: () => [], ...overrides.document };
-    const context = vm.createContext({ document, window: {}, console: { error() {}, warn() {} }, AbortController, URL, Intl, setTimeout, clearTimeout, ...overrides, document });
+    const context = vm.createContext({ document, window: {}, console: { error() {}, warn() {} }, AbortController, URL, URLSearchParams, Intl, setTimeout, clearTimeout, ...overrides, document });
     vm.runInContext(source, context);
     return context;
 }
@@ -43,47 +43,69 @@ test('mentorship disclosure removes closed fields from keyboard navigation', () 
     assert.equal(button.attributes['aria-expanded'], 'false');
 });
 
-test('newsletter keeps the email and avoids success when Google gives no acknowledgement', async () => {
-    const input = { value: 'ama@example.org' };
-    const button = { innerHTML: 'Subscribe', disabled: false };
-    const form = { ...element(), querySelector: selector => selector === '.newsletter-input' ? input : selector === '.newsletter-btn' ? button : null };
-    const context = fixture({ fetch: async () => ({ type: 'opaque', status: 0, ok: false }) });
-    const notifications = [];
-    context.showNotification = (message, type) => notifications.push({ message, type });
-    context.handleNewsletterSubmit({ preventDefault() {}, target: form });
-    await settle();
-    assert.equal(input.value, 'ama@example.org');
-    assert.equal(button.disabled, false);
-    assert.equal(notifications.some(note => note.type === 'success'), false);
-    assert.match(notifications[0].message, /confirm/i);
-    assert.equal(form.children.at(-1).attributes.role, 'status');
-    assert.match(form.children.at(-1).textContent, /confirm/i);
+test('public forms are configured for Netlify handling', () => {
+    const forms = [
+        ['inquiry.html', 'hilth-inquiry'],
+        ['volunteer.html', 'hilth-volunteer-application'],
+        ['components/footer.html', 'hilth-newsletter'],
+        ['mentorship.html', 'hilth-mentorship-interest'],
+        ['shop.html', 'hilth-shop-enquiry']
+    ];
+    forms.forEach(([file, name]) => {
+        const html = fs.readFileSync(file, 'utf8');
+        assert.match(html, new RegExp(`<form[^>]+name=["']${name}["'][^>]+data-netlify=["']true["']`, 'i'));
+        assert.match(html, new RegExp(`name=["']form-name["'][^>]+value=["']${name}["']`, 'i'));
+    });
 });
 
-test('mentorship keeps entered details and stays open without an acknowledgement', async () => {
-    let submit, resets = 0, toggles = 0;
-    const interests = [{ checked: true, addEventListener() {} }];
-    const button = { innerText: 'Send interest', disabled: false };
+test('mentorship requires at least one interest before Netlify submission', () => {
+    let submit;
+    let prevented = 0;
+    const interests = [{ checked: false, addEventListener() {}, focus() {} }];
     const form = {
-        ...element(), querySelectorAll: () => interests, querySelector: selector => selector === 'button[type="submit"]' ? button : null,
+        ...element(), querySelectorAll: () => interests,
         addEventListener(event, callback) { if (event === 'submit') submit = callback; },
-        reset() { resets++; }
+        reset() {}
     };
-    const context = fixture({
-        fetch: async () => ({ type: 'opaque', status: 0, ok: false }),
-        FormData: class { forEach(callback) { callback('Ama', 'name'); callback('Learning', 'interest'); } },
-        document: { getElementById: id => id === 'mentorshipForm' ? form : element() }
-    });
-    const notifications = [];
-    context.showNotification = (message, type) => notifications.push({ message, type });
-    context.toggleMentorshipForm = () => { toggles++; };
+    const hint = element(), error = element();
+    const context = fixture({ document: { getElementById: id => id === 'mentorshipForm' ? form : id === 'interest-hint' ? hint : error } });
     context.initMentorshipForm();
-    submit.call(form, { preventDefault() {} });
-    await settle();
-    assert.equal(resets, 0);
-    assert.equal(toggles, 0);
-    assert.equal(button.disabled, false);
-    assert.equal(notifications.some(note => note.type === 'success'), false);
+    const invalidResult = submit.call(form, { preventDefault() { prevented++; } });
+    assert.equal(prevented, 1);
+    assert.equal(invalidResult, false);
+    assert.match(error.textContent, /between one and three/i);
+    interests[0].checked = true;
+    const validResult = submit.call(form, { preventDefault() { prevented++; } });
+    assert.equal(prevented, 1);
+    assert.equal(validResult, true);
+});
+
+test('Netlify submission helper posts encoded form data and rejects failed responses', async () => {
+    class TestFormData {
+        constructor(form) { this.values = new Map(Object.entries(form.fields || {})); }
+        set(key, value) { this.values.set(key, value); }
+        [Symbol.iterator]() { return this.values[Symbol.iterator](); }
+    }
+    let request;
+    const context = fixture({
+        FormData: TestFormData,
+        fetch: async (url, options) => {
+            request = { url, options };
+            return { ok: true, status: 200 };
+        }
+    });
+    await context.submitNetlifyForm({ fields: { 'form-name': 'hilth-shop-enquiry', customer: 'Ama' } }, { channel: 'whatsapp' });
+    assert.equal(request.url, '/');
+    assert.equal(request.options.method, 'POST');
+    assert.match(request.options.body, /form-name=hilth-shop-enquiry/);
+    assert.match(request.options.body, /customer=Ama/);
+    assert.match(request.options.body, /channel=whatsapp/);
+
+    context.fetch = async () => ({ ok: false, status: 500 });
+    await assert.rejects(
+        context.submitNetlifyForm({ fields: { 'form-name': 'hilth-shop-enquiry' } }),
+        /status 500/
+    );
 });
 
 test('stalled event and outreach feeds show loading, then an unavailable state', async () => {
@@ -109,19 +131,6 @@ test('staff text excludes emoji and icon substitutes while retaining ordinary Un
     const context = fixture();
     const text = context.makeFoundationText('h3', '', 'Visit 🎉 → ✓ 🇬🇭 1️⃣ Café — Kumasi').textContent;
     assert.equal(text, 'Visit Café — Kumasi');
-});
-
-test('a network error retains newsletter details and restores the submit control', async () => {
-    const input = { value: 'ama@example.org' };
-    const button = { innerHTML: 'Subscribe', disabled: false };
-    const form = { ...element(), querySelector: selector => selector === '.newsletter-input' ? input : selector === '.newsletter-btn' ? button : null };
-    const context = fixture({ fetch: async () => { throw new Error('Offline'); } });
-    context.showNotification = () => {};
-    context.handleNewsletterSubmit({ preventDefault() {}, target: form });
-    await settle();
-    assert.equal(input.value, 'ama@example.org');
-    assert.equal(button.disabled, false);
-    assert.match(form.children.at(-1).textContent, /confirm/i);
 });
 
 test('timeouts also abort a stalled response body', async () => {

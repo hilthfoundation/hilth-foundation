@@ -77,7 +77,7 @@ Online donations and shop checkout show **Online payments coming soon**. No chec
 
 Before enabling checkout: confirm the approved live account, final prices and delivery rules, then implement server-side transaction verification before showing a receipt. Never treat a browser callback or URL reference as proof of payment.
 
-Newsletter and mentorship use the existing `GOOGLE_SCRIPT_URL` in the same configuration section. Their shared submission helper preserves the endpoint, JSON field names and action values. The current provider uses opaque responses, so the site reports delivery as unconfirmed, retains entered details and shows a persistent contact message. Confirmed success requires a readable acknowledgement from the provider before the form can be cleared. Keep private payment keys and repository credentials out of browser code.
+Public website forms use Netlify Forms: general enquiries (`hilth-inquiry`), volunteer applications (`hilth-volunteer-application`), newsletter subscriptions (`hilth-newsletter`), mentorship interest (`hilth-mentorship-interest`) and shop enquiries (`hilth-shop-enquiry`). Keep Netlify form detection enabled and redeploy after adding or changing a form so Netlify can register it. Configure email alerts under Forms > Submission notifications. Keep private payment keys and repository credentials out of browser code.
 
 ## Browser Support
 
@@ -167,7 +167,7 @@ Public pages have unique descriptions, canonical URLs and matching social metada
 
 ## Direct orders and donations
 
-The shop form prepares a WhatsApp message to the existing Hilth contact (0543790817), or an email to admin@hilthfoundation.org. The customer must press Send in their app. No message is transmitted or order stored just by completing the form. Admins receive customer identity, product, quantity, preferred size, delivery town and notes through the chosen channel. Confirm price, stock, delivery and available payment details in the reply; verify funds before marking paid. There is no automatic payment confirmation or order dashboard.
+The shop form first stores the enquiry in Netlify Forms, then prepares a WhatsApp message to the existing Hilth contact (0543790817), or an email to admin@hilthfoundation.org. The customer can continue the conversation in their chosen app. Admins receive customer identity, product, quantity, preferred size, delivery town and notes in the stored submission and, when sent, through the chosen channel. Confirm price, stock, delivery and available payment details in the reply; verify funds before marking paid. There is no automatic payment confirmation or order dashboard.
 
 See `docs/orders-and-google-sync.md` for the staff workflow and Google events setup. Confirm that the Foundation's listed phone is monitored on WhatsApp; email remains available if it is not.
 

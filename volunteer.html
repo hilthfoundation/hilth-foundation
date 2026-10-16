@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer with Hilth Foundation | Apply to Help</title>
+    <meta name="description" content="Apply to volunteer with Hilth Foundation and support education programmes, school outreach and community work in Ghana.">
+    <link rel="canonical" href="https://hilthfoundation.org/volunteer.html">
+    <meta property="og:title" content="Volunteer with Hilth Foundation | Apply to Help">
+    <meta property="og:description" content="Share your interests, availability and skills to be considered for volunteer opportunities with Hilth Foundation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hilthfoundation.org/volunteer.html">
+    <meta property="og:image" content="https://hilthfoundation.org/assets/images/hilth-outreach-social.jpg">
+    <meta property="og:image:alt" content="Hilth Foundation volunteers and students together at a school outreach in Ghana">
+    <meta property="og:site_name" content="Hilth Foundation">
+    <meta property="og:locale" content="en_GH">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Volunteer with Hilth Foundation | Apply to Help">
+    <meta name="twitter:description" content="Apply to be considered for volunteer opportunities with Hilth Foundation in Ghana.">
+    <meta name="twitter:image" content="https://hilthfoundation.org/assets/images/hilth-outreach-social.jpg">
+    <meta name="twitter:image:alt" content="Hilth Foundation volunteers and students together at a school outreach in Ghana">
+    <meta name="twitter:site" content="@hilthfoundation">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="css/styles.css?v=3.0" rel="stylesheet">
+    <link href="css/agency.css?v=37" rel="stylesheet">
+    <script defer src="https://unpkg.com/lucide@0.562.0"></script>
+    <script defer src="js/main.js?content=23"></script>
+</head>
+<body class="agency-site page-inquiry">
+    <div id="header-container"></div>
+    <main id="main-content" tabindex="-1">
+        <section class="inquiry-intro" aria-labelledby="volunteer-title">
+            <div class="container">
+                <span class="agency-label">Volunteer with Hilth</span>
+                <h1 id="volunteer-title">Give your time where it can <em>matter.</em></h1>
+                <p>Tell us how you would like to help. We will review your application and contact you when a suitable volunteer opportunity is available.</p>
+            </div>
+        </section>
+
+        <section class="inquiry-section" aria-label="Volunteer application form">
+            <div class="container inquiry-layout">
+                <div class="inquiry-sidebar">
+                    <span class="agency-label">Volunteer application</span>
+                    <h2>How would you like to contribute?</h2>
+                    <p>Share your interests, skills and availability. Applying does not guarantee a placement, and opportunities may depend on current programme needs.</p>
+                    <div class="inquiry-quick-contact">
+                        <h3>Have a question first?</h3>
+                        <a href="inquiry.html?topic=other">Contact the Hilth team <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+                        <a href="mailto:admin@hilthfoundation.org">admin@hilthfoundation.org</a>
+                    </div>
+                </div>
+
+                <form class="inquiry-form" name="hilth-volunteer-application" method="POST" action="/volunteer-thanks.html" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="hilth-volunteer-application">
+                    <p hidden><label>Leave this field empty: <input name="bot-field"></label></p>
+                    <p class="inquiry-required-note">Fields marked * are required.</p>
+
+                    <div class="inquiry-field-row">
+                        <div class="inquiry-field">
+                            <label for="volunteer-name">Full name <span aria-hidden="true">*</span></label>
+                            <input id="volunteer-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="volunteer-email">Email address <span aria-hidden="true">*</span></label>
+                            <input id="volunteer-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                        </div>
+                    </div>
+
+                    <div class="inquiry-field-row">
+                        <div class="inquiry-field">
+                            <label for="volunteer-phone">Phone number <span>(optional)</span></label>
+                            <input id="volunteer-phone" name="phone" type="tel" autocomplete="tel" maxlength="32">
+                        </div>
+                        <div class="inquiry-field">
+                            <label for="volunteer-location">Town or city <span aria-hidden="true">*</span></label>
+                            <input id="volunteer-location" name="location" type="text" autocomplete="address-level2" maxlength="120" required>
+                        </div>
+                    </div>
+
+                    <div class="inquiry-field">
+                        <label for="volunteer-area">Where would you most like to help? <span aria-hidden="true">*</span></label>
+                        <select id="volunteer-area" name="interest" required>
+                            <option value="" disabled selected>Select an area</option>
+                            <option value="school-outreach">School outreach and programmes</option>
+                            <option value="events">Events and community activities</option>
+                            <option value="media">Media, content or communications</option>
+                            <option value="operations">Operations and administration</option>
+                            <option value="partnerships">Partnerships and fundraising support</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="inquiry-field">
+                        <label for="volunteer-availability">Your availability <span aria-hidden="true">*</span></label>
+                        <select id="volunteer-availability" name="availability" required>
+                            <option value="" disabled selected>Select availability</option>
+                            <option value="one-off">One-off activities or events</option>
+                            <option value="monthly">A few hours each month</option>
+                            <option value="weekly">A few hours each week</option>
+                            <option value="flexible">Flexible depending on the opportunity</option>
+                        </select>
+                    </div>
+
+                    <div class="inquiry-field">
+                        <label for="volunteer-skills">Skills or experience you can contribute <span aria-hidden="true">*</span></label>
+                        <textarea id="volunteer-skills" name="skills" rows="4" maxlength="2000" placeholder="Tell us about relevant skills, experience or strengths you would bring." required></textarea>
+                    </div>
+
+                    <div class="inquiry-field">
+                        <label for="volunteer-reason">Why would you like to volunteer with Hilth? <span aria-hidden="true">*</span></label>
+                        <textarea id="volunteer-reason" name="reason" rows="5" maxlength="2500" required></textarea>
+                    </div>
+
+                    <p class="inquiry-privacy">We use these details to review and respond to your volunteer application. See our <a href="privacy.html">privacy policy</a>.</p>
+                    <button class="agency-button ink inquiry-submit" type="submit">Submit application <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <div id="footer-container"></div>
+</body>
+</html>
