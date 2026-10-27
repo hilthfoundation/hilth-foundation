@@ -884,6 +884,7 @@ body.agency-site .footer-art { display: block; width: 104px; height: 65px; margi
   body.agency-site .agency-involved-option .involved-secondary { margin-top: 12px; }
   body.agency-site .footer-links .footer-list { gap: 2px 12px; width: min(100%,360px); margin: 0 auto; padding: 0; }
   body.agency-site .footer-links .footer-list li { width: 100%; min-height: 44px; margin: 0; padding: 0; border-bottom: 1px solid rgba(255,255,255,.16); }
+  body.agency-site .footer-links .footer-list li:last-child { grid-column: 1 / -1; }
   body.agency-site .footer :is(.footer-description,.footer-tagline,.newsletter-text,.footer-heading) { text-align: center !important; }
   body.agency-site .footer-links .footer-list li a { display: flex; justify-content: center; align-items: center; min-height: 44px; width: 100%; text-align: center; }
   body.agency-site .footer-grid { padding: 24px 0 18px; gap: 24px; }
@@ -1116,6 +1117,7 @@ body.agency-site #donationModal .modal-close { position: static; flex-shrink: 0;
   }
   .programme-directory .directory-card,
   .programme-directory .directory-copy { min-width: 0; }
+  body.agency-site #programme-directory .agency-section-head h2 { font-size: clamp(36px, 12.5vw, 45px); }
   body.agency-site .programme-directory .directory-card h3 {
     font-size: clamp(22px, 7.6vw, 26px);
     overflow-wrap: anywhere;
