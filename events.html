@@ -24,10 +24,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=3.0">
+    <link rel="stylesheet" href="css/styles.css?v=3.1">
     <script src="https://unpkg.com/lucide@0.562.0" defer></script>
-    <script src="js/main.js?content=23" defer></script>
-    <link rel="stylesheet" href="css/agency.css?v=37">
+    <script src="js/main.js?content=24" defer></script>
+    <link rel="stylesheet" href="css/agency.css?v=40">
 <meta name="description" content="See confirmed upcoming events from Hilth Foundation and find out how to invite us to your school.">
 <link rel="canonical" href="https://hilthfoundation.org/events.html">
 <meta property="og:type" content="website">
@@ -71,9 +71,9 @@
                     <h2 class="section-title gradient-title">Our Calendar</h2>
                     <p class="section-subtitle">Dates and event details appear here once confirmed.</p>
                 </div>
-                <div class="foundation-tabs" role="group" aria-label="Event history">
-                    <button class="foundation-tab is-selected" type="button" data-event-filter="upcoming" aria-pressed="true">Upcoming</button>
-                    <button class="foundation-tab" type="button" data-event-filter="past" aria-pressed="false">Past events</button>
+                <div class="foundation-tabs" role="radiogroup" aria-label="Event history">
+                    <label class="event-filter"><input type="radio" name="event-history" data-event-filter="upcoming" checked><span class="foundation-tab">Upcoming</span></label>
+                    <label class="event-filter"><input type="radio" name="event-history" data-event-filter="past"><span class="foundation-tab">Past events</span></label>
                 </div>
                 <div class="events-list" data-events-list aria-live="polite"></div>
                 <div class="foundation-page-cta">

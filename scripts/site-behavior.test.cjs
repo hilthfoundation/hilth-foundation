@@ -21,6 +21,14 @@ function fixture(overrides = {}) {
 }
 const settle = () => new Promise(resolve => setImmediate(resolve));
 
+test('event history controls use native single-choice radios', () => {
+    const html = fs.readFileSync('events.html', 'utf8');
+    assert.match(html, /class="foundation-tabs"[^>]*role="radiogroup"[^>]*aria-label="Event history"/);
+    assert.match(html, /type="radio"[^>]*name="event-history"[^>]*data-event-filter="upcoming"/);
+    assert.match(html, /type="radio"[^>]*name="event-history"[^>]*data-event-filter="past"/);
+    assert.doesNotMatch(html, /data-event-filter="(?:upcoming|past)"[^>]*aria-pressed/);
+});
+
 test('a missing shared header does not abort header initialization', () => {
     const context = fixture({ document: { getElementById: () => null } });
     assert.doesNotThrow(() => context.initHeader());

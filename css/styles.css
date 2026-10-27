@@ -8009,7 +8009,7 @@ button:focus,
     opacity: 1;
 }
 
-.modern-module-card h4 {
+.modern-module-card h3 {
     font-family: var(--font-heading);
     font-size: var(--text-lg);
     font-weight: 700;

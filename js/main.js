@@ -1105,7 +1105,7 @@ async function initFoundationListings() {
             try {
                 const events = await readRecords('events');
                 const render = () => {
-                    const selected = document.querySelector('[data-event-filter][aria-pressed="true"]')?.dataset.eventFilter || 'upcoming';
+                    const selected = document.querySelector('[data-event-filter]:checked')?.dataset.eventFilter || 'upcoming';
                     const today = new Date().toISOString().slice(0, 10);
                     const relevant = events.filter(event => isFoundationDate(event.date) && event.title)
                         .filter(event => selected === 'past' ? event.date < today : event.date >= today)
@@ -1115,9 +1115,9 @@ async function initFoundationListings() {
                         if (!relevant.length) {
                             container.append(makeFoundationEmpty(selected === 'past'
                                 ? 'Past event details will appear here once records are verified.'
-                                : 'No events are scheduled right now. Follow @hilthfoundation for announcements, or invite us to your school.',
-                                selected === 'past' ? null : 'mailto:admin@hilthfoundation.org?subject=School%20Visit%20Request',
-                                'Bring HSIP to your school'));
+                                : 'No events are scheduled right now. Follow @hilthfoundation for announcements.',
+                                selected === 'past' ? null : 'https://www.instagram.com/hilthfoundation/',
+                                'Follow Hilth on Instagram'));
                         } else relevant.slice(0, Number(container.dataset.limit) || relevant.length)
                             .forEach(event => container.append(makeEventCard(event)));
                     });
@@ -1164,6 +1164,10 @@ async function initFoundationListings() {
 
 function bindFoundationFilters(kind, render) {
     const buttons = document.querySelectorAll(`[data-${kind}-filter]`);
+    if (kind === 'event') {
+        buttons.forEach(button => button.addEventListener('change', render));
+        return;
+    }
     buttons.forEach(button => button.addEventListener('click', () => {
         buttons.forEach(tab => {
             tab.classList.toggle('is-selected', tab === button);

@@ -40,4 +40,8 @@ The shared footer closes with a large newsletter invitation, then a three-column
 
 Interior campaign heroes (Leadership, Programmes, Work and Events) share a documentary photo field, purple wash, green headline marker and angular white lower edge. Desktop pairs headline and supporting copy; mobile keeps the main photographic area above the text. Page-specific links scroll into existing content.
 
+Use a consistent mobile headline scale across campaign, programme-detail and contact introductions. Contact and volunteer introductions use the same green headline marker as campaign pages. Form labels align with the left edge of their fields. Green callouts use dark text. Event history uses a native single-choice radio group, and its empty state links to event announcements while the school invitation stays in the separate callout. Get involved is available from the shared navigation.
+
+Leadership portraits use a consistent monochrome treatment while preserving each full image in its existing 4:5 frame.
+
 Programme information architecture: programs.html is a short directory retaining #hsip, #insights, #90days and #mentorship. Four root-level detail pages hold the full descriptions and existing form. about.html contains the belief statement, four-step learning path and regional context. Chris is featured separately on the home page. All seven leadership profiles, including Stephen Abuakwah, share one consistent card layout with full photographs in matching 4:5 portrait frames, fitted without cropping or distortion and flat neutral surfaces. Cards stack vertically on phones and use equal heights at each screen size.

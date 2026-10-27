@@ -324,7 +324,7 @@ body.agency-site .modern-module-card, body.agency-site .modern-module-card:hover
   box-shadow: none; transform: none; padding: 24px 0;
 }
 body.agency-site .modern-module-card::before { display: none; }
-body.agency-site .modern-module-card h4 { font: 600 29px/1.1 var(--font-heading); }
+body.agency-site .modern-module-card h3 { font: 600 29px/1.1 var(--font-heading); }
 body.agency-site .modern-module-card p { font-size: 14px; }
 body.agency-site .mentorship-access-card { background: var(--accent-teal); box-shadow: none; border-radius: 0; }
 body.agency-site .programme-status { background: var(--accent-gold); color: var(--text-dark); border-radius: 2px; font-family: var(--font-body); font-size: 10px; }
@@ -1179,7 +1179,6 @@ body.page-inquiry .inquiry-intro h1 {
   margin: 18px 0 23px;
   text-wrap: balance;
 }
-body.page-inquiry .inquiry-intro h1 em { font-style: normal; color: #06d7a0; }
 body.page-inquiry .inquiry-intro p { max-width: 670px; margin: 0; color: #fff; font-size: clamp(16px, 1.65vw, 21px); }
 body.page-inquiry .inquiry-section { background: #f5f4fa; padding: clamp(42px, 6vw, 96px) 0; }
 body.page-inquiry .inquiry-layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); gap: clamp(30px, 5vw, 90px); align-items: start; }
@@ -1221,6 +1220,41 @@ body.page-inquiry .inquiry-privacy { margin: 6px 0 22px; color: #49435b; font-si
 body.page-inquiry .inquiry-privacy a { color: #4032bc; text-decoration: underline; text-underline-offset: 3px; }
 body.page-inquiry .inquiry-submit { font-family: var(--font-body); cursor: pointer; }
 body.page-inquiry .inquiry-submit .agency-arrow { width: 23px; height: 23px; }
+/* Shared reading, navigation and single-choice treatments. */
+body.agency-site .foundation-page-cta p { color: var(--text-dark); }
+body.page-inquiry .inquiry-form { text-align: left; }
+body.page-inquiry .inquiry-field label { text-align: left; }
+body.page-inquiry .inquiry-intro h1 em { font-style: normal; background: var(--accent-teal); color: var(--text-dark); padding: 0 .08em .05em; }
+body.agency-site .mosaic-grid .team-img img { filter: grayscale(1); }
+body.agency-site .event-filter { position: relative; display: inline-flex; cursor: pointer; }
+body.agency-site .event-filter input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+body.agency-site .event-filter .foundation-tab { display: inline-flex; align-items: center; }
+body.agency-site .event-filter input:checked + .foundation-tab { color: #fff; background: var(--primary); border-color: var(--primary); }
+body.agency-site .event-filter input:focus-visible + .foundation-tab { outline: 3px solid var(--primary); outline-offset: 3px; }
+body.page-events #event-calendar .section-header { margin-bottom: 28px; padding-inline: 0; }
+body.page-events #event-calendar .foundation-tabs { margin-bottom: 24px; }
+body.page-events #event-calendar .foundation-page-cta { margin-top: 40px; }
+@media (min-width: 901px) {
+  body.agency-site .nav-list { gap: clamp(10px, 1.5vw, 22px); }
+}
+@media (max-width: 600px) {
+  body.agency-home .agency-hero h1,
+  body.agency-site .campaign-hero--programs h1 { font-size: clamp(42px, 12vw, 58px); }
+  body.agency-site .detail-intro h1,
+  body.page-inquiry .inquiry-intro h1 { font-size: clamp(38px, 11vw, 52px); }
+}
+@media (max-width: 900px) and (max-height: 650px) {
+  body.agency-site .nav { padding-top: 10px !important; padding-bottom: max(14px, env(safe-area-inset-bottom)) !important; }
+  body.agency-site .nav-mobile-head { min-height: 54px; }
+  body.agency-site .nav-list { padding-top: 2px !important; }
+  body.agency-site #header .nav-link { min-height: 48px !important; padding-block: 7px !important; font-size: 16px !important; }
+  body.agency-site .nav-donate-btn { min-height: 48px; margin-top: 12px; }
+}
+@media (max-width: 600px) {
+  body.page-events #event-calendar .section-header { margin-bottom: 22px; }
+  body.page-events #event-calendar .foundation-tabs { margin-bottom: 20px; }
+  body.page-events #event-calendar .foundation-page-cta { margin-top: 32px; }
+}
 body.page-inquiry .inquiry-thanks { min-height: 55vh; }
 body.page-inquiry .inquiry-thanks .agency-button { margin-top: 30px; }
 @media (max-width: 900px) {
@@ -1230,7 +1264,7 @@ body.page-inquiry .inquiry-thanks .agency-button { margin-top: 30px; }
 }
 @media (max-width: 600px) {
   body.page-inquiry .inquiry-intro { padding: 118px 0 48px; }
-  body.page-inquiry .inquiry-intro h1 { font-size: clamp(38px, 11vw, 58px); }
+  body.page-inquiry .inquiry-intro h1 { font-size: clamp(38px, 11vw, 52px); }
   body.page-inquiry .inquiry-intro p { font-size: 16px; }
   body.page-inquiry .inquiry-section { padding: 36px 0 60px; }
   body.page-inquiry .inquiry-form { padding: 24px 18px; }
