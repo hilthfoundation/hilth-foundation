@@ -45,3 +45,5 @@ Use a consistent mobile headline scale across campaign, programme-detail and con
 Leadership portraits use a consistent monochrome treatment while preserving each full image in its existing 4:5 frame.
 
 Programme information architecture: programs.html is a short directory retaining #hsip, #insights, #90days and #mentorship. Four root-level detail pages hold the full descriptions and existing form. about.html contains the belief statement, four-step learning path and regional context. Chris is featured separately on the home page. All seven leadership profiles, including Stephen Abuakwah, share one consistent card layout with full photographs in matching 4:5 portrait frames, fitted without cropping or distortion and flat neutral surfaces. Cards stack vertically on phones and use equal heights at each screen size.
+
+Readable type floor: no text below 12px, except the compact header donate button on narrow phones. Body copy on green uses the dark text color. Focus outlines switch to white on purple fields and dark on green.
