@@ -749,7 +749,7 @@ b {
 }
 
 /* Desktop Styles */
-@media (min-width: 768px) {
+@media (min-width: 901px) {
     .nav {
         display: flex;
         align-items: center;

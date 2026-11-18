@@ -98,7 +98,7 @@ body.agency-home .agency-hero h1 { color: #fff; font: 700 clamp(84px,9vw,132px)/
 .agency-principles span { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
 .agency-principles strong { font-size: 13px; }
 .agency-programs { background: var(--bg-light); }
-.agency-program-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.agency-program-layout { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px; }
 .agency-program-feature { position: relative; display: flex; flex-direction: column; background: #5143de; color: #fff; }
 .agency-program-feature > img { width: 100%; height: 270px; object-fit: cover; object-position: center 40%; }
 .agency-program-feature-body { padding: 30px 34px; position: relative; }
@@ -108,7 +108,7 @@ body.agency-site .agency-program-feature h3 { color: #fff; font: 600 36px/1.05 v
 .agency-program-feature p { color: #efecff; font-size: 14px; max-width: 44ch; margin-bottom: 18px; }
 .agency-program-feature a { color: #fff; }
 .agency-program-catalog { display: flex; flex-direction: column; justify-content: space-between; }
-.agency-program-row { display: grid; grid-template-columns: 58px 1fr 24px; gap: 22px; padding: 26px 0; border-top: 1px solid #cdc8dd; color: var(--text-dark); }
+.agency-program-row { display: grid; grid-template-columns: 58px minmax(0,1fr) 24px; gap: 22px; padding: 26px 0; border-top: 1px solid #cdc8dd; color: var(--text-dark); }
 .agency-program-row:last-child { border-bottom: 1px solid #cdc8dd; }
 .agency-program-row .agency-symbol { width: 48px; height: 48px; margin-top: 20px; color: #5143de; }
 .agency-program-row h3 { font: 600 29px/1.05 var(--font-heading); margin: 6px 0 9px; }
@@ -223,7 +223,7 @@ body.agency-site .campaign-hero {
 .campaign-hero-photo { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; object-fit: cover; object-position: center 38%; }
 .campaign-hero-wash { position: absolute; inset: 0; z-index: -2; background: linear-gradient(90deg,rgba(33,28,57,.89),rgba(81,67,222,.82) 57%,rgba(33,28,57,.68)); }
 .campaign-hero::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 58px; background: var(--bg-white); clip-path: polygon(0 0,76% 82%,100% 20%,100% 100%,0 100%); }
-.campaign-hero-layout { display: grid; grid-template-columns: 1.15fr 1fr; gap: 100px; align-items: center; }
+.campaign-hero-layout { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr); gap: clamp(44px,7vw,100px); align-items: center; }
 .campaign-hero-heading .agency-label { color: #fff; max-width: 36ch; margin-bottom: 30px; padding-left: 16px; border-left: 3px solid var(--accent-teal); }
 body.agency-site .campaign-hero h1 { color: #fff; font: 700 clamp(72px,7.6vw,112px)/.94 var(--font-heading); text-transform: uppercase; letter-spacing: -.02em; margin: 0; }
 .campaign-hero h1 mark { display: inline-block; color: var(--text-dark); background: var(--accent-teal); padding: 0 .07em .07em; margin: .05em 0 0 -.07em; }
@@ -389,7 +389,7 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-proof .container { gap: 22px; flex-wrap: wrap; }
   .agency-proof .agency-label { width: 100%; max-width: none; }
   .agency-program-layout { gap: 28px; }
-  .agency-program-row { gap: 14px; grid-template-columns: 42px 1fr 20px; }
+  .agency-program-row { gap: 14px; grid-template-columns: 42px minmax(0,1fr) 24px; }
   .agency-program-row .agency-symbol { width: 40px; height: 40px; }
   .agency-people-layout { grid-template-columns: 1fr; gap: 32px; }
   .agency-people-copy { max-width: 560px; }
@@ -399,6 +399,12 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-involved-options { grid-template-columns: repeat(2,1fr); gap: 32px; }
   body.agency-site .team-grid, body.agency-site .mosaic-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
   body.agency-site .mosaic-grid .team-card:nth-child(n) { grid-column: auto; grid-row: auto; }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .agency-impact-stat strong { font-size: clamp(34px,6vw,54px); }
+}
+@media (max-width: 680px) {
+  .agency-program-layout { grid-template-columns: minmax(0,1fr); gap: 14px; }
 }
 @media (max-width: 600px) {
   body.agency-site .container { width: calc(100% - 40px); }
@@ -439,7 +445,6 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-about-photo img { aspect-ratio: 1.4; }
   .agency-principles { gap: 12px; }
   .agency-principles strong { font-size: 12px; }
-  .agency-program-layout { grid-template-columns: 1fr; gap: 14px; }
   .agency-program-feature > img { height: 230px; }
   .agency-program-feature-body { padding: 28px 24px; }
   body.agency-site .agency-program-feature h3 { font-size: 34px; }
@@ -996,6 +1001,7 @@ body.agency-site #donationModal .modal-close { position: static; flex-shrink: 0;
 .shop-order-actions { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin: 24px 0 18px; }
 .shop-order-actions svg { width: 20px; height: 20px; }
 .shop-order-disclosure, .shop-order-status { text-align: center; font-size: 14px !important; line-height: 1.6; color: var(--text-body); }
+.shop-order-status a { color: var(--primary); text-decoration: underline; text-underline-offset: 4px; }
 .shop-order-steps { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid var(--border-color); gap: 28px; padding-top: 32px; }
 .shop-order-steps p { font-size: 15px; line-height: 1.6; margin-bottom: 0; }
 @media (max-width: 600px) { .shop-order-fields, .shop-order-steps { grid-template-columns: 1fr; } .shop-order-fields label { text-align: left; } .shop-order-wide { grid-column: auto; } .shop-order-actions { flex-direction: column; } }
@@ -1330,7 +1336,7 @@ body.agency-home main > #team { padding-top: 88px; }
   body.agency-site .agency-program-row .agency-symbol { width: 36px; height: 36px; margin-top: 4px; }
   body.agency-site .agency-program-row :is(h3,p,.agency-label) { text-align: left !important; margin-inline: 0 !important; }
   body.agency-site .agency-program-row h3 { font-size: 22px; }
-  body.agency-site .agency-program-row > .agency-arrow { margin-top: 6px; }
+  body.agency-site .agency-program-row > .agency-arrow { width: 20px; height: 20px; margin-top: 6px; }
 
   /* Impact facts sit side by side instead of a tall stack. */
   body.agency-site .agency-impact-numbers { grid-template-columns: repeat(3,minmax(0,1fr)); width: 100%; gap: 0; }
@@ -1427,13 +1433,6 @@ body.agency-site .mosaic-grid .team-card h2 { font-weight: 700 !important; }
   body.agency-site .section-header { text-align: center; }
   body.agency-site .section-title { text-align: center; margin-inline: auto; }
   body.agency-site .section-subtitle { margin-inline: auto; text-align: center; }
-
-  /* Photographic heroes stack their headline over the supporting copy. */
-  body.agency-site .campaign-hero-layout { grid-template-columns: minmax(0,1fr); gap: 32px; justify-items: center; text-align: center; }
-  body.agency-site .campaign-hero-heading .agency-label { border-left: 0; padding-left: 0; margin-inline: auto; }
-  body.agency-site .campaign-hero h1 { text-align: center; }
-  body.agency-site .campaign-hero-description > p { margin-inline: auto; text-align: center; }
-  body.agency-site .campaign-hero-description .agency-link { margin-inline: auto; width: fit-content; }
 }
 
 /* Alignment rules: a titled block shares one axis. Short intros centre with

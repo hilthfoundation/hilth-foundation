@@ -736,8 +736,9 @@ async function submitNetlifyForm(form, overrides = {}) {
 
 function initShopOrders() {
     const form = document.getElementById('shopOrderForm');
-    if (!form) return;
     const status = document.getElementById('shopOrderStatus');
+    const draft = document.getElementById('shopOrderDraft');
+    if (!form || !status || !draft) return;
     document.addEventListener('click', event => {
         const link = event.target.closest('[data-shop-product]');
         if (link) form.elements.product.value = link.dataset.shopProduct;
@@ -745,6 +746,8 @@ function initShopOrders() {
     form.addEventListener('submit', async event => {
         event.preventDefault();
         if (!form.reportValidity()) return;
+        draft.hidden = true;
+        draft.removeAttribute('href');
         const fields = new FormData(form);
         const value = key => String(fields.get(key) || '').trim();
         if (!value('customer') || !value('location')) {
@@ -770,9 +773,11 @@ function initShopOrders() {
         status.textContent = 'Saving your enquiry...';
         try {
             await submitNetlifyForm(form, { channel: email ? 'email' : 'whatsapp' });
-            status.textContent = 'Your enquiry was recorded. A message draft is opening so you can continue the conversation with Hilth.';
-            if (email) window.location.href = url;
-            else window.open(url, '_blank', 'noopener,noreferrer');
+            draft.href = url;
+            draft.target = email ? '_self' : '_blank';
+            draft.textContent = email ? 'Open email draft' : 'Open WhatsApp draft';
+            draft.hidden = false;
+            status.textContent = `Your enquiry was recorded. To follow up, open the ${email ? 'email' : 'WhatsApp'} draft and press Send.`;
         } catch (error) {
             console.error('Shop enquiry:', error);
             status.textContent = 'We could not send your enquiry. Your details are still here. Check your connection and try again.';

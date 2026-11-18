@@ -10,10 +10,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=3.1">
-  <link rel="stylesheet" href="css/agency.css?v=52">
+  <link rel="stylesheet" href="css/styles.css?v=3.2">
+  <link rel="stylesheet" href="css/agency.css?v=54">
   <script src="https://unpkg.com/lucide@0.562.0" defer></script>
-  <script src="js/main.js?content=24" defer></script>
+  <script src="js/main.js?content=25" defer></script>
 <meta name="description" content="Explore Hilth Foundation T-shirts, the 90 Days of Transformation notebook and upcoming tags. Send an order enquiry to Hilth via WhatsApp or email. Online payments coming soon.">
 <link rel="canonical" href="https://hilthfoundation.org/shop.html">
 <meta property="og:type" content="website">
@@ -70,9 +70,12 @@
             <label class="shop-order-wide">Delivery town / country<input name="location" autocomplete="address-level2" maxlength="120" required></label>
             <label class="shop-order-wide">Anything else? <span>(optional)</span><textarea name="notes" rows="3" maxlength="500" placeholder="Colour preference, collection or delivery questions"></textarea></label>
           </div>
-          <div class="shop-order-actions"><button class="agency-button ink" type="submit">Continue on WhatsApp <i data-lucide="message-circle" aria-hidden="true"></i></button><button class="agency-link" type="submit" name="channel" value="email">Use email instead <i data-lucide="mail" aria-hidden="true"></i></button></div>
-          <p class="shop-order-disclosure" id="shop-order-disclosure">This prepares a message. Press Send in WhatsApp or your email app to deliver it to Hilth. An order is confirmed only after our team replies. Do not send card details.</p>
-          <p id="shopOrderStatus" role="status" class="shop-order-status"></p>
+          <p class="shop-order-disclosure" id="shop-order-disclosure">Either button sends your enquiry to Hilth through Netlify. You can then open a WhatsApp or email draft and press Send to follow up. An order is confirmed only after our team replies. Do not send card details.</p>
+          <div class="shop-order-actions"><button class="agency-button ink" type="submit">Submit and use WhatsApp <i data-lucide="message-circle" aria-hidden="true"></i></button><button class="agency-link" type="submit" name="channel" value="email">Submit and use email <i data-lucide="mail" aria-hidden="true"></i></button></div>
+          <div class="shop-order-status">
+            <p id="shopOrderStatus" role="status"></p>
+            <a id="shopOrderDraft" rel="noopener noreferrer" hidden></a>
+          </div>
         </form>
         <div class="shop-order-steps"><p><strong>1. Send your request</strong><br>Our team receives your details directly.</p><p><strong>2. Confirm &amp; pay</strong><br>Hilth confirms the total and available payment method.</p><p><strong>3. Arrange delivery</strong><br>The team confirms payment and your order.</p></div>
       </div>
