@@ -1372,3 +1372,66 @@ body.agency-home main > #team { padding-top: 88px; }
   body.agency-site .modern-split-layout .layout-visual img { aspect-ratio: 4/3; height: auto; width: 100%; object-fit: cover; object-position: center 35%; }
   body.agency-site .modern-split-layout .layout-text .about-text { font-size: 19px; line-height: 1.6; max-width: 40ch; }
 }
+
+/* Type and alignment pass: heavier Quicksand and centred titles. */
+body.agency-site { font-weight: 500; }
+body.agency-site :is(h1,h2,h3,h4) { font-weight: 700 !important; letter-spacing: -0.02em; }
+body.agency-site :is(.agency-label,.role,.agency-link,.agency-button,.nav-link,.agency-status) { font-weight: 700; }
+body.agency-site main p { font-weight: 500; }
+body.agency-site .section-subtitle,
+body.agency-site .campaign-hero-description > p,
+body.agency-site .agency-hero-copy > p { font-weight: 500; }
+body.agency-site .agency-about-copy h2,
+body.agency-site .agency-program-row h3,
+body.agency-site .agency-program-feature h3,
+body.agency-site .agency-involved-option h3,
+body.agency-site .detail-body h3,
+body.agency-site .modern-module-card h3,
+body.agency-site .team-content h2,
+body.agency-site .mosaic-grid .team-card h2 { font-weight: 700 !important; }
+
+@media (min-width: 901px) {
+  /* Section titles: label, heading and intro on one centre axis. */
+  body.agency-site .agency-section-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; margin-bottom: 52px; }
+  body.agency-site .agency-section-head > div { text-align: center; }
+  body.agency-site .agency-section-head > p { max-width: 52ch; margin: 0 auto; font-size: 17px; }
+  body.agency-site .agency-section-head h2 { text-align: center; max-width: none; }
+  body.agency-site .agency-field .agency-section-head h2 { max-width: none; }
+  body.agency-site .agency-field .agency-section-head > .agency-link { align-self: center; margin-top: 4px; }
+  body.agency-site .agency-impact .agency-section-head > p { color: #efecff; }
+
+  /* Group titles on the home page. */
+  body.agency-site :is(.agency-about-copy,.agency-people-copy) :is(.agency-label,h2) { text-align: center; }
+  body.agency-site .agency-about-copy > p:not(.agency-principles) { text-align: left; }
+  body.agency-site .agency-people-copy { text-align: center; }
+  body.agency-site .agency-people-copy .agency-link { margin-inline: auto; width: fit-content; }
+  body.agency-site .agency-about-copy .agency-link { margin-inline: auto; width: fit-content; display: inline-flex; }
+  body.agency-site .agency-about-copy > p:has(> .agency-link) { text-align: center; }
+
+  /* Interior introductions and calls to action. */
+  body.agency-site :is(.detail-intro,.detail-action,.inquiry-intro) .container { text-align: center; }
+  body.agency-site .detail-intro h1 { margin-inline: auto; max-width: 20ch; }
+  body.agency-site .detail-intro :is(.agency-label,p) { margin-inline: auto; }
+  body.agency-site .detail-intro p { max-width: 56ch; font-size: 19px; }
+  body.agency-site .detail-actions,
+  body.agency-site .detail-intro .detail-actions { justify-content: center; }
+  body.agency-site .detail-body h2,
+  body.agency-site .detail-action h2 { text-align: center; }
+  body.agency-site .detail-action p { margin-inline: auto; max-width: 52ch; }
+  body.agency-site .detail-action .agency-button { margin-inline: auto; }
+  body.page-inquiry .inquiry-intro h1,
+  body.page-inquiry .inquiry-intro p { margin-inline: auto; text-align: center; }
+  body.page-inquiry .inquiry-intro .agency-label { margin-inline: auto; width: fit-content; }
+  body.agency-site .foundation-page-cta { text-align: center; }
+  body.agency-site .directory-section .agency-section-head h2 { text-align: center; }
+  body.agency-site .section-header { text-align: center; }
+  body.agency-site .section-title { text-align: center; margin-inline: auto; }
+  body.agency-site .section-subtitle { margin-inline: auto; text-align: center; }
+
+  /* Photographic heroes stack their headline over the supporting copy. */
+  body.agency-site .campaign-hero-layout { grid-template-columns: minmax(0,1fr); gap: 32px; justify-items: center; text-align: center; }
+  body.agency-site .campaign-hero-heading .agency-label { border-left: 0; padding-left: 0; margin-inline: auto; }
+  body.agency-site .campaign-hero h1 { text-align: center; }
+  body.agency-site .campaign-hero-description > p { margin-inline: auto; text-align: center; }
+  body.agency-site .campaign-hero-description .agency-link { margin-inline: auto; width: fit-content; }
+}
