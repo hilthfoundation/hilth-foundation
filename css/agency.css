@@ -1314,3 +1314,61 @@ body.agency-site .agency-involved :focus-visible { outline-color: var(--text-dar
   .agency-arrow, .agency-program-row h3 { transition: none; }
   .agency-link:hover .agency-arrow, .agency-program-row:hover > .agency-arrow { transform: none; }
 }
+
+/* Layout pass: one vertical rhythm for home sections and calmer mobile reading. */
+body.agency-home main > :is(#about,#programs,#impact,.agency-field,#team,#get-involved) { padding-block: 96px; }
+body.agency-home main > .agency-field { padding-bottom: 72px; }
+body.agency-home main > #team { padding-top: 88px; }
+@media (max-width: 900px) {
+  body.agency-home main > :is(#about,#programs,#impact,.agency-field,#team,#get-involved) { padding-block: 72px; }
+}
+@media (max-width: 600px) {
+  body.agency-home main > :is(#about,#programs,#impact,.agency-field,#team,#get-involved) { padding-block: 56px; }
+
+  /* Programme rows read left to right: icon, text, arrow. */
+  body.agency-site .agency-program-row { grid-template-columns: 40px minmax(0,1fr) 20px; gap: 14px; padding: 22px 0; text-align: left; align-items: start; }
+  body.agency-site .agency-program-row .agency-symbol { width: 36px; height: 36px; margin-top: 4px; }
+  body.agency-site .agency-program-row :is(h3,p,.agency-label) { text-align: left !important; margin-inline: 0 !important; }
+  body.agency-site .agency-program-row h3 { font-size: 22px; }
+  body.agency-site .agency-program-row > .agency-arrow { margin-top: 6px; }
+
+  /* Impact facts sit side by side instead of a tall stack. */
+  body.agency-site .agency-impact-numbers { grid-template-columns: repeat(3,minmax(0,1fr)); width: 100%; gap: 0; }
+  body.agency-site .agency-impact-stat,
+  body.agency-site .agency-impact-stat:first-child,
+  body.agency-site .agency-impact-stat:nth-child(n+2),
+  body.agency-site .agency-impact-stat:last-child { padding: 8px 6px; border: 0; border-left: 1px solid #8d83e8; }
+  body.agency-site .agency-impact-stat:first-child { border-left: 0; }
+  body.agency-site .agency-impact-icon { display: none; }
+  body.agency-site .agency-impact-stat strong,
+  body.agency-site .agency-impact-stat strong.agency-impact-word { font-size: clamp(26px,8vw,34px); min-height: 0; }
+  body.agency-site .agency-impact-stat p { font-size: 12px; line-height: 1.4; margin-top: 6px; }
+
+  /* Founder card: photo above, name leads. */
+  body.agency-site .agency-leader--founder { grid-template-columns: minmax(0,1fr); padding: 0; gap: 0; }
+  body.agency-site .agency-leader--founder img { min-height: 0; aspect-ratio: 4/3; height: auto; object-position: center 22%; }
+  body.agency-site .agency-leader--founder figcaption { padding: 20px 16px 22px; gap: 8px; }
+  body.agency-site .agency-leader--founder strong { font-size: 26px; }
+  body.agency-site .agency-leader--founder p { font-size: 14px; }
+  body.agency-site .agency-leader--founder .agency-leader-bio { text-align: center !important; }
+}
+@media (max-width: 600px) {
+  body.agency-site .agency-program-row h3 { display: block; }
+  body.agency-site .agency-program-row h3 .agency-status { display: table; margin: 6px 0 0; }
+}
+@media (max-width: 600px) {
+  /* Short list items keep heading and text on one centred axis. */
+  body.agency-site main :is(.belief-path,.modern-module-card) p { text-align: center !important; margin-inline: auto !important; max-width: 32ch; }
+  body.agency-site .modern-module-grid { margin-top: 0; }
+  body.agency-site .modern-module-card h3 { font-size: 24px; }
+}
+@media (max-width: 600px) {
+  /* A short card blurb follows its centred heading. */
+  body.agency-site.agency-site main h3 + p:not(form p):not(.agency-program-row p) { text-align: center !important; margin-inline: auto !important; max-width: 34ch; }
+}
+@media (min-width: 901px) {
+  /* Programme detail intro: shorter photo, larger lead text. */
+  body.agency-site .modern-split-layout { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 56px; align-items: center; }
+  body.agency-site .modern-split-layout .layout-visual img { aspect-ratio: 4/3; height: auto; width: 100%; object-fit: cover; object-position: center 35%; }
+  body.agency-site .modern-split-layout .layout-text .about-text { font-size: 19px; line-height: 1.6; max-width: 40ch; }
+}
