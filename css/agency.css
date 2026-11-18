@@ -1364,7 +1364,7 @@ body.agency-home main > #team { padding-top: 88px; }
 }
 @media (max-width: 600px) {
   /* A short card blurb follows its centred heading. */
-  body.agency-site.agency-site main h3 + p:not(form p):not(.agency-program-row p) { text-align: center !important; margin-inline: auto !important; max-width: 34ch; }
+  body.agency-site.agency-site main h3 + p:not(form p):not(.agency-program-row p):not(.mentorship-access-card p) { text-align: center !important; margin-inline: auto !important; max-width: 34ch; }
 }
 @media (min-width: 901px) {
   /* Programme detail intro: shorter photo, larger lead text. */
@@ -1435,3 +1435,43 @@ body.agency-site .mosaic-grid .team-card h2 { font-weight: 700 !important; }
   body.agency-site .campaign-hero-description > p { margin-inline: auto; text-align: center; }
   body.agency-site .campaign-hero-description .agency-link { margin-inline: auto; width: fit-content; }
 }
+
+/* Alignment rules: a titled block shares one axis. Short intros centre with
+   their heading; long reading text and its heading stay left. */
+@media (min-width: 901px) {
+  /* Long copy beside a photo: heading, text and link all left. */
+  body.agency-site .agency-about-copy :is(.agency-label,h2,p) { text-align: left; }
+  body.agency-site .agency-about-copy .agency-link { margin-inline: 0; }
+  body.agency-site .agency-about-copy > p:has(> .agency-link) { text-align: left; }
+
+  /* Short title block beside the founder card: fully centred. */
+  body.agency-site .agency-people-copy { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  body.agency-site .agency-people-copy :is(.agency-label,h2,p) { text-align: center; margin-inline: auto; }
+  body.agency-site .agency-people-copy > p { max-width: 36ch; }
+
+  /* Impact: three facts and the closing row share the centred axis. */
+  body.agency-site .agency-impact-stat { text-align: center; }
+  body.agency-site .agency-impact-stat strong { justify-content: center; }
+  body.agency-site .agency-impact-icon { margin-inline: auto; }
+  body.agency-site .agency-impact-stat p { margin-inline: auto; }
+  body.agency-site .agency-impact-bottom { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
+  body.agency-site .agency-impact-bottom > div { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; }
+  body.agency-site .agency-impact-bottom p { max-width: 60ch; margin: 0 auto; }
+  body.agency-site .agency-regions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 24px; }
+
+  /* Headings over two-column reading copy follow the copy. */
+  body.agency-site .detail-columns :is(h2,h3,p),
+  body.agency-site .detail-reading :is(h2,h3,p),
+  body.agency-site .layout-text :is(h2,h3,.section-title,.agency-label) { text-align: left; margin-inline: 0; }
+}
+/* Form cards: heading, note and fields share the left edge. */
+body.agency-site .mentorship-access-card :is(h2,h3,p,.programme-interest-note) { text-align: left !important; margin-inline: 0 !important; max-width: none; }
+@media (max-width: 600px) {
+  /* Long reading passages: the section heading follows the text's left edge. */
+  body.agency-site.agency-site main :is(.detail-reading,.detail-columns,.agency-about-copy,.detail-safeguarding,.privacy-content-section) :is(h2:has(+ p),.agency-label:has(+ h2 + p)) { text-align: left !important; margin-inline: 0 !important; }
+  body.agency-site.agency-site main .agency-about-copy .agency-link { margin-inline: 0; }
+  /* Form card: heading, note and fields share the left edge. */
+  body.agency-site.agency-site main .mentorship-access-card :is(h3,p) { text-align: left !important; margin-inline: 0 !important; max-width: none; }
+}
+/* Privacy hero: the updated date sits under the centred title. */
+body.agency-site .privacy-hero :is(h1,p,.privacy-updated) { text-align: center; margin-inline: auto; }
