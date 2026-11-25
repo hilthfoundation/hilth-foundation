@@ -130,7 +130,7 @@ function configureEventQuestions_(form, properties) {
     if (key === 'date') question.setIncludesYear(true);
     if (key === 'programme') question.setChoiceValues(EVENT_PROGRAMMES);
     if (key === 'registrationUrl' || key === 'link') question.setValidation(urlValidation);
-    form.moveItem(item, index);
+    form.moveItem(typeof item.getIndex === 'function' ? item.getIndex() : item, index);
   });
   properties.setProperty(propertyKey, JSON.stringify(savedIds));
   const unusedPlaceholders = form.getItems().filter(item => !used.has(item.getId()) && placeholder(item));
@@ -161,7 +161,9 @@ function readEvents_(spreadsheet) {
       return {
         published: true,
         title: String(text(row, 'title')).trim(),
-        date: date instanceof Date ? Utilities.formatDate(date, tz, 'yyyy-MM-dd') : '',
+        date: date instanceof Date
+          ? Utilities.formatDate(date, tz, 'yyyy-MM-dd')
+          : (/^\d{4}-\d{2}-\d{2}$/.test(String(date).trim()) ? String(date).trim() : ''),
         time: time instanceof Date ? Utilities.formatDate(time, tz, 'h:mm a') : String(time).trim(),
         location: String(text(row, 'location')).trim(),
         programme: String(text(row, 'programme')).trim(),
@@ -175,11 +177,12 @@ function readEvents_(spreadsheet) {
 
 function readOutreach_(spreadsheet) {
   const sheet = spreadsheet.getSheetByName('outreach');
-  if (!sheet) return [];
+  if (!sheet || sheet.getLastRow() < 2) return [];
   const keys = ['title', 'school', 'date', 'location', 'programme', 'summary', 'attendance', 'image', 'imageAlt', 'gallery', 'story'];
   const rows = sheet.getDataRange().getDisplayValues();
-  const headers = rows.shift();
-  return rows.filter(row => String(row[headers.indexOf('published')]).toLowerCase() === 'true').map(row => {
+  const headers = rows.shift().map(h => String(h).trim());
+  const publishedIndex = headers.indexOf('published');
+  return rows.filter(row => publishedIndex >= 0 && String(row[publishedIndex]).trim().toLowerCase() === 'true').map(row => {
     const record = { published: true };
     keys.forEach(key => {
       const position = headers.indexOf(key);
@@ -324,22 +327,27 @@ function refreshShopMedia() {
   for (let row = 2; row <= sheet.getLastRow(); row++) publishShopRow_(sheet, row);
 }
 function publishShopRow_(sheet, row) {
-  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getDisplayValues()[0];
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getDisplayValues()[0].map(h => String(h).trim());
   const values = sheet.getRange(row, 1, 1, sheet.getLastColumn()).getDisplayValues()[0];
   const statusColumn = headers.indexOf('Publication status') + 1;
   if (!statusColumn) throw new Error('Run setupShopForm to add the publication status column.');
   try {
-    [SHOP_FIELDS.photos, SHOP_FIELDS.video, SHOP_FIELDS.photoLinks, SHOP_FIELDS.videoLink].forEach(header => {
-      const value = values[headers.indexOf(header)] || '';
+    // Only validate and share files uploaded through the staff Form upload questions.
+    const files = [];
+    [SHOP_FIELDS.photos, SHOP_FIELDS.video].forEach(header => {
+      const columnIndex = headers.indexOf(header);
+      const value = columnIndex >= 0 ? (values[columnIndex] || '') : '';
       String(value).split(/[\n,|]+/).forEach(link => {
         const match = link.trim().match(/^https:\/\/(?:drive|docs)\.google\.com\/(?:file\/d\/([\w-]+)|(?:open|uc|thumbnail)\?[^\s]*?id=([\w-]+))/);
         if (!match) return;
         const file = DriveApp.getFileById(match[1] || match[2]);
         const mime = file.getMimeType();
         if (!/^(image|video)\//.test(mime) || mime === 'image/svg+xml') throw new Error('Use JPG, PNG, WebP or video files for shop media.');
-        file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+        files.push(file);
       });
     });
+    // Share only after every uploaded file in the row passes validation.
+    files.forEach(file => file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW));
     sheet.getRange(row, statusColumn).setValue('Published');
   } catch (error) {
     sheet.getRange(row, statusColumn).setValue('Media error: ' + error.message);

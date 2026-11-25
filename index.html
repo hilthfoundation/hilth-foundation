@@ -11,20 +11,9 @@
 <link href="assets/images/favicon.jpeg" rel="apple-touch-icon"/>
 <meta content="#5143DE" name="theme-color"/>
 <!-- Security Headers -->
-<meta content="nosniff" http-equiv="X-Content-Type-Options"/>
 <meta content="strict-origin-when-cross-origin" name="referrer"/>
 <!-- Google Site Verification -->
 <meta content="be9-RPNJNndOO1z7WhPgjcZowpNN1Yj13FVhkmDcAEU" name="google-site-verification"/>
-<!-- Content Security Policy - Allows external resources the site needs -->
-<meta content="
-        default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com;
-        style-src 'self' 'unsafe-inline';
-        font-src 'self';
-        img-src 'self' data: https: blob:;
-        connect-src 'self' https://unpkg.com https://script.google.com https://script.googleusercontent.com;
-        frame-src 'none';
-    " http-equiv="Content-Security-Policy"/>
 <!-- Open Graph / Facebook -->
 
 
@@ -53,7 +42,7 @@
 <!-- Preload hero image for LCP optimization -->
 <link as="image" href="assets/images/school-learners.webp" rel="preload"/>
 <!-- Lucide Icons - defer loading -->
-<script defer="" src="https://unpkg.com/lucide@0.562.0"></script>
+<script defer src="https://unpkg.com/lucide@0.562.0/dist/umd/lucide.min.js" integrity="sha384-FmRlymRnpgjuKyAnwH4DftRjl+RqHOlfcw9k4xcpPyovclg/2RZRrvw7qe1koVCP" crossorigin="anonymous"></script>
 <!-- JSON-LD Structured Data for SEO -->
 <script type="application/ld+json">
     {
@@ -90,8 +79,8 @@
     }
     </script>
 <!-- Main JS - Unified JavaScript -->
-<script defer="" src="js/main.js?content=26"></script>
-<link href="css/agency.css?v=58" rel="stylesheet"/>
+<script defer="" src="js/main.js?content=27"></script>
+<link href="css/agency.css?v=61" rel="stylesheet"/>
 <meta name="description" content="Hilth Foundation helps young people in Ghana discover their strengths through school outreach, practical education and guided self-development.">
 <link rel="canonical" href="https://hilthfoundation.org/">
 <meta property="og:type" content="website">
@@ -214,7 +203,7 @@
 <article class="agency-involved-option"><svg aria-hidden="true" class="agency-symbol" viewBox="0 0 80 80"><use href="assets/icons/hilth-symbols.svg#school"></use></svg><h3>For schools</h3><p>Bring the School Impact Programme to your students.</p><a class="agency-link" href="inquiry.html?topic=school">Invite Hilth <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></article>
 <article class="agency-involved-option"><svg aria-hidden="true" class="agency-symbol" viewBox="0 0 80 80"><use href="assets/icons/hilth-symbols.svg#mentorship"></use></svg><h3>For mentors</h3><p>Give 3 to 5 hours a month for a year in the proposed mentoring programme.</p><a class="agency-link" href="mentorship.html">Become a mentor <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></article>
 <article class="agency-involved-option"><svg aria-hidden="true" class="agency-symbol" viewBox="0 0 80 80"><use href="assets/icons/hilth-symbols.svg#journey"></use></svg><h3>For students</h3><p>Explore the 90 Days journey and put your learning into practice.</p><a class="agency-link" href="90-days.html">Find your next step <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></article>
-<article class="agency-involved-option"><svg aria-hidden="true" class="agency-symbol" viewBox="0 0 80 80"><use href="assets/icons/hilth-symbols.svg#insights"></use></svg><h3>For supporters</h3><p>Help make more school visits and learning opportunities possible. Online donations coming soon.</p><button class="agency-link" onclick="openDonationModal()" type="button">Support our work <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></button></article>
+<article class="agency-involved-option"><svg aria-hidden="true" class="agency-symbol" viewBox="0 0 80 80"><use href="assets/icons/hilth-symbols.svg#insights"></use></svg><h3>For supporters</h3><p>Help make more school visits and learning opportunities possible. Online donations coming soon.</p><button class="agency-link" data-open-donation type="button">Support our work <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></button></article>
 </div>
 <nav aria-label="More ways to get involved" class="agency-involved-more">
 <span class="agency-label">More ways to get involved</span>

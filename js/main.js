@@ -23,7 +23,7 @@ class ComponentLoader {
         }
 
         try {
-            const response = await fetch(`${this.componentsPath}${componentName}.html`, { cache: 'no-cache' });
+            const response = await fetch(`${this.componentsPath}${componentName}.html?v=2`);
             if (!response.ok) {
                 throw new Error(`Failed to load component: ${componentName}`);
             }
@@ -159,7 +159,6 @@ async function loadSharedComponents(options = {}) {
 // Initialize Lucide icons - wait for library to load (deferred)
 document.addEventListener('DOMContentLoaded', async function () {
     // These page-local features do not depend on the shared components.
-    initInsightsSwap();
     initMentorshipForm();
 
     // Initialize Lucide icons
@@ -176,168 +175,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.warn('Failed to load shared components:', error);
     }
 
-    initPreloader();
     initHeader();
-    initHeroSlider();
-    initCarousel();
     initDonationModal();
     initShopOrders();
     initShopCatalog();
     initMobileMenu();
-    initCounterAnimation();
-    initScrollToTop();
-    initScrollAnimations();
     initAutoYear();
-    initContentToggles();
-    initPartnerAnimations();
-    initAboutSwap();
     initFoundationListings();
 });
-
-/* ================================
-   About layout swap
-   Adds the ability to interchange text/image by toggling about-1/about-2 classes
-   ================================ */
-function initAboutSwap() {
-    const layout = document.querySelector('.split-layout');
-    if (!layout) return;
-
-    // Respect users who prefer reduced motion
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-    }
-
-    // Start with non-swapped state; toggle `.swapped` on the layout at intervals
-    let swapped = false;
-    const intervalMs = 6000;
-
-    // Small initial delay so page load feels stable
-    setTimeout(() => {
-        // toggle immediately then continue on interval
-        swapped = !swapped;
-        layout.classList.toggle('swapped', swapped);
-        setInterval(() => {
-            swapped = !swapped;
-            layout.classList.toggle('swapped', swapped);
-        }, intervalMs);
-    }, 1200);
-}
-
-/* ================================
-   Hilth Insights Image Cross-Fade Swap
-   Auto-toggles between two images on programs.html
-   ================================ */
-function initInsightsSwap() {
-    const container = document.querySelector('.insights-swap-container');
-    if (!container) return;
-
-    // Respect users who prefer reduced motion
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        return;
-    }
-
-    let swapped = false;
-    const intervalMs = 5000;
-
-    setInterval(() => {
-        swapped = !swapped;
-        container.classList.toggle('swapped', swapped);
-    }, intervalMs);
-}
-
-/* ================================
-   Partner Card Entrance Animations
-   Uses IntersectionObserver to add 'in-view' class with a staggered delay
-   ================================ */
-function initPartnerAnimations() {
-    const cards = Array.from(document.querySelectorAll('.trusted-item'));
-    if (cards.length === 0) return;
-
-    const onIntersect = (entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const index = cards.indexOf(el);
-                const delay = Math.min(200 + index * 90, 600); // ms
-                // apply stagger using timeout so transitionDelay isn't required
-                setTimeout(() => el.classList.add('in-view'), delay);
-                observer.unobserve(el);
-            }
-        });
-    };
-
-    if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver(onIntersect, { root: null, threshold: 0.15 });
-        cards.forEach(c => io.observe(c));
-    } else {
-        // Fallback: reveal with a simple stagger
-        cards.forEach((c, i) => setTimeout(() => c.classList.add('in-view'), 200 + i * 90));
-    }
-}
-
-/* ================================
-   Security Utilities
-   ================================ */
-
-/**
- * Validate and sanitize form input
- * @param {string} input - The input to validate
- * @param {string} type - Type of validation ('text', 'email', 'number')
- * @returns {string|null} - Sanitized input or null if invalid
- */
-function validateInput(input, type = 'text') {
-    if (typeof input !== 'string') return null;
-
-    // Trim and basic sanitization
-    let sanitized = input.trim();
-
-    // Remove any HTML tags
-    sanitized = sanitized.replace(/<[^>]*>/g, '');
-
-    switch (type) {
-        case 'email':
-            // Stricter email validation
-            const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-            return emailRegex.test(sanitized) ? sanitized : null;
-        case 'number':
-            const num = parseFloat(sanitized);
-            return !isNaN(num) && num >= 0 ? num : null;
-        case 'text':
-        default:
-            // Allow only alphanumeric, spaces, hyphens, apostrophes for names
-            return sanitized.replace(/[^a-zA-Z0-9\s\-']/g, '').substring(0, 100);
-    }
-}
-
-/* ================================
-   Hero Slider
-   ================================ */
-function initHeroSlider() {
-    const slides = document.querySelectorAll('.hero-slide');
-    let currentSlide = 0;
-    let autoplayInterval;
-
-    if (slides.length === 0) return;
-
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        currentSlide = (index + slides.length) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-
-    function nextSlide() {
-        showSlide(currentSlide + 1);
-    }
-
-    function startAutoplay() {
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            autoplayInterval = setInterval(nextSlide, 5000);
-        }
-    }
-
-    // Start autoplay
-    startAutoplay();
-}
 
 /* ================================
    Header Scroll Effect
@@ -466,185 +311,17 @@ function initMobileMenu() {
 }
 
 /* ================================
-   Counter Animation
-   ================================ */
-function initCounterAnimation() {
-    const counters = document.querySelectorAll('.impact-number');
-    let animated = false;
-
-    if (!counters.length) return;
-
-    function animateCounter(counter) {
-        const target = getCounterTarget(counter);
-        if (!Number.isFinite(target)) return;
-        const duration = 2000; // 2 seconds
-        const step = target / (duration / 16); // 60fps
-        let current = 0;
-
-        function updateCounter() {
-            current += step;
-            if (current < target) {
-                counter.textContent = Math.floor(current).toLocaleString();
-                requestAnimationFrame(updateCounter);
-            } else {
-                counter.textContent = target.toLocaleString();
-            }
-        }
-
-        updateCounter();
-    }
-
-    const impactSection = document.getElementById('impact');
-    if (!impactSection) return;
-
-    if (prefersReducedMotion()) {
-        counters.forEach(counter => {
-            const target = getCounterTarget(counter);
-            if (Number.isFinite(target)) counter.textContent = target.toLocaleString('en-GH');
-        });
-        return;
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting || animated) return;
-            animated = true;
-            counters.forEach(counter => animateCounter(counter));
-            observer.unobserve(entry.target);
-        });
-    }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -80px 0px'
-    });
-
-    observer.observe(impactSection);
-}
-
-function getCounterTarget(counter) {
-    const raw = counter.dataset.target || counter.textContent;
-    const target = Number(String(raw).replace(/[^\d]/g, ''));
-    return Number.isFinite(target) && target > 0 ? target : NaN;
-}
-
-/* ================================
-   Carousel
-   ================================ */
-function initCarousel() {
-    const carousel = document.getElementById('carousel');
-    const track = document.getElementById('carouselTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dotsContainer = document.getElementById('carouselDots');
-
-    if (!carousel || !track) return;
-
-    const cards = track.querySelectorAll('.story-card');
-    let currentIndex = 0;
-    let cardsPerView = getCardsPerView();
-    let totalSlides = Math.ceil(cards.length / cardsPerView);
-
-    // Create dots
-    function createDots() {
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('button');
-            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
-
-    function getCardsPerView() {
-        if (window.innerWidth >= 1024) return 3;
-        if (window.innerWidth >= 768) return 2;
-        return 1;
-    }
-
-    function getCardWidth() {
-        const card = cards[0];
-        const gap = 24; // var(--space-lg)
-        return card.offsetWidth + gap;
-    }
-
-    function updateCarousel() {
-        const offset = currentIndex * getCardWidth() * cardsPerView;
-        track.style.transform = `translateX(-${offset}px)`;
-
-        // Update dots
-        const dots = dotsContainer.querySelectorAll('.carousel-dot');
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentIndex);
-        });
-    }
-
-    function goToSlide(index) {
-        currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
-        updateCarousel();
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateCarousel();
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateCarousel();
-    }
-
-    // Event listeners
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-
-    // Handle resize
-    window.addEventListener('resize', function () {
-        const newCardsPerView = getCardsPerView();
-        if (newCardsPerView !== cardsPerView) {
-            cardsPerView = newCardsPerView;
-            totalSlides = Math.ceil(cards.length / cardsPerView);
-            currentIndex = 0;
-            createDots();
-            updateCarousel();
-        }
-    });
-
-    // Touch support
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    carousel.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    carousel.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-        const diff = touchStartX - touchEndX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
-            }
-        }
-    }
-
-    // Initialize
-    createDots();
-    updateCarousel();
-}
-
-/* ================================
    Donation information dialog
    ================================ */
 let donationTrigger = null;
 let donationPreviousOverflow = '';
 let donationBackground = [];
 function initDonationModal() {
+    document.addEventListener('click', event => {
+        if (event.target.closest('[data-open-donation]')) {
+            openDonationModal();
+        }
+    });
     const modal = document.getElementById('donationModal');
     const closeBtn = document.getElementById('modalClose');
     if (!modal || !closeBtn) return;
@@ -778,164 +455,6 @@ function toggleMentorshipForm() {
 window.toggleMentorshipForm = toggleMentorshipForm;
 
 /* ================================
-   Preloader
-   ================================ */
-function initPreloader() {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) return;
-
-    const hidePreloader = () => {
-        preloader.classList.add('hidden');
-        // Remove from DOM entirely after fade completes
-        setTimeout(() => {
-            if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
-        }, 300);
-    };
-
-    // Hard cap: never show longer than 1.5s regardless of network speed
-    const maxTimer = setTimeout(hidePreloader, 1500);
-
-    // Hide as soon as the page is interactive
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            clearTimeout(maxTimer);
-            // Short delay so user sees the branding for at least 400ms
-            setTimeout(hidePreloader, 400);
-        });
-    } else {
-        // DOM already ready — dismiss quickly
-        clearTimeout(maxTimer);
-        setTimeout(hidePreloader, 300);
-    }
-}
-
-/* ================================
-   Scroll to Top Button
-   ================================ */
-function initScrollToTop() {
-    const scrollBtn = document.getElementById('scrollTopBtn');
-    if (!scrollBtn) return;
-
-    const updateScrollBtn = rafThrottle(() => {
-        if (window.scrollY > 500) {
-            scrollBtn.classList.add('visible');
-        } else {
-            scrollBtn.classList.remove('visible');
-        }
-    });
-
-    window.addEventListener('scroll', updateScrollBtn, { passive: true });
-
-    scrollBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-/* ================================
-   Scroll Animations - Enhanced with Staggered Reveal
-   ================================ */
-function initScrollAnimations() {
-    if (prefersReducedMotion()) {
-        document.querySelectorAll('.section-header, .impact-grid, .about-grid, .testimonials-grid, .vision-mission-section, .mentorship-features, .modules-grid, .insights-topics, .mentorship-outcomes')
-            .forEach(el => {
-                el.classList.add('reveal', 'revealed');
-            });
-
-        document.querySelectorAll('.impact-grid, .testimonials-grid, .mentorship-features, .modules-grid, .topics-grid, .mentorship-outcomes')
-            .forEach(grid => {
-                grid.classList.add('stagger-reveal', 'revealed');
-            });
-
-        document.querySelectorAll('.animate-on-scroll, .section-header').forEach(el => {
-            el.classList.add('animate-on-scroll', 'animated');
-        });
-        return;
-    }
-
-    // Elements to animate on scroll
-    const revealElements = document.querySelectorAll('.section-header, .impact-grid, .about-grid, .testimonials-grid, .vision-mission-section, .mentorship-features, .modules-grid, .insights-topics, .mentorship-outcomes');
-
-    // Staggered reveal grids (children animate with delay)
-    const staggerGrids = document.querySelectorAll('.impact-grid, .testimonials-grid, .mentorship-features, .modules-grid, .topics-grid, .mentorship-outcomes');
-
-    // Add reveal classes
-    revealElements.forEach(el => {
-        el.classList.add('reveal');
-    });
-
-    staggerGrids.forEach(grid => {
-        grid.classList.add('stagger-reveal');
-    });
-
-    // Intersection Observer for reveal animations
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.willChange = 'transform, opacity';
-                entry.target.classList.add('revealed');
-                revealObserver.unobserve(entry.target);
-                if (entry.target.classList.contains('stagger-reveal')) {
-                    const children = Array.from(entry.target.children);
-                    setTimeout(() => {
-                        children.forEach(child => {
-                            child.style.willChange = '';
-                        });
-                    }, 900);
-                }
-                setTimeout(() => {
-                    entry.target.style.willChange = '';
-                }, 700);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -80px 0px'
-    });
-
-    // Observe all reveal elements
-    document.querySelectorAll('.reveal, .stagger-reveal').forEach(el => {
-        revealObserver.observe(el);
-        if (el.classList.contains('stagger-reveal')) {
-            Array.from(el.children).forEach(child => {
-                child.style.willChange = 'transform, opacity';
-            });
-        }
-    });
-
-    // Generic observer for any element with .animate-on-scroll class
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animated');
-                scrollObserver.unobserve(entry.target);
-                setTimeout(() => {
-                    entry.target.style.willChange = '';
-                }, 600);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        el.style.willChange = 'transform, opacity';
-        scrollObserver.observe(el);
-    });
-
-    // Legacy support: Add animate-on-scroll to section headers explicitly
-    const sections = document.querySelectorAll('.section-header');
-    sections.forEach(section => {
-        section.classList.add('animate-on-scroll');
-        section.style.willChange = 'transform, opacity';
-        scrollObserver.observe(section);
-    });
-}
-
-/* ================================
    Auto-Update Copyright Year
    ================================ */
 function initAutoYear() {
@@ -945,10 +464,8 @@ function initAutoYear() {
     }
 }
 
-
-
 /* ================================
-   Newsletter Form Handler
+   Request Helpers
    ================================ */
 async function fetchWithTimeout(url, options = {}, readResponse = response => response) {
     const controller = new AbortController();
@@ -964,15 +481,20 @@ async function fetchWithTimeout(url, options = {}, readResponse = response => re
    Mentorship Form Handler
    ================================ */
 function initMentorshipForm() {
+    const toggleBtn = document.getElementById('toggleFormBtn');
+    if (toggleBtn && typeof toggleBtn.addEventListener === 'function') {
+        toggleBtn.addEventListener('click', toggleMentorshipForm);
+    }
     const mentorshipForm = document.getElementById('mentorshipForm');
     if (mentorshipForm) {
         const interests = Array.from(mentorshipForm.querySelectorAll('input[name="interest"]'));
+        const interestHint = document.getElementById('interest-hint');
         const interestError = document.getElementById('interest-error');
         const updateInterests = () => {
             const selected = interests.filter(input => input.checked).length;
             interests.forEach(input => { input.disabled = selected >= 3 && !input.checked; });
-            document.getElementById('interest-hint').textContent = `Choose up to three life areas. ${selected} of 3 selected.`;
-            interestError.textContent = '';
+            if (interestHint) interestHint.textContent = `Choose up to three life areas. ${selected} of 3 selected.`;
+            if (interestError) interestError.textContent = '';
         };
         interests.forEach(input => input.addEventListener('change', updateInterests));
         mentorshipForm.addEventListener('reset', () => setTimeout(updateInterests, 0));
@@ -980,43 +502,13 @@ function initMentorshipForm() {
             const selected = interests.filter(input => input.checked).length;
             if (selected < 1 || selected > 3) {
                 e.preventDefault();
-                interestError.textContent = 'Please choose between one and three life areas.';
-                interests[0].focus();
+                if (interestError) interestError.textContent = 'Please choose between one and three life areas.';
+                interests[0]?.focus();
                 return false;
             }
             return true;
         });
     }
-}
-
-
-/* ================================
-   Content Toggle (Learn More)
-   ================================ */
-function initContentToggles() {
-    const toggleBtn = document.getElementById('mentorship-learn-more-btn');
-    const content = document.getElementById('mentorship-details');
-
-    if (!toggleBtn || !content) return;
-
-    toggleBtn.addEventListener('click', function () {
-        const isHidden = content.classList.contains('content-hidden');
-        const span = this.querySelector('span');
-
-        if (isHidden) {
-            // Expand
-            content.classList.remove('content-hidden');
-            content.classList.add('content-visible');
-            this.classList.add('expanded');
-            if (span) span.textContent = 'Show Less';
-        } else {
-            // Collapse
-            content.classList.remove('content-visible');
-            content.classList.add('content-hidden');
-            this.classList.remove('expanded');
-            if (span) span.textContent = 'Learn More';
-        }
-    });
 }
 
 /* ================================
@@ -1302,62 +794,6 @@ function openFoundationGallery(record, photos) {
     document.body.style.overflow = 'hidden';
 }
 
-/* ================================
-   Notification System
-   ================================ */
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-
-    // Sanitize type to prevent injection
-    const validTypes = ['info', 'success', 'error', 'warning'];
-    const safeType = validTypes.includes(type) ? type : 'info';
-
-    // Map type to icon name
-    const iconMap = {
-        'success': 'check-circle',
-        'error': 'alert-circle',
-        'warning': 'alert-triangle',
-        'info': 'info'
-    };
-
-    // Create notification element safely (prevent XSS)
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${safeType}`;
-
-    const contentDiv = document.createElement('div');
-    contentDiv.className = 'notification-content';
-
-    const icon = document.createElement('i');
-    icon.setAttribute('data-lucide', iconMap[safeType]);
-
-    const messageSpan = document.createElement('span');
-    messageSpan.textContent = message; // Safe: textContent escapes HTML
-
-    contentDiv.appendChild(icon);
-    contentDiv.appendChild(messageSpan);
-    notification.appendChild(contentDiv);
-
-    document.body.appendChild(notification);
-
-    // Initialize icon
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
-
-    // Animate in
-    setTimeout(() => notification.classList.add('show'), 10);
-
-    // Auto dismiss after 4 seconds
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => notification.remove(), 300);
-    }, 4000);
-}
-
 /* Staff-managed shop catalogue. DOM nodes keep submitted content out of HTML. */
 function safeShopMedia(value) {
     if (typeof value !== 'string') return '';
@@ -1436,7 +872,7 @@ function makeShopProductCard(product) {
             image.replaceWith(node('span', 'shop-media-placeholder', 'Photo unavailable'));
         }, { once: true }); media.append(image);
     });
-    if (images.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (images.length > 1 && !prefersReducedMotion()) {
         media.classList.add('is-auto-gallery');
         let activeImage = 0;
         let timer = null;

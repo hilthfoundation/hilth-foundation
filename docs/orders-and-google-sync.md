@@ -2,7 +2,7 @@
 
 ## How Hilth receives orders
 
-The shop form prepares an order enquiry containing the buyer's name, product, quantity, preferred T-shirt size, delivery town and notes. The buyer sends it through WhatsApp to **0543790817**, or by email to **admin@hilthfoundation.org**. Completing the website form alone does not send or save an enquiry. The buyer's WhatsApp number or email identifies how to reply.
+The shop form prepares an order enquiry containing the buyer's name, product, quantity, preferred T-shirt size, delivery town and notes. The buyer sends it through WhatsApp to **0543790817**, or by email to **admin@hilthfoundation.org**. The form first saves the enquiry in Netlify Forms, then provides a link for the buyer to follow up through WhatsApp or email. The buyer's WhatsApp number or email identifies how to reply.
 
 Assign someone to monitor these contacts. Confirm the listed phone is active on WhatsApp. Email provides an alternative.
 

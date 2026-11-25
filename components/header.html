@@ -4,14 +4,14 @@
 <header class="header" id="header" role="banner">
     <div class="container header-content">
         <a href="index.html" class="logo">
-            <img src="assets/images/favicon.jpeg" alt="Hilth Foundation Logo" class="logo-img">
+            <img src="assets/images/favicon.jpeg" alt="Hilth Foundation Logo" class="logo-img" width="1080" height="1080">
             <span class="logo-text"><span>Hilth</span><span>Foundation</span></span>
         </a>
 
         <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
             <div class="nav-mobile-head">
                 <a href="index.html" class="logo mobile-nav-logo" aria-label="Hilth Foundation home">
-                    <img src="assets/images/favicon.jpeg" alt="" class="logo-img">
+                    <img src="assets/images/favicon.jpeg" alt="" class="logo-img" width="1080" height="1080">
                     <span class="logo-text"><span>Hilth</span><span>Foundation</span></span>
                 </a>
             </div>
@@ -27,13 +27,13 @@
             </ul>
 
             <!-- Support options inside mobile nav -->
-            <button class="nav-donate-btn" onclick="openDonationModal()" aria-label="Ways to support Hilth Foundation">
-                <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg>
+            <button class="nav-donate-btn" type="button" data-open-donation aria-label="Ways to support Hilth Foundation">
                 <span>Support Hilth</span>
+                <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg>
             </button>
         </nav>
 
-        <button class="btn btn-donate-header" onclick="openDonationModal()" aria-label="Ways to support Hilth Foundation">
+        <button class="btn btn-donate-header" type="button" data-open-donation aria-label="Ways to support Hilth Foundation">
             <span class="btn-text">Support</span>
             <svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg>
         </button>

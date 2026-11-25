@@ -22,7 +22,7 @@ The current deployed endpoint only contains events/outreach until you deploy thi
 - Uploaded images/videos are automatically shared as **Anyone with the link / Viewer**, so website visitors can view them. Upload public product media only. Do not upload customer details or payment records.
 - To update price, description or sizes, edit that product's row in **Shop submissions** and refresh the shop. No website deployment is needed.
 - Use **Coming soon** or **Sold out** to show an item without an order button. Use **Hidden** to remove it entirely.
-- To replace media, update the media cell with a Google Drive share link and run **refreshShopMedia**. This makes the replacement file viewable and reprocesses the row. Do not change **Publication status** manually.
+- To replace media uploaded through the Form, update the upload cell with a Google Drive share link and run **refreshShopMedia**. Automatically shared permissions apply only to Form file uploads (`Product photos` and `Product video (optional)`); any Drive links pasted under `Photo links (optional)` or `Video link (optional)` must already be shared as **Anyone with the link / Viewer**. Do not change **Publication status** manually.
 - Removing a product from the website does not revoke its existing Drive link. Remove sharing from an old file separately if it should no longer be viewable.
 - Direct public image URLs can be entered under **Photo links (optional)**. Uploaded videos open through a **Watch product video** link; they do not autoplay.
 

@@ -8,9 +8,9 @@
   <link rel="icon" href="assets/images/favicon.jpeg" type="image/jpeg">
   <meta name="theme-color" content="#5143DE">
   <link rel="stylesheet" href="css/styles.css?v=3.2">
-  <link rel="stylesheet" href="css/agency.css?v=58">
-  <script src="https://unpkg.com/lucide@0.562.0" defer></script>
-  <script src="js/main.js?content=26" defer></script>
+  <link rel="stylesheet" href="css/agency.css?v=61">
+  <script defer src="https://unpkg.com/lucide@0.562.0/dist/umd/lucide.min.js" integrity="sha384-FmRlymRnpgjuKyAnwH4DftRjl+RqHOlfcw9k4xcpPyovclg/2RZRrvw7qe1koVCP" crossorigin="anonymous"></script>
+  <script src="js/main.js?content=27" defer></script>
 <meta name="description" content="Explore Hilth Foundation T-shirts, the 90 Days of Transformation notebook and upcoming tags. Send an order enquiry to Hilth via WhatsApp or email. Online payments coming soon.">
 <link rel="canonical" href="https://hilthfoundation.org/shop.html">
 <meta property="og:type" content="website">
@@ -58,6 +58,7 @@
         <p>Tell us what you would like. Send your request to our team, and we will confirm availability, the total including delivery, and how to pay.</p>
         <form class="shop-order-form" id="shopOrderForm" name="hilth-shop-enquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" aria-describedby="shop-order-disclosure">
           <input type="hidden" name="form-name" value="hilth-shop-enquiry">
+          <input type="hidden" name="channel" value="whatsapp">
           <p hidden><label>Leave this field empty: <input name="bot-field"></label></p>
           <div class="shop-order-fields">
             <label>Your name<input name="customer" autocomplete="name" maxlength="100" required></label>
@@ -65,7 +66,7 @@
             <label>Quantity<input name="quantity" type="number" min="1" max="100" value="1" required></label>
             <label>Preferred size / option<input name="size" placeholder="For example: M or a colour" maxlength="40"></label>
             <label class="shop-order-wide">Delivery town / country<input name="location" autocomplete="address-level2" maxlength="120" required></label>
-            <label class="shop-order-wide">Anything else? <span>(optional)</span><textarea name="notes" rows="3" maxlength="500" placeholder="Colour preference, collection or delivery questions"></textarea></label>
+            <label class="shop-order-wide"><span class="shop-order-label">Anything else? <span>(optional)</span></span><textarea name="notes" rows="3" maxlength="500" placeholder="Colour preference, collection or delivery questions"></textarea></label>
           </div>
           <p class="shop-order-disclosure" id="shop-order-disclosure">Either button sends your enquiry to Hilth through Netlify. You can then open a WhatsApp or email draft and press Send to follow up. An order is confirmed only after our team replies. Do not send card details.</p>
           <div class="shop-order-actions"><button class="agency-button ink" type="submit">Submit and use WhatsApp <i data-lucide="message-circle" aria-hidden="true"></i></button><button class="agency-link" type="submit" name="channel" value="email">Submit and use email <i data-lucide="mail" aria-hidden="true"></i></button></div>

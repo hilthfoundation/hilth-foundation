@@ -16,6 +16,7 @@ function fixture(initial = [], responses = []) {
     const item = {
       id: nextId++, type, title,
       getId() { return this.id; },
+      getIndex() { return items.indexOf(this); },
       getType() { return this.type; },
       getTitle() { return this.title; },
       setTitle(value) { this.title = value; return this; },
@@ -41,7 +42,11 @@ function fixture(initial = [], responses = []) {
     getPublishedUrl: () => 'https://docs.google.com/forms/d/e/public-id/viewform',
     getDestinationId() { return this.destination; },
     setDestination(type, id) { this.destination = id; this.destinationChanges++; },
-    moveItem(item, index) { items.splice(items.indexOf(item), 1); items.splice(index, 0, item); },
+    moveItem(from, index) {
+      const current = typeof from === 'number' ? from : items.indexOf(from);
+      const [moved] = items.splice(current, 1);
+      items.splice(index, 0, moved);
+    },
     deleteItem(item) { items.splice(items.indexOf(item), 1); }
   };
   ['setTitle', 'setDescription', 'setCollectEmail', 'setConfirmationMessage'].forEach(method => {
@@ -176,4 +181,40 @@ test('does not mask destination access errors', () => {
   const f = fixture();
   f.form.getDestinationId = () => { throw new Error('Permission denied'); };
   assert.throws(() => f.context.formDestinationId_(f.form), /Permission denied/);
+});
+
+test('readEvents_ accepts YYYY-MM-DD text dates alongside Date objects', () => {
+  const headers = ['Event title', 'Date', 'Start time', 'Venue, town or Online', 'Programme', 'Short description', 'Registration link (optional)', 'More information link (optional)', 'Approved'];
+  const rows = [
+    headers,
+    ['Text Date Event', '2026-12-01', '10:00 AM', 'Kumasi', 'HSIP', 'Students session', '', '', 'Yes'],
+    ['Bad Date Event', 'not-a-date', '10:00 AM', 'Kumasi', 'HSIP', 'Skipped', '', '', 'Yes']
+  ];
+  const context = vm.createContext({ Utilities: { formatDate: () => '2026-12-01' } });
+  vm.runInContext(source, context);
+  const spreadsheet = {
+    getSpreadsheetTimeZone: () => 'Africa/Accra',
+    getSheetByName: () => ({ getLastRow: () => rows.length, getDataRange: () => ({ getValues: () => rows }) })
+  };
+  const events = JSON.parse(JSON.stringify(context.readEvents_(spreadsheet)));
+  assert.equal(events.length, 1);
+  assert.equal(events[0].title, 'Text Date Event');
+  assert.equal(events[0].date, '2026-12-01');
+});
+
+test('readOutreach_ trims header whitespace and handles empty sheets', () => {
+  const context = vm.createContext({});
+  vm.runInContext(source, context);
+  const emptyResult = JSON.parse(JSON.stringify(context.readOutreach_({ getSheetByName: () => ({ getLastRow: () => 1 }) })));
+  assert.deepEqual(emptyResult, []);
+  const rows = [
+    [' published ', ' title ', ' school ', ' date ', ' location ', ' programme ', ' summary ', ' attendance ', ' image ', ' imageAlt ', ' gallery ', ' story '],
+    ['TRUE', 'School Visit', 'Prempeh College', '2026-10-01', 'Kumasi', 'HSIP', 'Workshop', '120', '', '', '', 'Story']
+  ];
+  const outreach = JSON.parse(JSON.stringify(context.readOutreach_({
+    getSheetByName: () => ({ getLastRow: () => rows.length, getDataRange: () => ({ getDisplayValues: () => rows }) })
+  })));
+  assert.equal(outreach.length, 1);
+  assert.equal(outreach[0].school, 'Prempeh College');
+  assert.equal(outreach[0].attendance, 120);
 });

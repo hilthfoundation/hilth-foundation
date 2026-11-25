@@ -171,3 +171,17 @@ test('shop product labels and order choices exclude staff-supplied icons', async
     assert.match(content(grid), /Guided journal/);
     assert.doesNotMatch(content(grid), /🎉|✓|→/);
 });
+
+test('shop form declares a hidden channel input and templates omit inline styles or onclick handlers', () => {
+    const shopHtml = fs.readFileSync('shop.html', 'utf8');
+    assert.match(shopHtml, /<input[^>]+type=["']hidden["'][^>]+name=["']channel["']/i);
+    const htmlFiles = [
+        ...fs.readdirSync('.').filter(name => name.endsWith('.html') && !name.startsWith('google')),
+        ...fs.readdirSync('components').filter(name => name.endsWith('.html')).map(name => `components/${name}`)
+    ];
+    htmlFiles.forEach(file => {
+        const html = fs.readFileSync(file, 'utf8');
+        assert.doesNotMatch(html, /\sonclick\s*=/i, `${file} contains inline onclick`);
+        assert.doesNotMatch(html, /\sstyle\s*=/i, `${file} contains inline style`);
+    });
+});

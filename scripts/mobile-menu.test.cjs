@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 
 const source = fs.readFileSync('js/main.js', 'utf8');
-const menuCode = source.slice(source.indexOf('function initMobileMenu()'), source.indexOf('function initCounterAnimation()'));
+const menuCode = source.slice(source.indexOf('function initMobileMenu()'), source.indexOf('let donationTrigger = null;'));
 function fixture() {
     const keys = {}, resize = {};
     const document = { activeElement: null, addEventListener: (key, callback) => { keys[key] = callback; } };

@@ -48,3 +48,30 @@ test('automatic publication shares only media and records a failure instead of p
     assert.match(status, /^Media error:/);
     assert.equal(shared, 1);
 });
+
+test('validates all uploaded files before sharing any and ignores manual link columns', () => {
+    const headers = ['Product photos', 'Photo links (optional)', 'Video link (optional)', 'Publication status'];
+    let status, shared = 0;
+    const filesById = {
+        good_1: { getMimeType: () => 'image/jpeg', setSharing: () => { shared++; } },
+        bad_2: { getMimeType: () => 'application/pdf', setSharing: () => { shared++; } },
+        manual_3: { getMimeType: () => 'image/png', setSharing: () => { shared++; } }
+    };
+    const row = [
+        'https://drive.google.com/open?id=good_1\nhttps://drive.google.com/open?id=bad_2',
+        'https://drive.google.com/open?id=manual_3',
+        'https://drive.google.com/open?id=manual_3',
+        ''
+    ];
+    const sheet = { getLastColumn: () => headers.length, getRange: r => ({ getDisplayValues: () => [r === 1 ? headers : row], setValue: v => { status = v; } }) };
+    context.DriveApp = { Access: { ANYONE_WITH_LINK: 'public' }, Permission: { VIEW: 'view' }, getFileById: id => filesById[id] };
+    context.console = { error() {} };
+    context.publishShopRow_(sheet, 2);
+    assert.match(status, /^Media error:/);
+    assert.equal(shared, 0);
+
+    row[0] = 'https://drive.google.com/open?id=good_1';
+    context.publishShopRow_(sheet, 2);
+    assert.equal(status, 'Published');
+    assert.equal(shared, 1);
+});
