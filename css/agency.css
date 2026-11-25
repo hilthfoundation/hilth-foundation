@@ -125,10 +125,22 @@ body.agency-home .agency-hero h1 { color: #fff; font: 800 clamp(84px,9vw,132px)/
 .agency-about-copy h2 { font: 700 clamp(39px,4.3vw,60px)/1.04 var(--font-heading); letter-spacing: -0.035em; margin: 18px 0 28px; }
 .agency-about-copy h2 em { color: #5143de; }
 .agency-about-copy p { max-width: 50ch; font-size: 15px; margin-bottom: 20px; }
-.agency-about-photo { margin: 0; position: relative; padding: 0 22px 0 0; }
-.agency-about-photo::after { content:''; position: absolute; left: 22px; top: 22px; right: 0; bottom: 26px; background: var(--accent-teal); z-index: 0; }
-.agency-about-photo img { width: 100%; aspect-ratio: 1.15; object-fit: cover; position: relative; z-index: 1; }
-.agency-about-photo figcaption { position: relative; z-index: 1; margin-top: 12px; font: 500 12px/1.4 var(--font-body); }
+.agency-about-photo { margin: 0; }
+.agency-about-frame {
+  --frame-offset: clamp(14px, 2vw, 22px);
+  position: relative;
+  isolation: isolate;
+  padding: 0 var(--frame-offset) var(--frame-offset) 0;
+}
+.agency-about-frame::before {
+  content: '';
+  position: absolute;
+  inset: var(--frame-offset) 0 0 var(--frame-offset);
+  background: var(--accent-teal);
+  z-index: -1;
+}
+.agency-about-photo img { display: block; width: 100%; aspect-ratio: 1.15; object-fit: cover; object-position: center 28%; }
+.agency-about-photo figcaption { margin-top: 8px; font: 500 12px/1.4 var(--font-body); }
 .agency-principles { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; padding-top: 18px; border-top: 1px solid var(--border-color); margin-top: 24px; }
 .agency-principles span { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
 .agency-principles strong { font-size: 13px; }
@@ -150,7 +162,7 @@ body.agency-site .agency-program-feature h3 { color: #fff; font: 600 36px/1.05 v
 .agency-program-row p { margin: 0; font-size: 13px; line-height: 1.6; max-width: 37ch; }
 .agency-program-row .agency-arrow { margin-top: 28px; }
 .agency-program-row:hover h3 { text-decoration: none; }
-.agency-status { font-size: 12px; background: #e8e5f1; padding: 3px 6px; font-family: var(--font-body); vertical-align: middle; text-transform: uppercase; margin-left: 6px; letter-spacing: 0.04em; font-weight: 600; }
+.agency-status { display: inline-block; font-size: 12px; background: #e8e5f1; padding: 3px 6px; font-family: var(--font-body); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.04em; font-weight: 600; }
 body.agency-home #impact.agency-impact { background: var(--primary); color: #fff; padding: 76px 0; }
 body.agency-home #impact.agency-impact h2 { color: #fff; }
 .agency-impact .agency-section-head > p { color: #efecff; }
@@ -189,7 +201,7 @@ body.agency-home #impact.agency-impact h2 { color: #fff; }
 .agency-leader strong { font-size: 15px; }
 .agency-leader p { font-size: 12px; margin: 4px 0 0; }
 .agency-leader--founder { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1fr); align-items: center; gap: 28px; padding: 12px; background: #fff; border: 1px solid var(--border-color); }
-.agency-leader--founder img { display: block; width: 100%; height: 100%; min-height: 300px; aspect-ratio: auto; object-position: center 20%; }
+.agency-leader--founder img { display: block; width: 100%; height: 100%; min-height: 300px; aspect-ratio: auto; object-position: center 53%; }
 .agency-leader--founder figcaption { display: grid; justify-items: start; align-content: center; gap: 10px; margin: 0; padding: 18px 20px 18px 0; }
 .agency-leader--founder .agency-label { color: var(--primary); }
 .agency-leader--founder strong { font-size: clamp(22px,2.4vw,32px); line-height: 1.1; }
@@ -429,8 +441,8 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-program-row { gap: 14px; grid-template-columns: 42px minmax(0,1fr) 24px; }
   .agency-program-row .agency-symbol { width: 40px; height: 40px; }
   .agency-people-layout { grid-template-columns: 1fr; gap: 32px; }
-  .agency-people-copy { max-width: 560px; }
-  .agency-leaders { max-width: 720px; }
+  .agency-people-copy { width: min(100%, 560px); margin-inline: auto; }
+  .agency-leaders { width: min(100%, 720px); margin-inline: auto; }
   .agency-field-gallery img { height: 270px; }
   .agency-field-gallery figure:nth-child(2) img { height: 225px; }
   .agency-involved-options { grid-template-columns: repeat(2,1fr); gap: 32px; }
@@ -477,8 +489,6 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-about-grid { grid-template-columns: 1fr; gap: 30px; }
   .agency-about-copy h2 { font-size: 43px; margin: 14px 0 22px; }
   .agency-about-copy p { font-size: 14px; }
-  .agency-about-photo { padding-right: 14px; padding-bottom: 14px; }
-  .agency-about-photo::after { top: 14px; left: 14px; bottom: 0; }
   .agency-about-photo img { aspect-ratio: 1.4; }
   .agency-principles { gap: 12px; }
   .agency-principles strong { font-size: 12px; }
@@ -490,7 +500,6 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-program-row h3 { font-size: 28px; }
   .agency-program-row p { font-size: 12px; }
   .agency-program-row .agency-label { font-size: 12px; }
-  .agency-status { display: table; margin: 8px 0 0; }
   body.agency-home #impact.agency-impact { padding: 50px 0; }
   .agency-impact-numbers { grid-template-columns: minmax(0, 1fr); gap: 0; width: min(100%, 360px); margin-inline: auto; padding-bottom: 24px; }
   .agency-impact-stat,
@@ -547,8 +556,6 @@ body.agency-site .reference-box { background: var(--bg-light); border-radius: 2p
   .agency-involved-more-links { display: grid; grid-template-columns: minmax(0,1fr); width: min(100%,320px); margin-inline: auto; }
   body.agency-site .agency-involved-more-links .agency-link { display: flex; width: 100%; justify-content: center; margin: 0; padding: 10px 8px; font-size: 12px; text-align: center; }
   body.agency-site .agency-program-row { grid-template-columns: 44px minmax(0, 1fr) 44px; text-decoration: none !important; }
-  body.agency-site .agency-program-row h3 { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; text-decoration: none !important; }
-  body.agency-site .agency-program-row .agency-status { display: inline-flex; align-items: center; width: fit-content; margin: 0 auto; white-space: nowrap; }
   body.agency-site .footer { padding: 0 0 24px; }
   body.agency-site .footer-newsletter { grid-template-columns: 1fr; gap: 26px; padding: 42px 0 34px; }
   body.agency-site .footer-newsletter h2 { font-size: 56px; }
@@ -673,22 +680,21 @@ body.agency-site .mosaic-grid .team-img img {
   transform: none !important;
 }
 @media (max-width: 900px) {
- .programme-directory { gap: 0 28px; }
- .directory-card { grid-template-columns: 40px minmax(0,1fr); gap: 18px; }
- .directory-symbol .agency-symbol { width: 36px; height: 36px; }
+ .programme-directory { width: min(100%, 600px); margin-inline: auto; grid-template-columns: minmax(0, 1fr); gap: 0; }
+ .directory-card { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 18px; padding: 28px 0; }
+ .directory-symbol { display: flex; align-items: center; justify-content: center; gap: 12px; }
+ .directory-symbol .agency-symbol { width: 36px; height: 36px; margin: 0; }
+ .directory-copy { width: 100%; }
+ body.agency-site .directory-copy h3 { font-size: 32px; }
+ .directory-copy > p { max-width: 44ch; margin-inline: auto; }
+ .directory-copy dl { max-width: 420px; }
  .detail-columns { gap: 36px; }
  .belief-path { grid-template-columns: 1fr 1fr; }
  .reach-directory { gap: 24px; }
 }
 @media (max-width: 600px) {
  .directory-section { padding: 42px 0; }
- .programme-directory { grid-template-columns: 1fr; }
- .directory-card { grid-template-columns: minmax(0,1fr); justify-items: center; gap: 18px; padding: 28px 0; text-align: center; }
- .directory-symbol { display: flex; align-items: center; justify-content: center; gap: 12px; }
- .directory-symbol .agency-symbol { margin: 0; }
- .directory-copy { width: 100%; align-items: center; text-align: center; }
- body.agency-site .directory-copy h3 { font-size: 32px; }
- .directory-copy > p { width: min(100%, 34ch); margin-inline: auto; font-size: 14px; }
+ .directory-copy > p { max-width: 34ch; }
  .directory-copy dl { grid-template-columns: 1fr; justify-items: center; gap: 12px; text-align: center; }
  .detail-intro { padding: 106px 0 36px; }
  body.agency-site .detail-intro h1 { font-size: 48px; }
@@ -1326,8 +1332,11 @@ body.agency-site .agency-regions .agency-link,
 body.agency-site .agency-hero-actions .agency-link { font-size: 13px; }
 body.agency-site .agency-partners .agency-label { color: var(--text-body); }
 .agency-program-row h3 { transition: color 180ms ease; }
-.agency-program-row:hover h3 { color: var(--primary); }
-.agency-program-row:hover > .agency-arrow { transform: translate(2px,-2px); }
+.agency-program-row:focus-visible h3 { color: var(--primary); }
+@media (hover: hover) {
+  .agency-program-row:hover h3 { color: var(--primary); }
+  .agency-program-row:hover > .agency-arrow { transform: translate(2px,-2px); }
+}
 body.agency-site :is(.agency-hero,.agency-impact,.agency-program-feature,.campaign-hero,.footer) :focus-visible { outline-color: #fff; }
 body.agency-site .agency-involved :focus-visible { outline-color: var(--text-dark); }
 @media (min-width: 601px) {
@@ -1360,11 +1369,13 @@ body.agency-home main > #team { padding-top: 88px; }
 }
 @media (max-width: 600px) {
   body.agency-home main > :is(#about,#programs,#impact,.agency-field,#team,#get-involved) { padding-block: 56px; }
+  body.agency-home main > #programs { padding-bottom: 32px; }
+  body.agency-home main > #team { padding-top: 40px; }
 
   body.agency-site .agency-program-row { gap: 10px; padding: 22px 0; }
   body.agency-site .agency-program-row .agency-symbol { width: 36px; height: 36px; }
   body.agency-site .agency-program-row h3 { font-size: 25px; }
-  body.agency-site .agency-program-row > .agency-arrow { width: 20px; height: 20px; margin-top: 6px; }
+  body.agency-site .agency-program-row > .agency-arrow { width: 20px; height: 20px; }
 
   /* Impact facts sit side by side instead of a tall stack. */
   body.agency-site .agency-impact-numbers { grid-template-columns: repeat(3,minmax(0,1fr)); width: 100%; gap: 0; }
@@ -1380,15 +1391,11 @@ body.agency-home main > #team { padding-top: 88px; }
 
   /* Founder card: photo above, name leads. */
   body.agency-site .agency-leader--founder { grid-template-columns: minmax(0,1fr); padding: 0; gap: 0; }
-  body.agency-site .agency-leader--founder img { min-height: 0; aspect-ratio: 4/3; height: auto; object-position: center 22%; }
+  body.agency-site .agency-leader--founder img { min-height: 0; aspect-ratio: 4 / 3; height: auto; object-fit: cover; }
   body.agency-site .agency-leader--founder figcaption { padding: 20px 16px 22px; gap: 8px; }
   body.agency-site .agency-leader--founder strong { font-size: 26px; }
   body.agency-site .agency-leader--founder p { font-size: 14px; }
   body.agency-site .agency-leader--founder .agency-leader-bio { text-align: center !important; }
-}
-@media (max-width: 600px) {
-  body.agency-site .agency-program-row h3 { display: block; }
-  body.agency-site .agency-program-row h3 .agency-status { display: table; margin: 6px 0 0; }
 }
 @media (max-width: 600px) {
   /* Short list items keep heading and text on one centred axis. */
@@ -1488,7 +1495,10 @@ body.agency-site .mentorship-access-card .programme-interest-note { margin-inlin
   body.agency-home .agency-hero h1 { font-size: clamp(45px, 13vw, 69px); margin-bottom: 16px; }
   body.agency-home .agency-hero-copy .agency-label { margin-bottom: 12px; }
   body.agency-home .agency-hero-copy > p { width: min(100% - 40px, 38ch); margin-bottom: 16px; }
-  body.agency-site .agency-program-row { grid-template-columns: 36px minmax(0, 1fr) 36px; }
+  body.agency-site .agency-program-row { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+  body.agency-site .agency-program-row > .agency-symbol { grid-area: 1 / 2; }
+  body.agency-site .agency-program-row > .agency-arrow { grid-area: 1 / 3; justify-self: end; }
+  body.agency-site .agency-program-row > div { grid-column: 1 / -1; width: 100%; }
 }
 
 /* Documentary images keep their original colour on quieter pages. */
