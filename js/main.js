@@ -23,7 +23,7 @@ class ComponentLoader {
         }
 
         try {
-            const response = await fetch(`${this.componentsPath}${componentName}.html?v=2`);
+            const response = await fetch(`${this.componentsPath}${componentName}.html?v=3`);
             if (!response.ok) {
                 throw new Error(`Failed to load component: ${componentName}`);
             }

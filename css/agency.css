@@ -1367,6 +1367,18 @@ body.agency-site :is(.tilted-visual, .modern-module-card, .mosaic-grid .team-car
 /* Buttons in page content use sentence case; the compact header Support button stays uppercase. */
 body.agency-site main :is(.btn, #toggleFormBtn) { text-transform: none; letter-spacing: .02em; }
 
+/* Footer contact rows: the icon and text form one link with a 44px tap target. */
+body.agency-site .footer-contact .footer-list { gap: 0; }
+body.agency-site .footer-contact .footer-list li { min-height: 44px; margin-bottom: 0; align-items: center; }
+body.agency-site .footer-contact .footer-list a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; }
+body.agency-site .footer-contact .footer-list a:hover { text-decoration: none; }
+body.agency-site .footer-contact .footer-list a:hover span { text-decoration: underline; text-underline-offset: 4px; }
+body.agency-site .footer-contact .footer-list a > svg { flex: 0 0 16px; }
+@media (max-width: 600px) {
+  body.agency-site .footer-contact .footer-list a { gap: 7px; }
+  body.agency-site .footer-contact .footer-list a > svg { width: 14px; height: 14px; flex: 0 0 14px; }
+}
+
 /* Mentorship form required and optional markers, matching the contact form. */
 body.agency-site .mentorship-form-wrapper .inquiry-required-note { color: #49435b; font-size: 13px; margin: 0 0 20px; }
 body.agency-site .mentorship-form-wrapper .form-group > label span { color: #49435b; font-size: 12px; font-weight: 500; }
