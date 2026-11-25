@@ -1193,10 +1193,11 @@ body.agency-site .event-newsletter .newsletter-btn:hover { background: var(--pri
   body.agency-site .footer-bottom { display: grid; grid-template-columns: 1fr; justify-items: center; gap: 8px; padding-top: 16px; text-align: center !important; }
 
   /* Campaign hero, team, directory, details, forms on mobile. */
-  body.agency-site .campaign-hero { display: block; min-height: 0; padding: 308px 0 70px; }
-  .campaign-hero-photo { top: 72px; height: 360px; object-position: center 28%; }
+  /* Like the home hero, offsets start at the hero's top edge, below #header-container. */
+  body.agency-site .campaign-hero { display: block; min-height: 0; padding: 236px 0 70px; }
+  .campaign-hero-photo { top: 0; height: 360px; object-position: center 28%; }
   .campaign-hero--team .campaign-hero-photo { object-position: 54% 20%; }
-  .campaign-hero-wash { background: linear-gradient(180deg,rgba(33,28,57,.12) 72px,rgba(33,28,57,.2) 210px,var(--primary) 400px); }
+  .campaign-hero-wash { background: linear-gradient(180deg,rgba(33,28,57,.12) 0,rgba(33,28,57,.2) 138px,var(--primary) 328px); }
   .campaign-hero-layout { grid-template-columns: 1fr; gap: 26px; }
   .campaign-hero-heading .agency-label { border-left: 0; padding-left: 0; margin-inline: auto; font-size: 12px; margin-bottom: 20px; }
   body.agency-site .campaign-hero h1 { font-size: clamp(62px,17vw,82px); line-height: .95; }
@@ -1353,10 +1354,22 @@ body.agency-site #header { transition: background-color 200ms ease, box-shadow 2
 body.agency-site :is(.btn, .nav-link, .newsletter-input, .newsletter-btn, .social-link) {
   transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 160ms cubic-bezier(.23, 1, .32, 1);
 }
+body.agency-site #toggleFormBtn { transition: background-color 150ms ease, transform 160ms cubic-bezier(.23, 1, .32, 1); }
+body.agency-site :is(.form-group, .inquiry-field) :is(input, select, textarea) { transition: border-color 150ms ease, box-shadow 150ms ease; }
+/* These surfaces no longer move on hover, so their legacy transitions are removed. */
+body.agency-site :is(.tilted-visual, .modern-module-card, .mosaic-grid .team-card, .mosaic-grid .team-img img) { transition: none; }
 @media (hover: none) {
-  body.agency-site .btn:hover:not(:active) { transform: none; }
+  body.agency-site .btn:hover:not(:active),
+  body.agency-site #toggleFormBtn:hover:not(:active) { transform: none; }
   body.agency-site .btn:hover svg { transform: none; }
 }
+
+/* Buttons in page content use sentence case; the compact header Support button stays uppercase. */
+body.agency-site main :is(.btn, #toggleFormBtn) { text-transform: none; letter-spacing: .02em; }
+
+/* Mentorship form required and optional markers, matching the contact form. */
+body.agency-site .mentorship-form-wrapper .inquiry-required-note { color: #49435b; font-size: 13px; margin: 0 0 20px; }
+body.agency-site .mentorship-form-wrapper .form-group > label span { color: #49435b; font-size: 12px; font-weight: 500; }
 
 /* Donation dialog: a small rise on open, a quicker fade on close. */
 /* Visibility turns on at once so focus can move into the dialog, and turns off after the fade. */

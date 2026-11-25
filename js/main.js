@@ -441,7 +441,7 @@ function toggleMentorshipForm() {
         formContainer.classList.toggle('active');
         const isActive = formContainer.classList.contains('active');
         formContainer.inert = !isActive;
-        toggleBtn.textContent = isActive ? "Close interest form" : "Express Interest in Mentorship";
+        toggleBtn.textContent = isActive ? "Close interest form" : "Express interest in mentorship";
         toggleBtn.setAttribute('aria-expanded', String(isActive));
 
         // Slight scroll if opening to ensure visibility
