@@ -1066,10 +1066,11 @@ body.agency-site .event-newsletter .newsletter-btn:hover { background: var(--pri
   body.agency-site .agency-section-head > p { font-size: 14px; line-height: 1.6; margin-inline: auto; }
   .agency-section-head > .agency-link { margin-top: 16px; }
 
-  body.agency-home #hero.agency-hero { min-height: 0; padding: clamp(200px, 51vw, 285px) 0 38px; align-items: flex-end; }
-  body.agency-home .agency-hero-photo { inset: 72px 0 auto; height: clamp(270px, 65vw, 355px); width: 100%; object-position: center 29%; }
+  /* The hero starts below #header-container, so offsets are measured from the hero's own top edge. */
+  body.agency-home #hero.agency-hero { min-height: 0; padding: clamp(128px, 51vw - 72px, 213px) 0 38px; align-items: flex-end; }
+  body.agency-home .agency-hero-photo { inset: 0 0 auto; height: clamp(270px, 65vw, 355px); width: 100%; object-position: center 29%; }
   body.agency-home .agency-hero-shade {
-    background: linear-gradient(180deg, transparent 105px, rgba(33,28,57,.38) 185px, rgba(81,67,222,.82) 250px, #5143de clamp(342px, 65vw + 72px, 427px));
+    background: linear-gradient(180deg, transparent 33px, rgba(33,28,57,.38) 113px, rgba(81,67,222,.82) 178px, #5143de clamp(270px, 65vw, 355px));
   }
   body.agency-home .agency-hero-content,
   body.agency-home .agency-hero-copy { width: 100%; min-width: 0; }
@@ -1346,6 +1347,23 @@ body.agency-site .event-newsletter .newsletter-btn:hover { background: var(--pri
   body.agency-site .program-section-modern .layout-text .section-title,
   body.agency-site .program-section-modern .section-header .section-title { font-size: clamp(30px, 9vw, 36px) !important; overflow-wrap: normal; word-break: normal; }
 }
+
+/* Motion: name the properties that change, keep feedback quick, and keep hover lifts to real pointers. */
+body.agency-site #header { transition: background-color 200ms ease, box-shadow 200ms ease, border-color 200ms ease; }
+body.agency-site :is(.btn, .nav-link, .newsletter-input, .newsletter-btn, .social-link) {
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease, transform 160ms cubic-bezier(.23, 1, .32, 1);
+}
+@media (hover: none) {
+  body.agency-site .btn:hover:not(:active) { transform: none; }
+  body.agency-site .btn:hover svg { transform: none; }
+}
+
+/* Donation dialog: a small rise on open, a quicker fade on close. */
+/* Visibility turns on at once so focus can move into the dialog, and turns off after the fade. */
+body.agency-site #donationModal { transition: opacity 160ms ease, visibility 0s linear 160ms; }
+body.agency-site #donationModal.active { transition: opacity 220ms ease, visibility 0s; }
+body.agency-site #donationModal .modal { transform: translateY(8px) scale(.96); transition: transform 160ms cubic-bezier(.23, 1, .32, 1); }
+body.agency-site #donationModal.active .modal { transform: none; transition-duration: 240ms; }
 
 @media (prefers-reduced-motion: reduce) {
   body.agency-site *, body.agency-site *::before, body.agency-site *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
