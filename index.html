@@ -19,8 +19,8 @@
 <meta content="
         default-src 'self';
         script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        font-src 'self' https://fonts.gstatic.com;
+        style-src 'self' 'unsafe-inline';
+        font-src 'self';
         img-src 'self' data: https: blob:;
         connect-src 'self' https://unpkg.com https://script.google.com https://script.googleusercontent.com;
         frame-src 'none';
@@ -44,14 +44,10 @@
 
 <title>Hilth Foundation | Education Beyond Exams</title>
 <!-- Preconnect to external resources for faster loading -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://unpkg.com" rel="preconnect"/>
 <!-- DNS Prefetch for additional optimization -->
-<link href="https://fonts.googleapis.com" rel="dns-prefetch"/>
 <link href="https://unpkg.com" rel="dns-prefetch"/>
 <!-- Google Fonts - Professional Foundation Typography -->
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <!-- Styles - Unified CSS -->
 <link href="css/styles.css?v=3.2" rel="stylesheet"/>
 <!-- Preload hero image for LCP optimization -->
@@ -94,8 +90,8 @@
     }
     </script>
 <!-- Main JS - Unified JavaScript -->
-<script defer="" src="js/main.js?content=24"></script>
-<link href="css/agency.css?v=54" rel="stylesheet"/>
+<script defer="" src="js/main.js?content=26"></script>
+<link href="css/agency.css?v=57" rel="stylesheet"/>
 <meta name="description" content="Hilth Foundation helps young people in Ghana discover their strengths through school outreach, practical education and guided self-development.">
 <link rel="canonical" href="https://hilthfoundation.org/">
 <meta property="og:type" content="website">
@@ -127,22 +123,25 @@
 <h1 id="home-hero-title"><span>Education</span> <span>beyond</span> <span class="hero-marker">exams</span></h1>
 <p>We help young people discover who they are, learn what matters, and use it to solve real problems in their communities.</p>
 <div class="agency-hero-actions">
-<a class="agency-button" href="inquiry.html?topic=school">Bring HSIP to your school <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
-<a class="agency-link" href="#impact">See our impact <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+<a class="agency-button" href="inquiry.html?topic=school">Invite Hilth to your school <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+<a class="agency-link" href="#impact">See a school visit <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
 </div>
 </div>
 </div>
 <span class="agency-photo-note">A moment from our school outreach in Ghana.</span>
 </section>
-<aside aria-label="Hilth Foundation at a glance" class="agency-proof">
-<div class="container">
-<span class="agency-label">At a glance</span>
-<p><strong>8+</strong> schools visited</p>
-<p><strong>Ghana</strong> our home</p>
-<p><strong>4</strong> programme routes</p>
-<a class="agency-link" href="work.html">Our work <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+<section aria-labelledby="school-visit-title" class="agency-section outreach-feature" id="impact" tabindex="-1">
+<div class="container outreach-feature-layout">
+<figure class="outreach-feature-photo"><img src="assets/images/school-group.webp" alt="Hilth volunteers and students after a school outreach session" width="1920" height="1280" loading="lazy" decoding="async"><figcaption>From Hilth’s school outreach in Ghana.</figcaption></figure>
+<div class="outreach-feature-copy">
+<span class="agency-label">School Impact Programme</span>
+<h2 id="school-visit-title">A visit to Kumasi Anglican Senior High School</h2>
+<p class="outreach-date"><time datetime="2026-02-10">10 February 2026</time> · Kumasi, Ghana</p>
+<p>Hilth led a discussion about what education means beyond exams. Students explored their strengths and considered how to set goals for life after school.</p>
+<a class="agency-link" href="work.html#kumasi-anglican">Read about the visit <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
 </div>
-</aside>
+</div>
+</section>
 <section aria-labelledby="agency-about-title" class="agency-section agency-about" id="about">
 <div class="container agency-about-grid">
 <div class="agency-about-copy">
@@ -157,8 +156,8 @@
 </div>
 </div>
 <figure class="agency-about-photo">
-<img alt="Hilth volunteers and students together after a school session" decoding="async" height="1280" loading="lazy" src="assets/images/school-group.webp" width="1920"/>
-<figcaption>Hilth volunteers and students after a school session.</figcaption>
+<img alt="A speaker leading a Hilth school outreach session" decoding="async" height="1920" loading="lazy" src="assets/images/school-presenter.webp" width="1371"/>
+<figcaption>A speaker leads a Hilth outreach session.</figcaption>
 </figure>
 </div>
 </section>
@@ -174,8 +173,11 @@
 <div class="agency-program-feature-body">
 <svg aria-hidden="true" class="agency-symbol" viewBox="0 0 80 80"><use href="assets/icons/hilth-symbols.svg#school"></use></svg><span class="agency-label">In schools</span>
 <h3>Hilth School<br/>Impact Programme</h3>
-<p>We visit schools to help students understand what education really is, discover who they are, see the skills they can learn, and set goals and direction for their lives.</p>
-<a class="agency-link" href="school-impact.html">Explore school outreach <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+<p>In interactive school sessions, students reflect on their strengths, explore practical skills, and set goals. Tell us about your students and where your school is. Hilth will follow up to discuss a possible visit.</p>
+<div class="outreach-actions">
+<a class="agency-button" href="inquiry.html?topic=school">Request a school visit <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+<a class="agency-link" href="school-impact.html">Explore the programme <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+</div>
 </div>
 </article>
 <div class="agency-program-catalog">
@@ -191,33 +193,6 @@
 </div>
 </div>
 </div>
-</section>
-<section aria-labelledby="agency-impact-title" class="agency-impact" id="impact">
-<div class="container">
-<div class="agency-section-head">
-<div><span class="agency-label">Our impact</span><h2 id="agency-impact-title">Our reach so far</h2></div>
-<p>Each school visit helps young people see their education differently.</p>
-</div>
-<div class="agency-impact-numbers">
-<div class="agency-impact-stat"><svg aria-hidden="true" class="agency-impact-icon" viewBox="0 0 80 80"><use href="assets/icons/hilth-symbols.svg#mentorship"></use></svg><strong>8+</strong><p>Schools visited</p></div>
-<div class="agency-impact-stat"><svg aria-hidden="true" class="agency-impact-icon" viewBox="0 0 80 80"><use href="assets/icons/hilth-symbols.svg#school"></use></svg><strong>Ghana</strong><p>Where we are based</p></div>
-<div class="agency-impact-stat"><svg aria-hidden="true" class="agency-impact-icon" viewBox="0 0 80 80"><use href="assets/icons/hilth-symbols.svg#journey"></use></svg><strong>4</strong><p>Programmes, one planned</p></div>
-</div>
-<div class="agency-impact-bottom">
-<div><p>Confirmed dates, school names and attendance will appear in Our Work as they are documented.</p><div class="agency-regions"><a class="agency-link" href="about.html#reach">Where we work<svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a><span>Ghana / Our home</span><span>Africa / Our vision</span></div></div>
-<a class="agency-link" href="work.html">See our work <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
-</div>
-</div>
-</section>
-<section aria-labelledby="agency-field-title" class="agency-section agency-field">
-<div class="container">
-<div class="agency-section-head"><div><span class="agency-label">In the field</span><h2 id="agency-field-title">School outreach</h2></div><a class="agency-link" href="work.html">See all our work <svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></div>
-<div class="agency-field-gallery">
-<figure><img alt="Students taking part in a school outreach gathering" decoding="async" height="1920" loading="lazy" src="assets/images/school-students.webp" width="1536"/><figcaption>Students at a school outreach gathering.</figcaption></figure>
-<figure><img alt="A speaker leading a school outreach session" decoding="async" height="1920" loading="lazy" src="assets/images/school-presenter.webp" width="1536"/><figcaption>A speaker leading a session.</figcaption></figure>
-<figure><img alt="A schoolgirl listening during an outreach session" decoding="async" height="1920" loading="lazy" src="assets/images/school-attendee.webp" width="1536"/><figcaption>A student listening during a session.</figcaption></figure>
-</div>
-<div class="homepage-updates"><p>Looking for the next Hilth gathering?</p><a class="agency-link" href="events.html">See upcoming events<svg aria-hidden="true" class="agency-arrow" viewBox="0 0 48 48"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a></div></div>
 </section>
 <section aria-labelledby="agency-people-title" class="agency-people" id="team">
 <div class="container">

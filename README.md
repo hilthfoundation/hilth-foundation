@@ -85,7 +85,7 @@ Works on all modern browsers (Chrome, Firefox, Safari, Edge).
 
 ## Updating events and past programmes
 
-The pages load only entries with `published: true`. Dates must be real `YYYY-MM-DD` dates. Upcoming events include today and sort soonest first; past events sort newest first. The homepage shows six outreach cards and three upcoming events. Programme filters accept HSIP, Insights, 90 Days, Mentorship or Community.
+The pages load only entries with `published: true`. Dates must be real `YYYY-MM-DD` dates. Upcoming events include today and sort soonest first; past events sort newest first. The homepage and Work page highlight a sourced school visit separately from the feed. Programme filters accept HSIP, Insights, 90 Days, Mentorship or Community.
 
 Until a spreadsheet is connected, edit `data/events.json` and `data/outreach.json`. Both currently contain empty arrays because the Foundation has not supplied verified records. Do not publish the examples below as real activity.
 

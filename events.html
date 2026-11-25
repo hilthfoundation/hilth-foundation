@@ -21,13 +21,10 @@
 
 
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css?v=3.2">
     <script src="https://unpkg.com/lucide@0.562.0" defer></script>
-    <script src="js/main.js?content=24" defer></script>
-    <link rel="stylesheet" href="css/agency.css?v=54">
+    <script src="js/main.js?content=26" defer></script>
+    <link rel="stylesheet" href="css/agency.css?v=57">
 <meta name="description" content="See confirmed upcoming events from Hilth Foundation and find out how to invite us to your school.">
 <link rel="canonical" href="https://hilthfoundation.org/events.html">
 <meta property="og:type" content="website">
@@ -50,32 +47,37 @@
 <body class="page-events agency-site">
     <div id="header-container"></div>
     <main id="main-content">
-        <section class="campaign-hero campaign-hero--events" aria-labelledby="page-hero-title">
-        <img class="campaign-hero-photo" src="assets/images/school-speaker.webp" alt="A speaker at a Hilth Foundation school gathering" fetchpriority="high">
-        <div class="campaign-hero-wash" aria-hidden="true"></div>
-        <div class="container campaign-hero-layout">
-            <div class="campaign-hero-heading">
-                <span class="agency-label">Events and conversations</span>
-                <h1 id="page-hero-title">Hilth<br> <mark>events.</mark></h1>
+        <section class="photo-intro" aria-labelledby="page-hero-title">
+            <div class="container photo-intro-layout">
+                <div class="photo-intro-copy">
+                    <h1 id="page-hero-title">Hilth events</h1>
+                    <p>Find upcoming Hilth conversations and learning activities.</p>
+                    <a class="agency-link" href="#event-calendar">See the calendar<svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
+                </div>
+                <img class="photo-intro-image" src="assets/images/school-speaker.webp" alt="A speaker at a Hilth Foundation school gathering" width="1536" height="1920" fetchpriority="high">
             </div>
-            <div class="campaign-hero-description">
-                <p>Stay informed about upcoming Hilth Foundation activities and conversations. Dates and event details are shared once confirmed.</p>
-                <a class="agency-link" href="#event-calendar">Explore the calendar<svg class="agency-arrow" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/icons/hilth-symbols.svg#arrow"></use></svg></a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-        <section class="foundation-section foundation-listing-section" id="event-calendar">
+        <section class="foundation-section foundation-listing-section" id="event-calendar" tabindex="-1">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title gradient-title">Our Calendar</h2>
-                    <p class="section-subtitle">Dates and event details appear here once confirmed.</p>
+                    <h2 class="section-title gradient-title">Event calendar</h2>
                 </div>
-                <div class="foundation-tabs" role="radiogroup" aria-label="Event history">
+                <div class="foundation-tabs" data-foundation-filters="event" role="radiogroup" aria-label="Event history" hidden>
                     <label class="event-filter"><input type="radio" name="event-history" data-event-filter="upcoming" checked><span class="foundation-tab">Upcoming</span></label>
                     <label class="event-filter"><input type="radio" name="event-history" data-event-filter="past"><span class="foundation-tab">Past events</span></label>
                 </div>
                 <div class="events-list" data-events-list aria-live="polite"></div>
+                <section class="event-newsletter" aria-labelledby="event-newsletter-title">
+                    <h3 id="event-newsletter-title">Get event announcements</h3>
+                    <p>Sign up for Hilth’s newsletter for news on events, school visits and programmes.</p>
+                    <form class="newsletter-form" name="hilth-newsletter" method="POST" action="/newsletter-thanks.html" data-netlify="true" data-netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="hilth-newsletter">
+                        <p hidden><label>Leave this field empty: <input name="bot-field"></label></p>
+                        <input class="newsletter-input" type="email" name="email" autocomplete="email" aria-label="Email address for event announcements" placeholder="Your email address" required>
+                        <button class="newsletter-btn" type="submit">Subscribe</button>
+                    </form>
+                </section>
                 <div class="foundation-page-cta">
                     <h3>Invite us to your school</h3>
                     <p>Interested in hosting a school impact session? Tell us about your school and what your students need.</p>

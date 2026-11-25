@@ -1,6 +1,6 @@
 # Hilth Foundation
 
-An editorial education nonprofit website: documentary photography, rounded Quicksand typography, generous paper-colored surfaces, and clear, practical actions.
+An editorial education nonprofit website with documentary photography, bold display type, generous paper-colored surfaces, and clear, practical actions.
 
 ## Live reference review
 
@@ -23,7 +23,7 @@ The implementation is original HTML/CSS. Reference photographs, logos, proprieta
 - Alternate surface: `#F5F4FA`
 - Text: `#211C39`; body: `#49435B`
 - Rules: `#DEDBE9`
-- Type: Quicksand across headings, body copy, forms, navigation and shared components; weights 400–700.
+- Type uses Bricolage Grotesque for display headings and the text next to the logo, and DM Sans for body copy, navigation and forms. Both typefaces are hosted locally. Headings use sentence case. The original logo artwork is unchanged.
 - Corners: 0–4px. No decorative glows or floating card shadows.
 
 ## Rules
@@ -38,7 +38,9 @@ Do not add unverified quotes, statistics, events or launch claims. Retain propos
 
 The shared footer closes with a large newsletter invitation, then a three-column brand, navigation and contact directory. Mobile stacks the newsletter and brand above two compact link columns. Main color fields use the sampled logo purple and green; neutrals support readable text.
 
-Interior campaign heroes (Leadership, Programmes, Work and Events) share a documentary photo field, purple wash, green headline marker and angular white lower edge. Desktop pairs headline and supporting copy; mobile keeps the main photographic area above the text. Page-specific links scroll into existing content.
+Leadership and Programmes use a documentary photo field, purple wash, green headline marker and angular white lower edge. Work and Events use a neutral surface and an untinted photograph beside centered copy on desktop, with the photograph above the copy on phones.
+
+The homepage links to a sourced visit story on Work. The story is visible independently of the outreach feed. Keep the date and any outcome tied to a primary source, and describe illustrative photographs as general outreach unless their connection to the visit is confirmed. Events places its newsletter signup beside the calendar.
 
 Use a consistent mobile headline scale across campaign, programme-detail and contact introductions. Contact and volunteer introductions use the same green headline marker as campaign pages. Form labels align with the left edge of their fields. Green callouts use dark text. Event history uses a native single-choice radio group, and its empty state links to event announcements while the school invitation stays in the separate callout. Get involved is available from the shared navigation.
 

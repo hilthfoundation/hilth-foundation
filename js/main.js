@@ -185,7 +185,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     initShopCatalog();
     initMobileMenu();
     initCounterAnimation();
-    initSmoothScroll();
     initScrollToTop();
     initScrollAnimations();
     initAutoYear();
@@ -467,33 +466,6 @@ function initMobileMenu() {
 }
 
 /* ================================
-   Smooth Scroll
-   ================================ */
-function initSmoothScroll() {
-    // Preserve native focus and fragment navigation for the skip link.
-    const links = document.querySelectorAll('a[href^="#"]:not(.skip-to-content)');
-
-    links.forEach(link => {
-        link.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href === '#') return;
-
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                const headerHeight = document.getElementById('header')?.offsetHeight || 0;
-                const targetPosition = target.offsetTop - headerHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-/* ================================
    Counter Animation
    ================================ */
 function initCounterAnimation() {
@@ -705,10 +677,7 @@ function openDonationModal() {
     donationBackground = [...document.querySelectorAll('#header-container, main, #footer')].map(element => ({ element, inert: element.inert }));
     donationBackground.forEach(({ element }) => { element.inert = true; });
     document.body.style.overflow = 'hidden';
-    // Wait for the overlay's visibility transition before moving keyboard focus.
-    setTimeout(() => {
-        if (modal.classList.contains('active')) document.getElementById('modalClose').focus();
-    }, 300);
+    document.getElementById('modalClose').focus();
 }
 function closeDonationModal() {
     const modal = document.getElementById('donationModal');
@@ -1108,30 +1077,28 @@ async function initFoundationListings() {
         (async () => {
             if (!eventContainers.length) return;
             try {
-                const events = await readRecords('events');
+                const events = (await readRecords('events')).filter(event => isFoundationDate(event.date) && event.title);
                 const render = () => {
                     const selected = document.querySelector('[data-event-filter]:checked')?.dataset.eventFilter || 'upcoming';
                     const today = new Date().toISOString().slice(0, 10);
-                    const relevant = events.filter(event => isFoundationDate(event.date) && event.title)
-                        .filter(event => selected === 'past' ? event.date < today : event.date >= today)
+                    const relevant = events.filter(event => selected === 'past' ? event.date < today : event.date >= today)
                         .sort((a, b) => selected === 'past' ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date));
                     eventContainers.forEach(container => {
                         container.replaceChildren();
                         if (!relevant.length) {
                             container.append(makeFoundationEmpty(selected === 'past'
-                                ? 'Past event details will appear here once records are verified.'
-                                : 'No events are scheduled right now. Follow @hilthfoundation for announcements.',
-                                selected === 'past' ? null : 'https://www.instagram.com/hilthfoundation/',
-                                'Follow Hilth on Instagram'));
+                                ? 'No past events are listed.'
+                                : 'No upcoming events are listed.'));
                         } else relevant.slice(0, Number(container.dataset.limit) || relevant.length)
                             .forEach(event => container.append(makeEventCard(event)));
                     });
                 };
+                if (events.length) showFoundationFilters('event');
                 bindFoundationFilters('event', render);
                 render();
             } catch (error) {
                 console.error(error);
-                eventContainers.forEach(container => container.replaceChildren(makeFoundationEmpty('Event information is temporarily unavailable. Please check again soon.')));
+                eventContainers.forEach(container => container.replaceChildren(makeFoundationEmpty('The event calendar is temporarily unavailable.')));
             } finally {
                 eventContainers.forEach(container => container.setAttribute('aria-busy', 'false'));
             }
@@ -1150,21 +1117,26 @@ async function initFoundationListings() {
                         if (!relevant.length) {
                             container.append(makeFoundationEmpty(records.length
                                 ? 'No documented visits in this programme yet. Choose another programme to explore our work.'
-                                : 'Our school visits are being documented. Verified school names, dates and visit details will appear here as they are confirmed.'));
+                                : 'No additional outreach records are listed.'));
                         } else relevant.slice(0, Number(container.dataset.limit) || relevant.length)
                             .forEach(record => container.append(makeOutreachCard(record)));
                     });
                 };
+                if (records.length) showFoundationFilters('outreach');
                 bindFoundationFilters('outreach', render);
                 render();
             } catch (error) {
                 console.error(error);
-                outreachContainers.forEach(container => container.replaceChildren(makeFoundationEmpty('Outreach records are temporarily unavailable. Please check again soon.')));
+                outreachContainers.forEach(container => container.replaceChildren(makeFoundationEmpty('The outreach archive is temporarily unavailable.')));
             } finally {
                 outreachContainers.forEach(container => container.setAttribute('aria-busy', 'false'));
             }
         })()
     ]);
+}
+
+function showFoundationFilters(kind) {
+    document.querySelectorAll(`[data-foundation-filters="${kind}"]`).forEach(group => { group.hidden = false; });
 }
 
 function bindFoundationFilters(kind, render) {
@@ -1182,16 +1154,10 @@ function bindFoundationFilters(kind, render) {
     }));
 }
 
-function makeFoundationEmpty(message, link, label) {
+function makeFoundationEmpty(message) {
     const element = document.createElement('div');
     element.className = 'foundation-empty-state';
     element.append(makeFoundationText('p', '', message));
-    if (link && /^(https:\/\/|mailto:admin@hilthfoundation\.org\?)/.test(link)) {
-        const anchor = makeFoundationText('a', 'btn btn-primary', label);
-        anchor.href = link;
-        if (link.startsWith('https:')) { anchor.target = '_blank'; anchor.rel = 'noopener noreferrer'; }
-        element.append(anchor);
-    }
     return element;
 }
 
